@@ -33,6 +33,8 @@ systemd.user.extraConfig = "DefaultLimitNOFILE=65536";
 systemd.extraConfig = "DefaultLimitNOFILE=65536";
 systemd.services."user@1000".serviceConfig.LimitNOFILE = "65536";
 
+time.timeZone = "Europe/Copenhagen";
+
   environment.systemPackages = [ pkgs.vim pkgs.home-manager pkgs.zsh pkgs.git pkgs.gnupg ];
   environment.shells = with pkgs; [ zsh ];
 
