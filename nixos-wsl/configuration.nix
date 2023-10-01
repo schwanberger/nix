@@ -10,9 +10,8 @@
     item = "nofile";
     value = "8192";
   }];
-  environment.systemPackages = [ pkgs.vim pkgs.home-manager pkgs.zsh ];
+  environment.systemPackages = [ pkgs.vim pkgs.home-manager pkgs.zsh pkgs.git ];
   environment.shells = with pkgs; [ zsh ];
-  programs.git.enable = true;
 
   programs = {
     zsh = {
