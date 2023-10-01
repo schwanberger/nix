@@ -4,12 +4,24 @@
   imports = [
     inputs.home-manager.nixosModules.home-manager
   ];
-  security.pam.loginLimits = [{
+  security.pam.loginLimits = [
+{
     domain = "*";
     type = "soft";
     item = "nofile";
-    value = "8192";
-  }];
+    value = "65536";
+  }
+{
+    domain = "*";
+    type = "hard";
+    item = "nofile";
+    value = "65536";
+
+}
+];
+
+systemd.user.extraConfig = "DefaultLimitNOFILE=65536";
+
   environment.systemPackages = [ pkgs.vim pkgs.home-manager pkgs.zsh pkgs.git pkgs.gnupg ];
   environment.shells = with pkgs; [ zsh ];
 
