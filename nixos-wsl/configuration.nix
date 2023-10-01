@@ -10,7 +10,7 @@
     item = "nofile";
     value = "8192";
   }];
-  environment.systemPackages = [ pkgs.vim pkgs.home-manager pkgs.zsh pkgs.git ];
+  environment.systemPackages = [ pkgs.vim pkgs.home-manager pkgs.zsh pkgs.git pkgs.gnupg ];
   environment.shells = with pkgs; [ zsh ];
 
   programs = {
@@ -26,6 +26,16 @@
       };
     };
   };
+
+  # GnuPG
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
+
+  services.pcscd.enable = true;
+
+
 
   users.users.thsc = {
     isNormalUser = true;
