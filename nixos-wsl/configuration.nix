@@ -4,38 +4,39 @@
   imports = [
     inputs.home-manager.nixosModules.home-manager
   ];
-#  security.pam.loginLimits = [
-##{
-#    domain = "*";
-#    type = "soft";
-#    item = "nofile";
-#    value = "65536";
-#  }
-#{
-#    domain = "*";
-#    type = "hard";
-#    item = "nofile";
-#    value = "65536";
-#
-#}
-#];
-
   security.pam.loginLimits = [
     {
       domain = "*";
-      type = "-";
+      type = "soft";
       item = "nofile";
       value = "65536";
     }
+    {
+      domain = "*";
+      type = "hard";
+      item = "nofile";
+      value = "1048576";
+
+    }
   ];
 
-systemd.user.extraConfig = "DefaultLimitNOFILE=65536";
-systemd.extraConfig = "DefaultLimitNOFILE=65536";
-systemd.services."user@1000".serviceConfig.LimitNOFILE = "65536";
+  # security.pam.loginLimits = [
+  #   {
+  #     domain = "*";
+  #     type = "-";
+  #     item = "nofile";
+  #     value = "65536";
+  #   }
+  # ];
+
+systemd.user.extraConfig = "DefaultLimitNOFILE=65536:1048576";
+systemd.extraConfig = "DefaultLimitNOFILE=65536:1048576";
+#systemd.services."user@1000".serviceConfig.LimitNOFILE = "65536";
+systemd.services."nix-daemon".serviceConfig.LimitNOFILE = pkgs.lib.mkForce "65536:1048576";
 
 time.timeZone = "Europe/Copenhagen";
 
-  environment.systemPackages = [ pkgs.vim pkgs.home-manager pkgs.zsh pkgs.git pkgs.gnupg ];
+  environment.systemPackages = with pkgs; [ vim home-manager zsh git gnupg ];
   environment.shells = with pkgs; [ zsh ];
 
   programs = {
