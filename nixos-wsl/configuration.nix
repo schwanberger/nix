@@ -48,6 +48,7 @@ time.timeZone = "Europe/Copenhagen";
         plugins = [
           "git"
           "fzf"
+          "gradle"
         ];
       };
     };
