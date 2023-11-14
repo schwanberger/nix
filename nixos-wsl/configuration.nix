@@ -25,7 +25,7 @@
 
   time.timeZone = "Europe/Copenhagen";
 
-  environment.systemPackages = with pkgs; [ vim home-manager zsh git gnupg ];
+  environment.systemPackages = with pkgs; [ vim home-manager zsh git gnupg p7zip ];
   environment.shells = with pkgs; [ zsh ];
 
   nix.optimise.automatic = true;
