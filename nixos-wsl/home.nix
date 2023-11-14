@@ -52,16 +52,7 @@
   programs.home-manager.enable = true;
   programs.git.enable = true;
 
-
-  programs =  {
-    zsh = {
-    enable = true;
-    # ohMyZsh = {
-    #   enable = true;
-    #   plugins = [ "git" "thefuck" ];
-    #   theme = "robbyrussell";
-    # };
-  };
+  programs = {
     fzf = {
       enable = true;
     };
@@ -69,8 +60,19 @@
       enable = true;
       enableZshIntegration = true;
     };
+    zsh = {
+      enable = true;
+      oh-my-zsh = {
+        enable = true;
+        theme = "robbyrussell";
+        plugins = [
+          "git"
+          "fzf"
+          "gradle"
+        ];
+      };
+    };
   };
-
 
 
   # Nicely reload system units when changing configs

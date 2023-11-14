@@ -4,6 +4,9 @@
   imports = [
     inputs.home-manager.nixosModules.home-manager
   ];
+
+  systemd.user.extraConfig = "DefaultLimitNOFILE=65536";
+
   security.pam.loginLimits = [
     {
       domain = "*";
@@ -20,39 +23,26 @@
     }
   ];
 
-  # security.pam.loginLimits = [
-  #   {
-  #     domain = "*";
-  #     type = "-";
-  #     item = "nofile";
-  #     value = "65536";
-  #   }
-  # ];
-
-systemd.user.extraConfig = "DefaultLimitNOFILE=65536:1048576";
-systemd.extraConfig = "DefaultLimitNOFILE=65536:1048576";
-#systemd.services."user@1000".serviceConfig.LimitNOFILE = "65536";
-systemd.services."nix-daemon".serviceConfig.LimitNOFILE = pkgs.lib.mkForce "65536:1048576";
-
-time.timeZone = "Europe/Copenhagen";
+  time.timeZone = "Europe/Copenhagen";
 
   environment.systemPackages = with pkgs; [ vim home-manager zsh git gnupg ];
   environment.shells = with pkgs; [ zsh ];
 
-  programs = {
-    zsh = {
-      enable = true;
-      ohMyZsh = {
-        enable = true;
-        theme = "robbyrussell";
-        plugins = [
-          "git"
-          "fzf"
-          "gradle"
-        ];
-      };
-    };
+  nix.optimise.automatic = true;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
   };
+
+  virtualisation.containers.enable = true;
+  # Will have to wait until Windows 11 WSL2
+  #virtualisation.libvirtd.enable = true;
+  #virtualisation.virtualbox.host.enable = true;
+  #virtualisation.virtualbox.guest.enable = true;
+  #virtualisation.virtualbox.host.enableHardening = false;
+  #virtualisation.virtualbox.host.headless = true;
+  #boot.kernelModules = [ "kvm-amd" "kvm-intel" "virtualbox" ];
 
   # GnuPG
   programs.gnupg.agent = {
@@ -62,15 +52,25 @@ time.timeZone = "Europe/Copenhagen";
 
   services.pcscd.enable = true;
 
+  # I'm sorry Stallman-taichou
+  nixpkgs.config.allowUnfree = true;
 
+  # Networking
+  networking.hostName = "PF3LZDKP"; # Define your hostname.
+
+  # I use zsh btw
+  users.defaultUserShell = pkgs.zsh;
+  programs.zsh.enable = true;
 
   users.users.thsc = {
     isNormalUser = true;
-    shell = pkgs.zsh;
+    description = "Thomas Schwanberger";
+    #shell = pkgs.zsh;
+    extraGroups = [ "networkmanager" "wheel" "qemu-libvirtd" "libvirtd" "disk" "video" "audio" "vboxusers" ];
+    uid = 1000;
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  system.stateVersion = "23.05";
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
@@ -78,4 +78,6 @@ time.timeZone = "Europe/Copenhagen";
       thsc = import ./home.nix;
     };
   };
+  # It is ok to leave this unchanged for compatibility purposes
+  system.stateVersion = "23.05";
 }
