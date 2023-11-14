@@ -5,7 +5,7 @@
     inputs.home-manager.nixosModules.home-manager
   ];
 
-systemd.user.extraConfig = "DefaultLimitNOFILE=65536";
+  systemd.user.extraConfig = "DefaultLimitNOFILE=65536";
 
   security.pam.loginLimits = [
     {

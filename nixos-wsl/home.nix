@@ -55,13 +55,13 @@
 
   programs =  {
     zsh = {
-    enable = true;
-    # ohMyZsh = {
-    #   enable = true;
-    #   plugins = [ "git" "thefuck" ];
-    #   theme = "robbyrussell";
-    # };
-  };
+      enable = true;
+      # ohMyZsh = {
+      #   enable = true;
+      #   plugins = [ "git" "thefuck" ];
+      #   theme = "robbyrussell";
+      # };
+    };
     fzf = {
       enable = true;
     };
