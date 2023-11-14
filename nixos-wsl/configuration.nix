@@ -20,24 +20,21 @@
     }
   ];
 
-  # security.pam.loginLimits = [
-  #   {
-  #     domain = "*";
-  #     type = "-";
-  #     item = "nofile";
-  #     value = "65536";
-  #   }
-  # ];
-
-systemd.user.extraConfig = "DefaultLimitNOFILE=65536:1048576";
-systemd.extraConfig = "DefaultLimitNOFILE=65536:1048576";
-#systemd.services."user@1000".serviceConfig.LimitNOFILE = "65536";
-systemd.services."nix-daemon".serviceConfig.LimitNOFILE = pkgs.lib.mkForce "65536:1048576";
-
-time.timeZone = "Europe/Copenhagen";
+  time.timeZone = "Europe/Copenhagen";
 
   environment.systemPackages = with pkgs; [ vim home-manager zsh git gnupg ];
   environment.shells = with pkgs; [ zsh ];
+
+  nix.optimise.automatic = true;
+
+  virtualisation.containers.enable = true;
+  virtualisation.libvirtd.enable = true;
+  virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.guest.enable = true;
+  virtualisation.virtualbox.host.enableHardening = false;
+  virtualisation.virtualbox.host.headless = true;
+
+  boot.kernelModules = [ "kvm-amd" "kvm-intel" "virtualbox" ];
 
   programs = {
     zsh = {
