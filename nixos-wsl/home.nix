@@ -52,16 +52,7 @@
   programs.home-manager.enable = true;
   programs.git.enable = true;
 
-
-  programs =  {
-    zsh = {
-      enable = true;
-      # ohMyZsh = {
-      #   enable = true;
-      #   plugins = [ "git" "thefuck" ];
-      #   theme = "robbyrussell";
-      # };
-    };
+  programs = {
     fzf = {
       enable = true;
     };
