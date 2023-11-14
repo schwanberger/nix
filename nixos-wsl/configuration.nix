@@ -29,30 +29,20 @@
   environment.shells = with pkgs; [ zsh ];
 
   nix.optimise.automatic = true;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
 
   virtualisation.containers.enable = true;
-  virtualisation.libvirtd.enable = true;
-  virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.guest.enable = true;
-  virtualisation.virtualbox.host.enableHardening = false;
-  virtualisation.virtualbox.host.headless = true;
-
-  boot.kernelModules = [ "kvm-amd" "kvm-intel" "virtualbox" ];
-
-  programs = {
-    zsh = {
-      enable = true;
-      ohMyZsh = {
-        enable = true;
-        theme = "robbyrussell";
-        plugins = [
-          "git"
-          "fzf"
-          "gradle"
-        ];
-      };
-    };
-  };
+  # Will have to wait until Windows 11 WSL2
+  #virtualisation.libvirtd.enable = true;
+  #virtualisation.virtualbox.host.enable = true;
+  #virtualisation.virtualbox.guest.enable = true;
+  #virtualisation.virtualbox.host.enableHardening = false;
+  #virtualisation.virtualbox.host.headless = true;
+  #boot.kernelModules = [ "kvm-amd" "kvm-intel" "virtualbox" ];
 
   # GnuPG
   programs.gnupg.agent = {
@@ -70,6 +60,7 @@
 
   # I use zsh btw
   users.defaultUserShell = pkgs.zsh;
+  programs.zsh.enable = true;
 
   users.users.thsc = {
     isNormalUser = true;
