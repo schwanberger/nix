@@ -4,6 +4,9 @@
   imports = [
     inputs.home-manager.nixosModules.home-manager
   ];
+
+systemd.user.extraConfig = "DefaultLimitNOFILE=65536";
+
   security.pam.loginLimits = [
     {
       domain = "*";
@@ -59,15 +62,24 @@
 
   services.pcscd.enable = true;
 
+  # I'm sorry Stallman-taichou
+  nixpkgs.config.allowUnfree = true;
 
+  # Networking
+  networking.hostName = "PF3LZDKP"; # Define your hostname.
+
+  # I use zsh btw
+  users.defaultUserShell = pkgs.zsh;
 
   users.users.thsc = {
     isNormalUser = true;
-    shell = pkgs.zsh;
+    description = "Thomas Schwanberger";
+    #shell = pkgs.zsh;
+    extraGroups = [ "networkmanager" "wheel" "qemu-libvirtd" "libvirtd" "disk" "video" "audio" "vboxusers" ];
+    uid = 1000;
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  system.stateVersion = "23.05";
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
@@ -75,4 +87,6 @@
       thsc = import ./home.nix;
     };
   };
+  # It is ok to leave this unchanged for compatibility purposes
+  system.stateVersion = "23.05";
 }
