@@ -62,6 +62,15 @@
     };
     zsh = {
       enable = true;
+      zplug = {
+        enable = true;
+        plugins = [
+          { name = "zsh-users/zsh-autosuggestions"; } # Simple plugin installation
+          { name = "zsh-users/zsh-syntax-highlighting"; } # Simple plugin installation
+          { name = "marlonrichert/zsh-autocomplete"; } # Simple plugin installation
+          { name = "zdharma-continuum/fast-syntax-highlighting"; } # Simple plugin installation
+        ];
+      };
       oh-my-zsh = {
         enable = true;
         theme = "robbyrussell";
