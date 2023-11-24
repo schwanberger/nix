@@ -6,7 +6,11 @@
   config,
   pkgs,
   ...
-}: {
+}:
+let
+  unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
+in
+{
   # You can import other home-manager modules here
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors):
@@ -51,6 +55,27 @@
   # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.git.enable = true;
+
+  programs.emacs = {
+    enable = true;
+    package = with unstable; ((emacsPackagesFor emacs29-pgtk).emacsWithPackages (epkgs: [epkgs.vterm]));
+  };
+
+  home.packages = with unstable; [
+    (ripgrep.override {withPCRE2 = true;})
+    openssh
+    nerdfonts
+    nodejs
+    pandoc
+    fd
+    p7zip
+    yq
+    jq
+    zstd
+    (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
+    sqlite
+    nil
+  ];
 
   programs = {
     fzf = {
