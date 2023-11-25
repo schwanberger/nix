@@ -35,6 +35,11 @@
     options = "--delete-older-than 30d";
   };
 
+  i18n.defaultLocale = "en_DK.UTF-8";
+  i18n.extraLocaleSettings = {
+    LC_ALL="en_DK.UTF-8";
+  };
+
   virtualisation.containers.enable = true;
   virtualisation.podman = {
       enable = true;
@@ -69,7 +74,13 @@
 
   # I use zsh btw
   users.defaultUserShell = pkgs.zsh;
-  programs.zsh.enable = true;
+
+    programs.zsh = {
+    enable = true;
+    autosuggestions.enable = true;
+    #enableCompletion = false;
+    syntaxHighlighting.enable = true;
+  };
 
   users.users.thsc = {
     isNormalUser = true;

@@ -62,6 +62,7 @@ in
   };
 
   home.packages = with unstable; [
+    bat
     (ripgrep.override {withPCRE2 = true;})
     openssh
     nerdfonts
@@ -87,22 +88,49 @@ in
     };
     zsh = {
       enable = true;
-      zplug = {
-        enable = true;
-        plugins = [
-          { name = "zsh-users/zsh-autosuggestions"; } # Simple plugin installation
-          { name = "zsh-users/zsh-syntax-highlighting"; } # Simple plugin installation
-          { name = "marlonrichert/zsh-autocomplete"; } # Simple plugin installation
-          { name = "zdharma-continuum/fast-syntax-highlighting"; } # Simple plugin installation
-        ];
-      };
+      #enableCompletion = false;
+#       initExtra = ''
+# zstyle ':autocomplete:*' min-input 1
+#     '';
+      # zplug = {
+      #   enable = true;
+      #   plugins = [
+      #     { name = "zsh-users/zsh-autosuggestions"; } # Simple plugin installation
+      #     { name = "zsh-users/zsh-syntax-highlighting"; } # Simple plugin installation
+      #     { name = "marlonrichert/zsh-autocomplete"; } # Simple plugin installation
+      #     { name = "zdharma-continuum/fast-syntax-highlighting"; } # Simple plugin installation
+      #   ];
+      # };
+      plugins = [
+        {
+          # will source zsh-autosuggestions.plugin.zsh
+          name = "zsh-autocomplete";
+          src = pkgs.fetchFromGitHub {
+            owner = "marlonrichert";
+            repo = "zsh-autocomplete";
+            rev = "afc5afd15fe093bfd96faa521abe0255334c85b0";
+            sha256 = "npflZ7sr2yTeLQZIpozgxShq3zbIB5WMIZwMv8rkLJg=";
+          };
+        }
+        {
+          # will source zsh-autosuggestions.plugin.zsh
+          name = "gradle-completion";
+          src = pkgs.fetchFromGitHub {
+            owner = "gradle";
+            repo = "gradle-completion";
+            rev = "25da917cf5a88f3e58f05be3868a7b2748c8afe6";
+            sha256 = "8CNzTfnYd+W8qX40F/LgXz443JlshHPR2I3+ziKiI2c=";
+          };
+        }
+      ];
       oh-my-zsh = {
         enable = true;
         theme = "robbyrussell";
         plugins = [
           "git"
           "fzf"
-          "gradle"
+          #"gradle"
+          #"gradle-completion"
         ];
       };
     };
