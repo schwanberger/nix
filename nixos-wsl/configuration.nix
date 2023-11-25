@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, ... }:
+{ inputs, config, pkgs, pkgs-unstable, ... }:
 
 {
   imports = [
@@ -93,7 +93,7 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = { inherit inputs pkgs-unstable; };
     users = {
       thsc = import ./home.nix;
     };

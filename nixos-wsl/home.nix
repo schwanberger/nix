@@ -1,16 +1,6 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-{
-  inputs,
-  lib,
-  config,
-  pkgs,
-  ...
-}:
-let
-  unstable = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
-in
-{
+{ inputs, lib, config, pkgs, pkgs-unstable, ... }: {
   # You can import other home-manager modules here
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors):
@@ -58,12 +48,14 @@ in
 
   programs.emacs = {
     enable = true;
-    package = with unstable; ((emacsPackagesFor emacs29-pgtk).emacsWithPackages (epkgs: [epkgs.vterm]));
+    package = with pkgs-unstable;
+      ((emacsPackagesFor emacs29-pgtk).emacsWithPackages
+        (epkgs: [ epkgs.vterm ]));
   };
 
-  home.packages = with unstable; [
+  home.packages = with pkgs-unstable; [
     bat
-    (ripgrep.override {withPCRE2 = true;})
+    (ripgrep.override { withPCRE2 = true; })
     openssh
     nerdfonts
     nodejs
@@ -76,12 +68,11 @@ in
     (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
     sqlite
     nil
+    nixfmt
   ];
 
   programs = {
-    fzf = {
-      enable = true;
-    };
+    fzf = { enable = true; };
     starship = {
       enable = true;
       enableZshIntegration = true;
@@ -89,9 +80,9 @@ in
     zsh = {
       enable = true;
       #enableCompletion = false;
-#       initExtra = ''
-# zstyle ':autocomplete:*' min-input 1
-#     '';
+      #       initExtra = ''
+      # zstyle ':autocomplete:*' min-input 1
+      #     '';
       # zplug = {
       #   enable = true;
       #   plugins = [
@@ -135,7 +126,6 @@ in
       };
     };
   };
-
 
   # Nicely reload system units when changing configs
   #systemd.user.startServices = "sd-switch";
