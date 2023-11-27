@@ -46,30 +46,30 @@
   programs.home-manager.enable = true;
   programs.git.enable = true;
 
-  programs.emacs = {
-    enable = true;
-    package = with pkgs-unstable;
-      ((emacsPackagesFor emacs29-pgtk).emacsWithPackages
-        (epkgs: [ epkgs.vterm ]));
-  };
-
-  home.packages = with pkgs-unstable; [
-    bat
-    (ripgrep.override { withPCRE2 = true; })
-    openssh
-    nerdfonts
-    nodejs
-    pandoc
-    fd
-    p7zip
-    yq
-    jq
-    zstd
-    (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
-    sqlite
-    nil
-    nixfmt
-  ];
+  #  programs.emacs = {
+  #    enable = true;
+  #    package = with pkgs-unstable;
+  #      ((emacsPackagesFor emacs29-pgtk).emacsWithPackages
+  #        (epkgs: [ epkgs.vterm ]));
+  #  };
+  #
+  #  home.packages = with pkgs-unstable; [
+  #    bat
+  #    (ripgrep.override { withPCRE2 = true; })
+  #    openssh
+  #    nerdfonts
+  #    nodejs
+  #    pandoc
+  #    fd
+  #    p7zip
+  #    yq
+  #    jq
+  #    zstd
+  #    (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
+  #    sqlite
+  #    nil
+  #    nixfmt
+  #  ];
 
   programs = {
     fzf = { enable = true; };

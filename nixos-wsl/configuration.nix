@@ -1,9 +1,7 @@
 { inputs, config, pkgs, pkgs-unstable, ... }:
 
 {
-  imports = [
-    inputs.home-manager.nixosModules.home-manager
-  ];
+  imports = [ inputs.home-manager.nixosModules.home-manager ];
 
   systemd.user.extraConfig = "DefaultLimitNOFILE=65536";
 
@@ -25,7 +23,6 @@
 
   time.timeZone = "Europe/Copenhagen";
 
-  environment.systemPackages = with pkgs; [ vim home-manager zsh git gnupg p7zip zsh-completions ];
   environment.shells = with pkgs; [ zsh ];
 
   nix.optimise.automatic = true;
@@ -36,19 +33,17 @@
   };
 
   i18n.defaultLocale = "en_DK.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ALL="en_DK.UTF-8";
-  };
+  i18n.extraLocaleSettings = { LC_ALL = "en_DK.UTF-8"; };
 
   virtualisation.containers.enable = true;
   virtualisation.podman = {
-      enable = true;
+    enable = true;
 
-      # Create a `docker` alias for podman, to use it as a drop-in replacement
-      dockerCompat = true;
+    # Create a `docker` alias for podman, to use it as a drop-in replacement
+    dockerCompat = true;
 
-      # Required for containers under podman-compose to be able to talk to each other.
-      defaultNetwork.settings.dns_enabled = true;
+    # Required for containers under podman-compose to be able to talk to each other.
+    defaultNetwork.settings.dns_enabled = true;
   };
   # Will have to wait until Windows 11 WSL2
   #virtualisation.libvirtd.enable = true;
@@ -75,18 +70,57 @@
   # I use zsh btw
   users.defaultUserShell = pkgs.zsh;
 
-    programs.zsh = {
+  programs.zsh = {
     enable = true;
     autosuggestions.enable = true;
     #enableCompletion = false;
     syntaxHighlighting.enable = true;
   };
 
+  services.emacs = {
+    enable = true;
+    package = with pkgs-unstable;
+      ((emacsPackagesFor emacs29-pgtk).emacsWithPackages
+        (epkgs: [ epkgs.vterm ]));
+  };
+
+  fonts.fonts = with pkgs-unstable; [ nerdfonts ];
+
+  environment.systemPackages = with pkgs-unstable; [
+    bat
+    (ripgrep.override { withPCRE2 = true; })
+    openssh
+    nerdfonts
+    nodejs
+    pandoc
+    fd
+    p7zip
+    yq
+    jq
+    zstd
+    (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
+    sqlite
+    nil
+    zsh-completions
+    nixfmt
+    vim
+    p7zip
+  ];
+
   users.users.thsc = {
     isNormalUser = true;
     description = "Thomas Schwanberger";
     #shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" "qemu-libvirtd" "libvirtd" "disk" "video" "audio" "vboxusers" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "qemu-libvirtd"
+      "libvirtd"
+      "disk"
+      "video"
+      "audio"
+      "vboxusers"
+    ];
     uid = 1000;
   };
 
@@ -95,9 +129,7 @@
 
   home-manager = {
     extraSpecialArgs = { inherit inputs pkgs-unstable; };
-    users = {
-      thsc = import ./home.nix;
-    };
+    users = { thsc = import ./home.nix; };
   };
   # It is ok to leave this unchanged for compatibility purposes
   system.stateVersion = "23.05";
