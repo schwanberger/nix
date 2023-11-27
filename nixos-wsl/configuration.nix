@@ -91,6 +91,7 @@
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.trusted-users = [ "thsc" ];
 
   home-manager = {
     extraSpecialArgs = { inherit inputs pkgs-unstable; };
