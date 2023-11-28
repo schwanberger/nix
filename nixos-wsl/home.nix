@@ -46,6 +46,19 @@
   programs.home-manager.enable = true;
   programs.git.enable = true;
 
+  # services.emacs = {
+  #   enable = true;
+  # };
+
+  # programs.emacs = {
+  #   enable = true;
+  # #  package = pkgs-unstable.emacs29-pgtk;
+  #     package = with pkgs-unstable;
+  #       ((emacsPackagesFor emacs29-pgtk).emacsWithPackages
+  #         (with epkgs; [ vterm magit lsp-mode nix-mode nix-update ]));
+  # #  extraPackages = epkgs: [ epkgs.vterm epkgs.magit ];
+  # };
+
   #  programs.emacs = {
   #    enable = true;
   #    package = with pkgs-unstable;
