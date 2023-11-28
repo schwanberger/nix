@@ -77,11 +77,17 @@
     syntaxHighlighting.enable = true;
   };
 
+  # services.emacs = {
+  #   enable = true;
+  #   package = with pkgs-unstable;
+  #     ((emacsPackagesFor emacs29-pgtk).emacsWithPackages
+  #       (epkgs: [ epkgs.vterm ]));
+  # };
   services.emacs = {
     enable = true;
     package = with pkgs-unstable;
       ((emacsPackagesFor emacs29-pgtk).emacsWithPackages
-        (epkgs: [ epkgs.vterm ]));
+        (epkgs: with epkgs; [ vterm ]));
   };
 
   fonts.fonts = with pkgs-unstable; [ nerdfonts ];
@@ -100,11 +106,13 @@
     zstd
     (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
     sqlite
-    nil
+    nil # nil seems like the better choice 2023-11-28
+    #rnix-lsp # Another lsp
     zsh-completions
     nixfmt
     vim
     p7zip
+    inetutils
   ];
 
   users.users.thsc = {
