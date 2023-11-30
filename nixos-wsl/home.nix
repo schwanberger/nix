@@ -131,8 +131,6 @@
         plugins = [
           "git"
           "fzf"
-          #"gradle"
-          #"gradle-completion"
         ];
       };
     };
