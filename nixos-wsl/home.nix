@@ -107,7 +107,6 @@
       # };
       plugins = [
         {
-          # will source zsh-autosuggestions.plugin.zsh
           name = "zsh-autocomplete";
           src = pkgs.fetchFromGitHub {
             owner = "marlonrichert";
@@ -117,7 +116,6 @@
           };
         }
         {
-          # will source zsh-autosuggestions.plugin.zsh
           name = "gradle-completion";
           src = pkgs.fetchFromGitHub {
             owner = "gradle";
