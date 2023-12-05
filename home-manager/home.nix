@@ -61,7 +61,7 @@
   programs.home-manager.enable = true;
   programs.git.enable = true;
 
-  services.emacs = {
+  programs.emacs = {
     enable = true;
     package = with pkgs.unstable;
       ((emacsPackagesFor emacs29-pgtk).emacsWithPackages
