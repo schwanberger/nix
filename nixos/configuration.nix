@@ -77,6 +77,40 @@
 
   #boot.loader.systemd-boot.enable = true;
 
+  time.timeZone = "Europe/Copenhagen";
+  i18n.defaultLocale = "en_DK.UTF-8";
+  i18n.extraLocaleSettings = { LC_ALL = "en_DK.UTF-8"; };
+
+  virtualisation.containers.enable = true;
+  virtualisation.podman = {
+    enable = true;
+
+    # Create a `docker` alias for podman, to use it as a drop-in replacement
+    #dockerCompat = true;
+
+    # Required for containers under podman-compose to be able to talk to each other.
+    defaultNetwork.settings.dns_enabled = true;
+  };
+
+  environment.shells = with pkgs; [ zsh ];
+
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
+
+  services.pcscd.enable = true;
+
+  fonts.packages = with pkgs.unstable; [ nerdfonts ];
+
+  programs.zsh = {
+    enable = true;
+    autosuggestions.enable = true;
+    #enableCompletion = false;
+    syntaxHighlighting.enable = true;
+  };
+
+  users.defaultUserShell = pkgs.zsh;
   users.users = {
     thsc = {
       # TODO: You can set an initial password for your user.
