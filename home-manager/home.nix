@@ -61,6 +61,13 @@
   programs.home-manager.enable = true;
   programs.git.enable = true;
 
+  services.emacs = {
+    enable = true;
+    package = with pkgs.unstable;
+      ((emacsPackagesFor emacs29-pgtk).emacsWithPackages
+        (epkgs: with epkgs; [ vterm ]));
+  };
+
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
