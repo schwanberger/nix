@@ -16,7 +16,6 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
-    #nixpkgs.follows = "nixpkgs";
     # You can access packages and modules from different nixpkgs revs
     # at the same time. Here's an working example:
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -32,18 +31,6 @@
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
-      #url = "github:nix-community/emacs-overlay/8baf97591f1df81ce5ef7305a66a4bb0404009bd";
-      #inputs.nixpkgs.follows = "nixpkgs-unstable";
-      #type = "github";
-      #owner = "nix-community";
-      #repo = "emacs-overlay";
-      #rev = "ff6270444ab7e1ab6fac3464d173b03aa8cb7a75";
-      #inputs.nixpkgs = {
-      #  type = "github";
-      #  owner = "nixos";
-      #  repo = "nixpkgs";
-      #  rev = "91050ea1e57e50388fa87a3302ba12d188ef723a";
-      #};
     };
 
     # TODO: Add any other flake you might need
