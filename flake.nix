@@ -1,10 +1,11 @@
 {
-  description = "Your new nix config";
+  description = "Look ma', no hands!";
 
   nixConfig = {
     extra-substituters = [
       # Nix community's cache server
       "https://nix-community.cachix.org"
+      # Devenv cachix - doing some testing
       "https://devenv.cachix.org"
     ];
     extra-trusted-public-keys = [
