@@ -30,8 +30,9 @@
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
 
     emacs-overlay = {
-      #url = "github:nix-community/emacs-overlay";
-      url = "github:nix-community/emacs-overlay/8baf97591f1df81ce5ef7305a66a4bb0404009bd";
+      url = "github:nix-community/emacs-overlay";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      #url = "github:nix-community/emacs-overlay/8baf97591f1df81ce5ef7305a66a4bb0404009bd";
       #inputs.nixpkgs.follows = "nixpkgs-unstable";
       #type = "github";
       #owner = "nix-community";
