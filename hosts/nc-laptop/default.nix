@@ -133,6 +133,7 @@ in {
       zsh-completions
       nixfmt
       vim
+      git
       p7zip
       inetutils
       gcc
