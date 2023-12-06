@@ -62,6 +62,7 @@
     };
     zsh = {
       enable = true;
+      package = pkgs.unstable.zsh;
       #enableCompletion = false;
       #       initExtra = ''
       # zstyle ':autocomplete:*' min-input 1

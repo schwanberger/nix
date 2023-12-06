@@ -135,7 +135,7 @@
     syntaxHighlighting.enable = true;
   };
 
-  users.defaultUserShell = pkgs.zsh;
+  users.defaultUserShell = pkgs.unstable.zsh;
   users.users = {
     thsc = {
       isNormalUser = true;
