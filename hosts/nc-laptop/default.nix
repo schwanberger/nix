@@ -5,7 +5,7 @@ let
   emacs-pgtk-unstable = with pkgs.unstable-emacs-overlay;
     [
       ((emacsPackagesFor emacs-unstable-pgtk).emacsWithPackages
-        (epkgs: with epkgs; [ vterm ]))
+        (epkgs: with epkgs; [ vterm sqlite ]))
     ];
 in {
   # You can import other NixOS modules here
