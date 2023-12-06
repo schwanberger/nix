@@ -60,6 +60,7 @@
     experimental-features = "nix-command flakes";
     # Deduplicate and optimize nix store
     auto-optimise-store = true;
+    trusted-users = [ "thsc" ];
   };
 
   nix.optimise.automatic = true;
