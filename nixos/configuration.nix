@@ -81,6 +81,33 @@
   i18n.defaultLocale = "en_DK.UTF-8";
   i18n.extraLocaleSettings = { LC_ALL = "en_DK.UTF-8"; };
 
+  environment.systemPackages = with pkgs.unstable; [
+    bat
+    (ripgrep.override { withPCRE2 = true; })
+    openssh
+    nerdfonts
+    nodejs
+    pandoc
+    fd
+    p7zip
+    yq
+    jq
+    zstd
+    (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
+    sqlite
+    nil # nil seems like the better choice 2023-11-28
+    #rnix-lsp # Another lsp
+    zsh-completions
+    nixfmt
+    vim
+    p7zip
+    inetutils
+    gcc
+      ((emacsPackagesFor emacs29-pgtk).emacsWithPackages
+        (epkgs: with epkgs; [ vterm ]))
+  ];
+
+
   virtualisation.containers.enable = true;
   virtualisation.podman = {
     enable = true;
