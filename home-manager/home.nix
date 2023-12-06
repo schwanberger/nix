@@ -1,10 +1,13 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-{ inputs, lib, config, pkgs, pkgs-unstable, ... }: {
+{ inputs, outputs, lib, config, pkgs, ... }: {
   # You can import other home-manager modules here
   imports = [
-    # If you want to use home-manager modules from other flakes (such as nix-colors):
-    # inputs.nix-colors.homeManagerModule
+    # If you want to use modules your own flake exports (from modules/home-manager):
+    # outputs.homeManagerModules.example
+
+    # Or modules exported from other flakes (such as nix-colors):
+    # inputs.nix-colors.homeManagerModules.default
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
@@ -13,7 +16,12 @@
   nixpkgs = {
     # You can add overlays here
     overlays = [
-      # If you want to use overlays exported from other flakes:
+      # Add overlays your own flake exports (from overlays and pkgs dir):
+      outputs.overlays.additions
+      outputs.overlays.modifications
+      outputs.overlays.unstable-packages
+
+      # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
 
       # Or define it inline, for example:
@@ -46,44 +54,6 @@
   programs.home-manager.enable = true;
   programs.git.enable = true;
 
-  # services.emacs = {
-  #   enable = true;
-  # };
-
-  # programs.emacs = {
-  #   enable = true;
-  # #  package = pkgs-unstable.emacs29-pgtk;
-  #     package = with pkgs-unstable;
-  #       ((emacsPackagesFor emacs29-pgtk).emacsWithPackages
-  #         (with epkgs; [ vterm magit lsp-mode nix-mode nix-update ]));
-  # #  extraPackages = epkgs: [ epkgs.vterm epkgs.magit ];
-  # };
-
-  #  programs.emacs = {
-  #    enable = true;
-  #    package = with pkgs-unstable;
-  #      ((emacsPackagesFor emacs29-pgtk).emacsWithPackages
-  #        (epkgs: [ epkgs.vterm ]));
-  #  };
-  #
-  #  home.packages = with pkgs-unstable; [
-  #    bat
-  #    (ripgrep.override { withPCRE2 = true; })
-  #    openssh
-  #    nerdfonts
-  #    nodejs
-  #    pandoc
-  #    fd
-  #    p7zip
-  #    yq
-  #    jq
-  #    zstd
-  #    (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
-  #    sqlite
-  #    nil
-  #    nixfmt
-  #  ];
-
   programs = {
     fzf = { enable = true; };
     starship = {
@@ -92,6 +62,7 @@
     };
     zsh = {
       enable = true;
+      package = pkgs.unstable.zsh;
       #enableCompletion = false;
       #       initExtra = ''
       # zstyle ':autocomplete:*' min-input 1
@@ -128,16 +99,13 @@
       oh-my-zsh = {
         enable = true;
         theme = "robbyrussell";
-        plugins = [
-          "git"
-          "fzf"
-        ];
+        plugins = [ "git" "fzf" ];
       };
     };
   };
 
   # Nicely reload system units when changing configs
-  #systemd.user.startServices = "sd-switch";
+  systemd.user.startServices = "sd-switch";
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "23.05";
