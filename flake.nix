@@ -76,7 +76,7 @@
           specialArgs = { inherit inputs outputs; };
           modules = [
             # > Our main nixos configuration file <
-            ./nixos/configuration.nix
+            ./hosts/nc-laptop
             inputs.nixos-wsl.nixosModules.wsl
             {
               wsl = {
