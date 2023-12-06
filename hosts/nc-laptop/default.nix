@@ -24,6 +24,8 @@
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
+      #outputs.overlays.emacs-overlay
+      (import inputs.emacs-overlay)
 
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
@@ -89,31 +91,37 @@
   i18n.defaultLocale = "en_DK.UTF-8";
   i18n.extraLocaleSettings = { LC_ALL = "en_DK.UTF-8"; };
 
-  environment.systemPackages = with pkgs.unstable; [
-    bat
-    (ripgrep.override { withPCRE2 = true; })
-    openssh
-    nerdfonts
-    nodejs
-    pandoc
-    fd
-    p7zip
-    yq
-    jq
-    zstd
-    (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
-    sqlite
-    nil # nil seems like the better choice 2023-11-28
-    #rnix-lsp # Another lsp
-    zsh-completions
-    nixfmt
-    vim
-    p7zip
-    inetutils
-    gcc
-    ((emacsPackagesFor emacs29-pgtk).emacsWithPackages
+  environment.systemPackages = with pkgs; [
+    unstable.bat
+    (unstable.ripgrep.override { withPCRE2 = true; })
+    unstable.openssh
+    unstable.nerdfonts
+    unstable.nodejs
+    unstable.pandoc
+    unstable.fd
+    unstable.p7zip
+    unstable.yq
+    unstable.jq
+    unstable.zstd
+    (unstable.aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
+    unstable.sqlite
+    unstable.nil # nil seems like the better choice 2023-11-28
+    #unstable.rnix-lsp # Another lsp
+    unstable.zsh-completions
+    unstable.nixfmt
+    unstable.vim
+    unstable.p7zip
+    unstable.inetutils
+    unstable.gcc
+    #unstable.emacs29-pgtk
+    ((emacsPackagesFor emacs-unstable-pgtk).emacsWithPackages
       (epkgs: with epkgs; [ vterm ]))
+    #emacs-pgtk
   ];
+
+  # environment.systemPackages = [
+  #   pkgs.emacs-git
+  # ];
 
   virtualisation.containers.enable = true;
   virtualisation.podman = {
@@ -126,7 +134,7 @@
     defaultNetwork.settings.dns_enabled = true;
   };
 
-  environment.shells = with pkgs; [ zsh ];
+  environment.shells = with pkgs.unstable; [ zsh ];
 
   programs.gnupg.agent = {
     enable = true;
