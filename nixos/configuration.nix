@@ -71,6 +71,14 @@
     auto-optimise-store = true;
   };
 
+  nix.optimise.automatic = true;
+
+    nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+
   # FIXME: Add the rest of your current configuration
 
   networking.hostName = "PF3LZDKP";
