@@ -147,6 +147,7 @@ in {
   virtualisation.containers.enable = true;
   virtualisation.podman = {
     enable = true;
+    package = pkgs.unstable.podman;
 
     # Create a `docker` alias for podman, to use it as a drop-in replacement
     #dockerCompat = true;
