@@ -136,6 +136,7 @@ in {
       git
       p7zip
       inetutils
+      wget
       gcc
     ] ++ emacs-pgtk-unstable;
 
