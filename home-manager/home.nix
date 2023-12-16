@@ -77,7 +77,7 @@
       #     { name = "zdharma-continuum/fast-syntax-highlighting"; } # Simple plugin installation
       #   ];
       # };
-      initExtraBeforeCompInit = ''TERM=vte-direct'';
+      initExtra = ''TERM=vte-direct'';
       plugins = [
         {
           name = "zsh-autocomplete";

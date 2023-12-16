@@ -3,10 +3,8 @@
 { inputs, outputs, lib, config, pkgs, ... }:
 let
   emacs-pgtk-unstable = with pkgs.unstable-emacs-overlay;
-    [
       ((emacsPackagesFor emacs-unstable-pgtk).emacsWithPackages
-        (epkgs: with epkgs; [ vterm sqlite ]))
-    ];
+        (epkgs: with epkgs; [ vterm sqlite ]));
 in {
   # You can import other NixOS modules here
   imports = [
@@ -115,30 +113,51 @@ in {
 
   environment.systemPackages = with pkgs.unstable;
     [
+      # Shell stuff
+      zsh-completions
+      zsh-fzf-tab
+      zsh-autopair
+      zsh-nix-shell
+      zsh-autocomplete
+      zsh-fast-syntax-highlighting
+      zsh-fzf-history-search
       bat
-      (ripgrep.override { withPCRE2 = true; })
-      openssh
-      nerdfonts
-      nodejs
-      pandoc
-      fd
-      p7zip
       yq
       jq
-      zstd
+      wget
+
+      # Doom Emacs stuff
+      (ripgrep.override { withPCRE2 = true; })
+      nerdfonts
+      fd
       (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
+      nodejs
       sqlite
+
+      # Nix stuff
       nil # nil seems like the better choice 2023-11-28
       #rnix-lsp # Another lsp
-      zsh-completions
       nixfmt
+
+      # Uncatogorized
+      openssh
+      pandoc
+      p7zip
+      zstd
       vim
       git
       p7zip
       inetutils
-      wget
       gcc
-    ] ++ emacs-pgtk-unstable;
+    ];
+
+  services.emacs = {
+    enable = true;
+    package = emacs-pgtk-unstable;
+    install = true;
+    defaultEditor = true;
+    #extraOptions = [ "--init-directory=~/doom-vertico" ];
+  };
 
   # environment.systemPackages = [
   #   pkgs.emacs-git
@@ -169,9 +188,9 @@ in {
 
   programs.zsh = {
     enable = true;
-    autosuggestions.enable = true;
+    #autosuggestions.enable = true;
     #enableCompletion = false;
-    syntaxHighlighting.enable = true;
+    #syntaxHighlighting.enable = true;
   };
 
   users.defaultUserShell = pkgs.unstable.zsh;
