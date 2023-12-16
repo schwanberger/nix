@@ -121,6 +121,7 @@ in {
       zsh-autocomplete
       zsh-fast-syntax-highlighting
       zsh-fzf-history-search
+      fzf
       bat
       yq
       jq
@@ -188,9 +189,9 @@ in {
 
   programs.zsh = {
     enable = true;
-    #autosuggestions.enable = true;
+    autosuggestions.enable = true;
     #enableCompletion = false;
-    #syntaxHighlighting.enable = true;
+    syntaxHighlighting.enable = true;
   };
 
   users.defaultUserShell = pkgs.unstable.zsh;
