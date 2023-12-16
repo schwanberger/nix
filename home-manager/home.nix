@@ -56,7 +56,11 @@
   #programs.git.enable = true;
 
   programs = {
-    fzf = { enable = true; };
+    fzf = {
+      enable = true;
+      package = pkgs.unstable.fzf;
+      enableZshIntegration = true;
+    };
     starship = {
       enable = true;
       enableZshIntegration = true;
@@ -77,7 +81,8 @@
       #     { name = "zdharma-continuum/fast-syntax-highlighting"; } # Simple plugin installation
       #   ];
       # };
-      initExtra = ''TERM=vte-direct'';
+      initExtra = "TERM=vte-direct";
+      history.extended = true;
       plugins = [
         {
           name = "zsh-autocomplete";
@@ -87,6 +92,18 @@
             rev = "afc5afd15fe093bfd96faa521abe0255334c85b0";
             sha256 = "npflZ7sr2yTeLQZIpozgxShq3zbIB5WMIZwMv8rkLJg=";
           };
+        }
+        {
+          name = "zsh-nix-shell";
+          file = "nix-shell.plugin.zsh";
+          src = pkgs.fetchFromGitHub {
+            owner = "chisui";
+            repo = "zsh-nix-shell";
+            rev = "v0.7.0";
+            sha256 = "149zh2rm59blr2q458a5irkfh82y3dwdich60s9670kl3cl5h2m1";
+
+          };
+
         }
         {
           name = "gradle-completion";
