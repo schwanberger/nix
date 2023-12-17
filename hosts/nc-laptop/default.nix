@@ -126,6 +126,7 @@ in {
       yq
       jq
       wget
+      xclip
 
       # Doom Emacs stuff
       (ripgrep.override { withPCRE2 = true; })
