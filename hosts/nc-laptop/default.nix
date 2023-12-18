@@ -20,7 +20,6 @@ in {
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
-    inputs.home-manager.nixosModules.home-manager
   ];
 
   nixpkgs = {
@@ -51,7 +50,7 @@ in {
 
   home-manager = {
     extraSpecialArgs = { inherit inputs outputs; };
-    users = { "thsc" = import ../../home-manager/home.nix; };
+    users = { thsc = import ../../home-manager/home.nix; };
   };
 
   # This will add each flake input as a registry
