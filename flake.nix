@@ -84,6 +84,7 @@
             # > Our main nixos configuration file <
             ./hosts/nc-laptop
             inputs.nixos-wsl.nixosModules.wsl
+            inputs.home-manager.nixosModule
             {
               wsl = {
                 enable = true;
