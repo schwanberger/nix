@@ -3,8 +3,8 @@
 { inputs, outputs, lib, config, pkgs, ... }:
 let
   emacs-pgtk-unstable = with pkgs.unstable-emacs-overlay;
-      ((emacsPackagesFor emacs-unstable-pgtk).emacsWithPackages
-        (epkgs: with epkgs; [ vterm sqlite ]));
+    ((emacsPackagesFor emacs-unstable-pgtk).emacsWithPackages
+      (epkgs: with epkgs; [ vterm sqlite ]));
 in {
   # You can import other NixOS modules here
   imports = [
@@ -20,6 +20,7 @@ in {
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
+    inputs.home-manager.nixosModules.home-manager
   ];
 
   nixpkgs = {
@@ -46,6 +47,11 @@ in {
       # Disable if you don't want unfree packages
       allowUnfree = true;
     };
+  };
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs outputs; };
+    users = { "thsc" = import ../../home-manager/home.nix; };
   };
 
   # This will add each flake input as a registry
@@ -111,47 +117,46 @@ in {
   i18n.defaultLocale = "en_DK.UTF-8";
   i18n.extraLocaleSettings = { LC_ALL = "en_DK.UTF-8"; };
 
-  environment.systemPackages = with pkgs.unstable;
-    [
-      # Shell stuff
-      zsh-completions
-      zsh-fzf-tab
-      zsh-autopair
-      zsh-nix-shell
-      zsh-autocomplete
-      zsh-fast-syntax-highlighting
-      zsh-fzf-history-search
-      fzf
-      bat
-      yq
-      jq
-      wget
-      xclip
+  environment.systemPackages = with pkgs.unstable; [
+    # Shell stuff
+    zsh-completions
+    zsh-fzf-tab
+    zsh-autopair
+    zsh-nix-shell
+    zsh-autocomplete
+    zsh-fast-syntax-highlighting
+    zsh-fzf-history-search
+    fzf
+    bat
+    yq
+    jq
+    wget
+    xclip
 
-      # Doom Emacs stuff
-      (ripgrep.override { withPCRE2 = true; })
-      nerdfonts
-      fd
-      (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
-      nodejs
-      sqlite
+    # Doom Emacs stuff
+    (ripgrep.override { withPCRE2 = true; })
+    nerdfonts
+    fd
+    (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
+    nodejs
+    sqlite
 
-      # Nix stuff
-      nil # nil seems like the better choice 2023-11-28
-      #rnix-lsp # Another lsp
-      nixfmt
+    # Nix stuff
+    nil # nil seems like the better choice 2023-11-28
+    #rnix-lsp # Another lsp
+    nixfmt
 
-      # Uncatogorized
-      openssh
-      pandoc
-      p7zip
-      zstd
-      vim
-      git
-      p7zip
-      inetutils
-      gcc
-    ];
+    # Uncatogorized
+    openssh
+    pandoc
+    p7zip
+    zstd
+    vim
+    git
+    p7zip
+    inetutils
+    gcc
+  ];
 
   services.emacs = {
     enable = true;
