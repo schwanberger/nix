@@ -155,6 +155,7 @@ in {
     p7zip
     inetutils
     gcc
+    asciidoctor-with-extensions
   ];
 
   services.emacs = {
