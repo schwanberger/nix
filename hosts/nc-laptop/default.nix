@@ -156,15 +156,43 @@ in {
     inetutils
     gcc
     asciidoctor-with-extensions
-  ];
+  ]
+  ++ [ emacs-pgtk-unstable ];
 
-  services.emacs = {
-    enable = true;
-    package = emacs-pgtk-unstable;
-    install = true;
-    defaultEditor = true;
-    #extraOptions = [ "--init-directory=~/doom-vertico" ];
-  };
+  programs.nix-ld.enable = true;
+
+  # services.emacs = {
+  #   enable = true;
+  #   package = emacs-pgtk-unstable;
+  #   #install = true;
+  #   #defaultEditor = true;
+  #   #extraOptions = [ "--init-directory=~/doom-vertico" ];
+  # };
+
+  # systemd.services.emacs.serviceConfig.ExecStart = let
+  #   cfg = config.services.emacs;
+  #   in lib.mkForce "${pkgs.bash}/bin/bash -l -i -c 'source ${config.system.build.setEnvironment}; exec emacs --daemon'";
+
+  # systemd.user.services = {
+  #   emacs = {
+  #     description = "Emacs: the extensible, self-documenting text editor";
+  #     environment = {
+  #       GTK_DATA_PREFIX = config.system.path;
+  #       SSH_AUTH_SOCK = "%t/ssh-agent";
+  #       GTK_PATH = "${config.system.path}/lib/gtk-3.0:${config.system.path}/lib/gtk-2.0";
+  #     };
+  #     serviceConfig = {
+  #       Type = "forking";
+  #       ExecStart = "${pkgs.bash}/bin/bash -l -c 'source ${config.system.build.setEnvironment}; exec emacs --daemon'";
+  #       #ExecStart = "${pkgs.unstable.zsh}/bin/zsh -l -c 'exec emacs --daemon'";
+  #       ExecStop = "${emacs-pgtk-unstable}/bin/emacsclient --eval (kill-emacs)";
+  #       Restart = "always";
+  #     };
+  #     wantedBy = [ "default.target" ];
+  #   };
+  # };
+
+  # systemd.services.emacs.enable = true;
 
   # environment.systemPackages = [
   #   pkgs.emacs-git
