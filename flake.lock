@@ -11,7 +11,7 @@
       "locked": {
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "cfc3478a947fd0296e9d834269bb77f9814d9de3",
+        "rev": "4e6805bd2930052e49344faf10f7e32f1bc2e34c",
         "type": "github"
       },
       "original": {
@@ -151,7 +151,7 @@
       "locked": {
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "1b64fc1287991a9cce717a01c1973ef86cb1af0b",
+        "rev": "97b17f32362e475016f942bbdfda4a4a72a8a652",
         "type": "github"
       },
       "original": {
