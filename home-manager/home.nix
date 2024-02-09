@@ -81,7 +81,7 @@
       #     { name = "zdharma-continuum/fast-syntax-highlighting"; } # Simple plugin installation
       #   ];
       # };
-      initExtra = "TERM=vte-direct";
+      initExtra = "TERM=alacritty-direct";
       history.extended = true;
       plugins = [
         {
