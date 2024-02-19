@@ -85,18 +85,6 @@
             ./hosts/nc-laptop
             inputs.nixos-wsl.nixosModules.wsl
             inputs.home-manager.nixosModule
-            {
-              wsl = {
-                enable = true;
-                defaultUser = "thsc";
-                nativeSystemd = true;
-                #docker-desktop.enable = true;
-                wslConf = {
-                  network.hostname = "PF3LZDKP";
-                  interop.enabled = true;
-                };
-              };
-            }
           ];
         };
       };

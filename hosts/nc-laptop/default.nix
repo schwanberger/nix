@@ -48,6 +48,29 @@ in {
     };
   };
 
+  wsl = {
+    enable = true;
+    defaultUser = "thsc";
+    nativeSystemd = true;
+    docker-desktop.enable = true;
+    extraBin = with pkgs; [
+      # Binaries for Docker Desktop wsl-distro-proxy
+      { src = "${coreutils}/bin/mkdir"; }
+      { src = "${coreutils}/bin/cat"; }
+      { src = "${coreutils}/bin/whoami"; }
+      { src = "${coreutils}/bin/ls"; }
+      { src = "${busybox}/bin/addgroup"; }
+      { src = "${su}/bin/groupadd"; }
+      { src = "${su}/bin/usermod"; }
+    ];
+    wslConf = {
+      network.hostname = "PF3LZDKP";
+      network.generateResolvConf = true;
+      network.generateHosts = false;
+      interop.enabled = true;
+    };
+  };
+
   home-manager = {
     extraSpecialArgs = { inherit inputs outputs; };
     users = { thsc = import ../../home-manager/home.nix; };
@@ -116,48 +139,48 @@ in {
   i18n.defaultLocale = "en_DK.UTF-8";
   i18n.extraLocaleSettings = { LC_ALL = "en_DK.UTF-8"; };
 
-  environment.systemPackages = with pkgs.unstable; [
-    # Shell stuff
-    zsh-completions
-    zsh-fzf-tab
-    zsh-autopair
-    zsh-nix-shell
-    zsh-autocomplete
-    zsh-fast-syntax-highlighting
-    zsh-fzf-history-search
-    fzf
-    bat
-    yq
-    jq
-    wget
-    xclip
+  environment.systemPackages = with pkgs.unstable;
+    [
+      # Shell stuff
+      zsh-completions
+      zsh-fzf-tab
+      zsh-autopair
+      zsh-nix-shell
+      zsh-autocomplete
+      zsh-fast-syntax-highlighting
+      zsh-fzf-history-search
+      fzf
+      bat
+      yq
+      jq
+      wget
+      xclip
 
-    # Doom Emacs stuff
-    (ripgrep.override { withPCRE2 = true; })
-    nerdfonts
-    fd
-    (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
-    nodejs
-    sqlite
+      # Doom Emacs stuff
+      (ripgrep.override { withPCRE2 = true; })
+      nerdfonts
+      fd
+      (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
+      nodejs
+      sqlite
 
-    # Nix stuff
-    nil # nil seems like the better choice 2023-11-28
-    #rnix-lsp # Another lsp
-    nixfmt
+      # Nix stuff
+      nil # nil seems like the better choice 2023-11-28
+      #rnix-lsp # Another lsp
+      nixfmt
 
-    # Uncatogorized
-    openssh
-    pandoc
-    p7zip
-    zstd
-    vim
-    git
-    p7zip
-    inetutils
-    gcc
-    asciidoctor-with-extensions
-  ]
-  ++ [ emacs-pgtk-unstable ];
+      # Uncatogorized
+      openssh
+      pandoc
+      p7zip
+      zstd
+      vim
+      git
+      p7zip
+      inetutils
+      gcc
+      asciidoctor-with-extensions
+    ] ++ [ emacs-pgtk-unstable ];
 
   programs.nix-ld.enable = true;
 
@@ -237,6 +260,9 @@ in {
       packages = [ inputs.home-manager.packages.${pkgs.system}.default ];
     };
   };
+
+  networking.firewall.enable = false;
+  networking.enableIPv6 = false;
 
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.
