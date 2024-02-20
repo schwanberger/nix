@@ -89,8 +89,9 @@
           src = pkgs.fetchFromGitHub {
             owner = "marlonrichert";
             repo = "zsh-autocomplete";
-            rev = "afc5afd15fe093bfd96faa521abe0255334c85b0";
-            sha256 = "npflZ7sr2yTeLQZIpozgxShq3zbIB5WMIZwMv8rkLJg=";
+            rev = "c7b65508fd3a016dc9cdb410af9ee7806b3f9be1";
+            #sha256 = "npflZ7sr2yTeLQZIpozgxShq3zbIB5WMIZwMv8rkLJg=";
+            sha256 = "u2BnkHZOSGVhcJvhGwHBdeAOVdszye7QZ324xinbELE=";
           };
         }
         {
