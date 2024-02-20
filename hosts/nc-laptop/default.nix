@@ -251,6 +251,8 @@ in {
     syntaxHighlighting.enable = true;
   };
 
+  users.extraGroups.docker.members = [ "thsc" ];
+
   users.defaultUserShell = pkgs.unstable.zsh;
   users.users = {
     thsc = {
