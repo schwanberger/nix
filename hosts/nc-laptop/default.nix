@@ -137,12 +137,16 @@ in {
 
   time.timeZone = "Europe/Copenhagen";
   i18n.defaultLocale = "en_DK.UTF-8";
-  i18n.extraLocaleSettings = { LC_ALL = "en_DK.UTF-8"; };
+  i18n.extraLocaleSettings = {
+    LC_ALL = "en_DK.UTF-8";
+    LANG="en_DK.UTF-8";
+  };
 
   environment.systemPackages = with pkgs.unstable;
     [
       # Shell stuff
       zsh-completions
+      pure-prompt
       zsh-fzf-tab
       zsh-autopair
       zsh-nix-shell
