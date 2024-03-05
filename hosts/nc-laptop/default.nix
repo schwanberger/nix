@@ -65,8 +65,8 @@ in {
     ];
     wslConf = {
       network.hostname = "PF3LZDKP";
-      network.generateResolvConf = true;
-      network.generateHosts = false;
+      network.generateResolvConf = false;
+      network.generateHosts = true;
       interop.enabled = true;
     };
   };
@@ -131,15 +131,15 @@ in {
 
   # FIXME: Add the rest of your current configuration
 
-  networking.hostName = "PF3LZDKP";
-
   #boot.loader.systemd-boot.enable = true;
+
+  environment.pathsToLink = [ "/share/zsh" ];
 
   time.timeZone = "Europe/Copenhagen";
   i18n.defaultLocale = "en_DK.UTF-8";
   i18n.extraLocaleSettings = {
     LC_ALL = "en_DK.UTF-8";
-    LANG="en_DK.UTF-8";
+    LANG = "en_DK.UTF-8";
   };
 
   environment.systemPackages = with pkgs.unstable;
@@ -267,9 +267,19 @@ in {
     };
   };
 
-  networking.firewall.enable = false;
-  networking.enableIPv6 = false;
+  networking = {
+    hostName = "PF3LZDKP";
+    firewall.enable = false;
+    enableIPv6 = false;
+    #nameservers = [ "127.0.0.1" "1.1.1.1" "1.0.0.1" ];
+    networkmanager = {
+      enable = true;
+      insertNameservers = [ "127.0.0.1" "1.1.1.1" "1.0.0.1" ];
+    };
+  };
 
+
+  systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.
   # services.openssh = {
