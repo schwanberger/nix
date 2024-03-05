@@ -62,12 +62,30 @@
       enableZshIntegration = true;
     };
     starship = {
+      package = pkgs.unstable.starship;
       enable = true;
       enableZshIntegration = true;
+      enableBashIntegration = true;
+      settings = {
+        #add_newline = false;
+        #line_break = { disabled = true; };
+        character = {
+          success_symbol = "[>](green)";
+          error_symbol = "[>](red)";
+          vimcmd_symbol = "[>](purple)";
+        };
+        #   format = ''
+        #     $username
+        #     $hostname
+        #     $character'';
+      };
     };
     zsh = {
       enable = true;
       package = pkgs.unstable.zsh;
+      enableAutosuggestions = true;
+      enableCompletion = true;
+      defaultKeymap = "emacs";
       #enableCompletion = false;
       #       initExtra = ''
       # zstyle ':autocomplete:*' min-input 1
@@ -116,11 +134,12 @@
           };
         }
       ];
-      oh-my-zsh = {
-        enable = true;
-        theme = "robbyrussell";
-        plugins = [ "git" "fzf" ];
-      };
+      # oh-my-zsh = {
+      #   enable = true;
+      #   package = pkgs.unstable.oh-my-zsh;
+      #   theme = "";
+      #   plugins = [ "git" "fzf" ];
+      # };
     };
   };
 
