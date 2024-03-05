@@ -52,7 +52,7 @@ in {
     enable = true;
     defaultUser = "thsc";
     nativeSystemd = true;
-    docker-desktop.enable = true;
+    # docker-desktop.enable = true;
     extraBin = with pkgs; [
       # Binaries for Docker Desktop wsl-distro-proxy
       { src = "${coreutils}/bin/mkdir"; }
