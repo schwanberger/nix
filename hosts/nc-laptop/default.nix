@@ -65,7 +65,8 @@ in {
     ];
     wslConf = {
       network.hostname = "PF3LZDKP";
-      network.generateResolvConf = false;
+      #network.generateResolvConf = false;
+      network.generateResolvConf = true;
       network.generateHosts = true;
       interop.enabled = true;
     };
@@ -146,7 +147,6 @@ in {
     [
       # Shell stuff
       zsh-completions
-      pure-prompt
       zsh-fzf-tab
       zsh-autopair
       zsh-nix-shell
@@ -251,7 +251,6 @@ in {
   programs.zsh = {
     enable = true;
     autosuggestions.enable = true;
-    #enableCompletion = false;
     syntaxHighlighting.enable = true;
   };
 
@@ -271,15 +270,17 @@ in {
     hostName = "PF3LZDKP";
     firewall.enable = false;
     enableIPv6 = false;
-    #nameservers = [ "127.0.0.1" "1.1.1.1" "1.0.0.1" ];
-    networkmanager = {
-      enable = true;
-      insertNameservers = [ "127.0.0.1" "1.1.1.1" "1.0.0.1" ];
-    };
+    # nameservers = [ "127.0.0.1" "1.1.1.1" "1.0.0.1" ];
+    #nameservers = [ "127.0.0.1" ];
+    # networkmanager = {
+    #   enable = true;
+    #   #insertNameservers = [ "127.0.0.1" "1.1.1.1" "1.0.0.1" ];
+    #   #insertNameservers = [ "1.1.1.1" "1.0.0.1" "127.0.0.1" ];
+    #   appendNameservers = [ "1.1.1.1" "1.0.0.1" ];
+    # };
   };
 
-
-  systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
+  # systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.
   # services.openssh = {
