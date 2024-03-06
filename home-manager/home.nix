@@ -63,12 +63,12 @@
     };
     starship = {
       package = pkgs.unstable.starship;
-      enable = true;
+      enable = false;
       enableZshIntegration = true;
       enableBashIntegration = true;
       settings = {
-        #add_newline = false;
-        #line_break = { disabled = true; };
+        # add_newline = false;
+        # line_break = { disabled = true; };
         character = {
           success_symbol = "[>](green)";
           error_symbol = "[>](red)";
@@ -85,6 +85,10 @@
       package = pkgs.unstable.zsh;
       enableAutosuggestions = true;
       enableCompletion = true;
+      syntaxHighlighting = {
+        enable = true;
+        package = pkgs.unstable.zsh-syntax-highlighting;
+      };
       defaultKeymap = "emacs";
       #enableCompletion = false;
       #       initExtra = ''
@@ -133,13 +137,29 @@
             sha256 = "8CNzTfnYd+W8qX40F/LgXz443JlshHPR2I3+ziKiI2c=";
           };
         }
+        {
+          name = "powerlevel10k";
+          src = pkgs.unstable.zsh-powerlevel10k;
+          file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+        }
+        {
+          name = "powerlevel10k-config";
+          src = ./p10k-config;
+          file = "p10k.zsh";
+          #file = "p10k-robbyrussell.zsh";
+        }
       ];
-      # oh-my-zsh = {
-      #   enable = true;
-      #   package = pkgs.unstable.oh-my-zsh;
-      #   theme = "";
-      #   plugins = [ "git" "fzf" ];
-      # };
+      oh-my-zsh = {
+        enable = true;
+        package = pkgs.unstable.oh-my-zsh;
+        theme = "";
+        plugins = [ "git" "fzf" ];
+      };
+    };
+
+    bash = {
+      enable = true;
+      #package = pkgs.unstable.bash;
     };
   };
 
