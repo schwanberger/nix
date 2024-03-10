@@ -138,22 +138,9 @@ in {
 
   time.timeZone = "Europe/Copenhagen";
   i18n.defaultLocale = "en_DK.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ALL = "en_DK.UTF-8";
-    LANG = "en_DK.UTF-8";
-  };
 
   environment.systemPackages = with pkgs.unstable;
     [
-      # Shell stuff
-      zsh-completions
-      zsh-fzf-tab
-      zsh-autopair
-      zsh-nix-shell
-      zsh-autocomplete
-      zsh-fast-syntax-highlighting
-      zsh-fzf-history-search
-      fzf
       bat
       yq
       jq
@@ -184,46 +171,12 @@ in {
       inetutils
       gcc
       asciidoctor-with-extensions
+
+      # Langs
+      python3
     ] ++ [ emacs-pgtk-unstable ];
 
   programs.nix-ld.enable = true;
-
-  # services.emacs = {
-  #   enable = true;
-  #   package = emacs-pgtk-unstable;
-  #   #install = true;
-  #   #defaultEditor = true;
-  #   #extraOptions = [ "--init-directory=~/doom-vertico" ];
-  # };
-
-  # systemd.services.emacs.serviceConfig.ExecStart = let
-  #   cfg = config.services.emacs;
-  #   in lib.mkForce "${pkgs.bash}/bin/bash -l -i -c 'source ${config.system.build.setEnvironment}; exec emacs --daemon'";
-
-  # systemd.user.services = {
-  #   emacs = {
-  #     description = "Emacs: the extensible, self-documenting text editor";
-  #     environment = {
-  #       GTK_DATA_PREFIX = config.system.path;
-  #       SSH_AUTH_SOCK = "%t/ssh-agent";
-  #       GTK_PATH = "${config.system.path}/lib/gtk-3.0:${config.system.path}/lib/gtk-2.0";
-  #     };
-  #     serviceConfig = {
-  #       Type = "forking";
-  #       ExecStart = "${pkgs.bash}/bin/bash -l -c 'source ${config.system.build.setEnvironment}; exec emacs --daemon'";
-  #       #ExecStart = "${pkgs.unstable.zsh}/bin/zsh -l -c 'exec emacs --daemon'";
-  #       ExecStop = "${emacs-pgtk-unstable}/bin/emacsclient --eval (kill-emacs)";
-  #       Restart = "always";
-  #     };
-  #     wantedBy = [ "default.target" ];
-  #   };
-  # };
-
-  # systemd.services.emacs.enable = true;
-
-  # environment.systemPackages = [
-  #   pkgs.emacs-git
-  # ];
 
   virtualisation.containers.enable = true;
   virtualisation.podman = {
@@ -248,12 +201,6 @@ in {
 
   fonts.packages = with pkgs.unstable; [ nerdfonts ];
 
-  programs.zsh = {
-    enable = true;
-    autosuggestions.enable = true;
-    syntaxHighlighting.enable = true;
-  };
-
   users.extraGroups.docker.members = [ "thsc" ];
 
   users.defaultUserShell = pkgs.unstable.zsh;
@@ -270,28 +217,7 @@ in {
     hostName = "PF3LZDKP";
     firewall.enable = false;
     enableIPv6 = false;
-    # nameservers = [ "127.0.0.1" "1.1.1.1" "1.0.0.1" ];
-    #nameservers = [ "127.0.0.1" ];
-    # networkmanager = {
-    #   enable = true;
-    #   #insertNameservers = [ "127.0.0.1" "1.1.1.1" "1.0.0.1" ];
-    #   #insertNameservers = [ "1.1.1.1" "1.0.0.1" "127.0.0.1" ];
-    #   appendNameservers = [ "1.1.1.1" "1.0.0.1" ];
-    # };
   };
-
-  # systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
-  # This setups a SSH server. Very important if you're setting up a headless system.
-  # Feel free to remove if you don't need it.
-  # services.openssh = {
-  #   enable = true;
-  #   settings = {
-  #     # Forbid root login through SSH.
-  #     PermitRootLogin = "no";
-  #     # Use keys only. Remove if you want to SSH using password (not recommended)
-  #     PasswordAuthentication = false;
-  #   };
-  # };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.05";

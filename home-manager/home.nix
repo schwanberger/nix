@@ -60,20 +60,22 @@
       enable = true;
       package = pkgs.unstable.fzf;
       enableZshIntegration = true;
+      enableBashIntegration = true;
     };
     starship = {
       package = pkgs.unstable.starship;
-      enable = false;
+      enable = true;
       enableZshIntegration = true;
-      enableBashIntegration = true;
+      enableBashIntegration = false;
       settings = {
         # add_newline = false;
         # line_break = { disabled = true; };
-        character = {
-          success_symbol = "[>](green)";
-          error_symbol = "[>](red)";
-          vimcmd_symbol = "[>](purple)";
-        };
+        # character = {
+        #   success_symbol = "[>](bold green)";
+        #   error_symbol = "[x](bold red)";
+        #   vimcmd_symbol = "[<](bold green)";
+        # };
+        nix_shell = { symbol = "󱄅 "; };
         #   format = ''
         #     $username
         #     $hostname
@@ -84,26 +86,32 @@
       enable = true;
       package = pkgs.unstable.zsh;
       enableAutosuggestions = true;
-      enableCompletion = true;
+      enableCompletion = false;
       syntaxHighlighting = {
         enable = true;
         package = pkgs.unstable.zsh-syntax-highlighting;
       };
       defaultKeymap = "emacs";
-      #enableCompletion = false;
-      #       initExtra = ''
-      # zstyle ':autocomplete:*' min-input 1
-      #     '';
-      # zplug = {
-      #   enable = true;
-      #   plugins = [
-      #     { name = "zsh-users/zsh-autosuggestions"; } # Simple plugin installation
-      #     { name = "zsh-users/zsh-syntax-highlighting"; } # Simple plugin installation
-      #     { name = "marlonrichert/zsh-autocomplete"; } # Simple plugin installation
-      #     { name = "zdharma-continuum/fast-syntax-highlighting"; } # Simple plugin installation
-      #   ];
-      # };
-      initExtra = "TERM=alacritty-direct";
+      initExtra = ''
+        TERM=alacritty-direct
+        vterm_printf() {
+            if [ -n "$TMUX" ] && ([ "''${TERM%%-*}" = "tmux" ] || [ "''${TERM%%-*}" = "screen" ]); then
+                # Tell tmux to pass the escape sequences through
+                printf "\ePtmux;\e\e]%s\007\e\\" "$1"
+            elif [ "''${TERM%%-*}" = "screen" ]; then
+                # GNU screen (screen, screen-256color, screen-256color-bce)
+                printf "\eP\e]%s\007\e\\" "$1"
+            else
+                printf "\e]%s\e\\" "$1"
+            fi
+        }
+        function my-precmd() {
+          vterm_printf "51;A$USER@$HOST:$PWD" >$TTY
+        }
+
+        autoload -Uz add-zsh-hook
+        add-zsh-hook precmd my-precmd
+      '';
       history.extended = true;
       plugins = [
         {
@@ -112,8 +120,7 @@
             owner = "marlonrichert";
             repo = "zsh-autocomplete";
             rev = "c7b65508fd3a016dc9cdb410af9ee7806b3f9be1";
-            #sha256 = "npflZ7sr2yTeLQZIpozgxShq3zbIB5WMIZwMv8rkLJg=";
-            sha256 = "u2BnkHZOSGVhcJvhGwHBdeAOVdszye7QZ324xinbELE=";
+            sha256 = "sha256-u2BnkHZOSGVhcJvhGwHBdeAOVdszye7QZ324xinbELE=";
           };
         }
         {
@@ -122,43 +129,20 @@
           src = pkgs.fetchFromGitHub {
             owner = "chisui";
             repo = "zsh-nix-shell";
-            rev = "v0.8.0";
-            sha256 = "Z6EYQdasvpl1P78poj9efnnLj7QQg13Me8x1Ryyw+dM=";
+            rev = "8b86281cf9e9ef9f207433dd8b36d157dd48d50a";
+            sha256 = "sha256-Z6EYQdasvpl1P78poj9efnnLj7QQg13Me8x1Ryyw+dM=";
           };
-
         }
         {
           name = "gradle-completion";
           src = pkgs.fetchFromGitHub {
             owner = "gradle";
             repo = "gradle-completion";
-            rev = "25da917cf5a88f3e58f05be3868a7b2748c8afe6";
-            sha256 = "8CNzTfnYd+W8qX40F/LgXz443JlshHPR2I3+ziKiI2c=";
+            rev = "5bce7f2a6997b9303c8f5803740aa0f11b5cb178";
+            sha256 = "sha256-go4N1z/UI3rIEMaWp2SVuDicuBKrGFLSOhDBEUUyYJU=";
           };
         }
-        {
-          name = "powerlevel10k";
-          src = pkgs.unstable.zsh-powerlevel10k;
-          file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-        }
-        {
-          name = "powerlevel10k-config";
-          src = ./p10k-config;
-          file = "p10k-pure.zsh";
-          #file = "p10k-robbyrussell.zsh";
-        }
       ];
-      oh-my-zsh = {
-        enable = true;
-        package = pkgs.unstable.oh-my-zsh;
-        theme = "";
-        plugins = [ "git" "fzf" ];
-      };
-    };
-
-    bash = {
-      enable = true;
-      #package = pkgs.unstable.bash;
     };
   };
 
