@@ -4,7 +4,8 @@
 let
   emacsWithPackages = (pkgs.unstable.emacsPackagesFor
     pkgs.unstable.emacs29-pgtk).emacsWithPackages;
-  myEmacs = emacsWithPackages (p: [ p.vterm p.sqlite p.magit ]);
+  myEmacs = emacsWithPackages
+    (p: with p; [ vterm sqlite magit treesit-grammars.with-all-grammars ]);
 in {
   # You can import other home-manager modules here
   imports = [
