@@ -73,6 +73,7 @@ in {
   };
 
   home-manager = {
+    useUserPackages = true;
     extraSpecialArgs = { inherit inputs outputs; };
     users = { thsc = import ../../home-manager/home.nix; };
   };
@@ -139,42 +140,43 @@ in {
   time.timeZone = "Europe/Copenhagen";
   i18n.defaultLocale = "en_DK.UTF-8";
 
-  environment.systemPackages = with pkgs.unstable;
-    [
-      bat
-      yq
-      jq
-      wget
-      xclip
+  environment.systemPackages = with pkgs.unstable; [
+    bat
+    yq
+    jq
+    wget
+    xclip
 
-      # Doom Emacs stuff
-      (ripgrep.override { withPCRE2 = true; })
-      nerdfonts
-      fd
-      (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
-      nodejs
-      sqlite
+    # Doom Emacs stuff
+    (ripgrep.override { withPCRE2 = true; })
+    nerdfonts
+    fd
+    (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
+    nodejs
+    sqlite
 
-      # Nix stuff
-      nil # nil seems like the better choice 2023-11-28
-      #rnix-lsp # Another lsp
-      nixfmt
+    # Nix stuff
+    nil # nil seems like the better choice 2023-11-28
+    #rnix-lsp # Another lsp
+    nixfmt
 
-      # Uncatogorized
-      openssh
-      pandoc
-      p7zip
-      zstd
-      vim
-      git
-      p7zip
-      inetutils
-      gcc
-      asciidoctor-with-extensions
+    # Uncatogorized
+    openssh
+    pandoc
+    p7zip
+    zstd
+    vim
+    git
+    p7zip
+    inetutils
+    gcc
+    asciidoctor-with-extensions
 
-      # Langs
-      python3
-    ] ++ [ emacs-pgtk-unstable ];
+    # Langs
+    python3
+  ]
+  # ++ [ emacs-pgtk-unstable ]
+  ;
 
   programs.nix-ld.enable = true;
 
