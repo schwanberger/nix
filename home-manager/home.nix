@@ -62,6 +62,14 @@ in {
   #programs.git.enable = true;
 
   programs = {
+    direnv = {
+      enable = true;
+      enableZshIntegration = true;
+      enableBashIntegration = true;
+      package = pkgs.unstable.direnv;
+      nix-direnv.enable = true;
+      nix-direnv.package = pkgs.unstable.nix-direnv;
+    };
     fzf = {
       enable = true;
       package = pkgs.unstable.fzf;
