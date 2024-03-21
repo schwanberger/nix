@@ -109,6 +109,7 @@ in {
       initExtra = ''
         #TERM=alacritty-direct
         export COLORTERM=truecolor
+        setopt interactive_comments
         vterm_printf() {
             if [ -n "$TMUX" ] && ([ "''${TERM%%-*}" = "tmux" ] || [ "''${TERM%%-*}" = "screen" ]); then
                 # Tell tmux to pass the escape sequences through
