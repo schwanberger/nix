@@ -107,7 +107,8 @@ in {
       };
       defaultKeymap = "emacs";
       initExtra = ''
-        TERM=alacritty-direct
+        #TERM=alacritty-direct
+        export COLORTERM=truecolor
         vterm_printf() {
             if [ -n "$TMUX" ] && ([ "''${TERM%%-*}" = "tmux" ] || [ "''${TERM%%-*}" = "screen" ]); then
                 # Tell tmux to pass the escape sequences through
