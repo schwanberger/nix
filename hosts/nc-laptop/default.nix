@@ -1,11 +1,6 @@
 # This is your system's configuration file.
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
-{ inputs, outputs, lib, config, pkgs, ... }:
-let
-  emacs-pgtk-unstable = with pkgs.unstable-emacs-overlay;
-    ((emacsPackagesFor emacs-unstable-pgtk).emacsWithPackages
-      (epkgs: with epkgs; [ vterm sqlite ]));
-in {
+{ inputs, outputs, lib, config, pkgs, ... }: {
   # You can import other NixOS modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/nixos):
@@ -28,8 +23,7 @@ in {
       # Add overlays your own flake exports (from overlays and pkgs dir):
       outputs.overlays.additions
       outputs.overlays.modifications
-      outputs.overlays.unstable-packages
-      outputs.overlays.unstable-packages-emacs-overlay
+      outputs.overlays.stable-packages
 
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
@@ -140,7 +134,7 @@ in {
   time.timeZone = "Europe/Copenhagen";
   i18n.defaultLocale = "en_DK.UTF-8";
 
-  environment.systemPackages = with pkgs.unstable; [
+  environment.systemPackages = with pkgs; [
     bat
     yq
     jq
@@ -179,11 +173,11 @@ in {
   ;
 
   programs.nix-ld.enable = true;
+  programs.zsh.enable = true;
 
   virtualisation.containers.enable = true;
   virtualisation.podman = {
     enable = true;
-    package = pkgs.unstable.podman;
 
     # Create a `docker` alias for podman, to use it as a drop-in replacement
     #dockerCompat = true;
@@ -192,7 +186,7 @@ in {
     defaultNetwork.settings.dns_enabled = true;
   };
 
-  environment.shells = with pkgs.unstable; [ zsh ];
+  environment.shells = with pkgs; [ zsh ];
 
   programs.gnupg.agent = {
     enable = true;
@@ -201,11 +195,11 @@ in {
 
   services.pcscd.enable = true;
 
-  fonts.packages = with pkgs.unstable; [ nerdfonts ];
+  fonts.packages = with pkgs; [ nerdfonts ];
 
   users.extraGroups.docker.members = [ "thsc" ];
 
-  users.defaultUserShell = pkgs.unstable.zsh;
+  users.defaultUserShell = pkgs.zsh;
   users.users = {
     thsc = {
       isNormalUser = true;

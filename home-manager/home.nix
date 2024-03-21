@@ -2,8 +2,8 @@
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 { inputs, outputs, lib, config, pkgs, ... }:
 let
-  emacsWithPackages = (pkgs.unstable.emacsPackagesFor
-    pkgs.unstable.emacs29-pgtk).emacsWithPackages;
+  emacsWithPackages = (pkgs.emacsPackagesFor
+    pkgs.emacs29-pgtk).emacsWithPackages;
   myEmacs = emacsWithPackages
     (p: with p; [ vterm sqlite magit treesit-grammars.with-all-grammars ]);
 in {
@@ -25,7 +25,7 @@ in {
       # Add overlays your own flake exports (from overlays and pkgs dir):
       outputs.overlays.additions
       outputs.overlays.modifications
-      outputs.overlays.unstable-packages
+      outputs.overlays.stable-packages
 
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
@@ -55,7 +55,7 @@ in {
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   # home.packages = with pkgs; [ steam ];
-  home.packages = with pkgs.unstable; [ yaml-language-server myEmacs ];
+  home.packages = with pkgs; [ yaml-language-server myEmacs ];
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
@@ -66,18 +66,18 @@ in {
       enable = true;
       enableZshIntegration = true;
       enableBashIntegration = true;
-      package = pkgs.unstable.direnv;
+      package = pkgs.direnv;
       nix-direnv.enable = true;
-      nix-direnv.package = pkgs.unstable.nix-direnv;
+      nix-direnv.package = pkgs.nix-direnv;
     };
     fzf = {
       enable = true;
-      package = pkgs.unstable.fzf;
+      package = pkgs.fzf;
       enableZshIntegration = true;
       enableBashIntegration = true;
     };
     starship = {
-      package = pkgs.unstable.starship;
+      package = pkgs.starship;
       enable = true;
       enableZshIntegration = true;
       enableBashIntegration = false;
@@ -98,12 +98,12 @@ in {
     };
     zsh = {
       enable = true;
-      package = pkgs.unstable.zsh;
+      package = pkgs.zsh;
       enableAutosuggestions = true;
       enableCompletion = false;
       syntaxHighlighting = {
         enable = true;
-        package = pkgs.unstable.zsh-syntax-highlighting;
+        package = pkgs.zsh-syntax-highlighting;
       };
       defaultKeymap = "emacs";
       initExtra = ''
