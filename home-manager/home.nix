@@ -1,12 +1,6 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-{ inputs, outputs, lib, config, pkgs, ... }:
-let
-  emacsWithPackages = (pkgs.emacsPackagesFor
-    pkgs.emacs29-pgtk).emacsWithPackages;
-  myEmacs = emacsWithPackages
-    (p: with p; [ vterm sqlite magit treesit-grammars.with-all-grammars ]);
-in {
+{ inputs, outputs, lib, config, pkgs, ... }: {
   # You can import other home-manager modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
@@ -55,7 +49,7 @@ in {
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   # home.packages = with pkgs; [ steam ];
-  home.packages = with pkgs; [ yaml-language-server myEmacs nodePackages_latest.bash-language-server shellcheck ];
+  home.packages = with pkgs; [ yaml-language-server nodePackages_latest.bash-language-server shellcheck ];
 
   # Enable home-manager and git
   programs.home-manager.enable = true;

@@ -1,6 +1,12 @@
 # This is your system's configuration file.
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{ inputs, outputs, lib, config, pkgs, ... }:
+let
+  emacsWithPackages = (pkgs.emacsPackagesFor
+    pkgs.emacs29-pgtk).emacsWithPackages;
+  myEmacs = emacsWithPackages
+    (p: with p; [ vterm sqlite magit treesit-grammars.with-all-grammars ]);
+in {
   # You can import other NixOS modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/nixos):
@@ -68,6 +74,7 @@
 
   home-manager = {
     useUserPackages = true;
+    #useGlobalPkgs = true;
     extraSpecialArgs = { inherit inputs outputs; };
     users = { thsc = import ../../home-manager/home.nix; };
   };
@@ -86,6 +93,7 @@
   }) config.nix.registry;
 
   nix = {
+    package = pkgs.nixUnstable;
     settings = {
       # Enable flakes and new 'nix' command
       experimental-features = "nix-command flakes";
@@ -142,6 +150,7 @@
     xclip
 
     # Doom Emacs stuff
+    myEmacs
     (ripgrep.override { withPCRE2 = true; })
     nerdfonts
     fd
