@@ -74,7 +74,7 @@ in {
 
   home-manager = {
     useUserPackages = true;
-    #useGlobalPkgs = true;
+    useGlobalPkgs = true;
     extraSpecialArgs = { inherit inputs outputs; };
     users = { thsc = import ../../home-manager/home.nix; };
   };
