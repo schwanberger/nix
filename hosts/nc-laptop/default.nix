@@ -93,7 +93,7 @@ in {
   }) config.nix.registry;
 
   nix = {
-    package = pkgs.nixUnstable;
+    package = pkgs.nixVersions.nix_2_21;
     settings = {
       # Enable flakes and new 'nix' command
       experimental-features = "nix-command flakes";
