@@ -150,7 +150,9 @@ in {
     xclip
 
     # Doom Emacs stuff
-    myEmacs
+    #myEmacs
+    #emacs29-pgtk
+    ((emacsPackagesFor emacs29-pgtk).emacsWithPackages (epkgs: [epkgs.vterm]))
     (ripgrep.override { withPCRE2 = true; })
     nerdfonts
     fd
