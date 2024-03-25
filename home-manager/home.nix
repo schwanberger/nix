@@ -97,7 +97,7 @@
     zsh = {
       enable = true;
       package = pkgs.zsh;
-      enableAutosuggestions = true;
+      autosuggestion.enable = true;
       enableCompletion = false;
       syntaxHighlighting = {
         enable = true;
