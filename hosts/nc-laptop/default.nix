@@ -109,6 +109,8 @@ in {
     };
   };
 
+  environment.shellInit = "ulimit -n 524288\n";
+
   nix.optimise.automatic = true;
 
   nix.gc = {
