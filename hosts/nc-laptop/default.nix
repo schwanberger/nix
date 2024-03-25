@@ -6,7 +6,7 @@ let
   #   pkgs.emacs29-pgtk).emacsWithPackages;
   # myEmacs = emacsWithPackages
   #   (p: with p; [ vterm sqlite magit treesit-grammars.with-all-grammars ]);
-  emacs-pgtk-unstable = with pkgs.unstable-emacs-overlay;
+  emacs-pgtk-unstable = with pkgs.emacs-overlay;
     ((emacsPackagesFor emacs-unstable-pgtk).emacsWithPackages
       (epkgs: with epkgs; [ vterm sqlite ]));
 in {
@@ -33,7 +33,8 @@ in {
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.stable-packages
-      outputs.overlays.unstable-packages-emacs-overlay
+      outputs.overlays.emacs-overlay
+
 
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
