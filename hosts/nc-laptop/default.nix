@@ -35,7 +35,6 @@ in {
       outputs.overlays.stable-packages
       outputs.overlays.emacs-overlay
 
-
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
 
@@ -114,7 +113,9 @@ in {
     };
   };
 
-  environment.shellInit = "ulimit -n 524288\n";
+  environment.shellInit = ''
+    ulimit -n 524288
+  '';
 
   nix.optimise.automatic = true;
 
