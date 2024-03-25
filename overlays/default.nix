@@ -22,11 +22,11 @@
     };
   };
 
-  # unstable-packages-emacs-overlay = final: _prev: {
-  #   unstable-emacs-overlay = import inputs.nixpkgs {
-  #     system = final.system;
-  #     config.allowUnfree = true;
-  #     overlays = [ (import inputs.emacs-overlay) ];
-  #   };
-  # };
+  unstable-packages-emacs-overlay = final: _prev: {
+    unstable-emacs-overlay = import inputs.nixpkgs {
+      system = final.system;
+      config.allowUnfree = true;
+      overlays = [ (import inputs.emacs-overlay) ];
+    };
+  };
 }

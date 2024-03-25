@@ -2,10 +2,13 @@
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
 { inputs, outputs, lib, config, pkgs, ... }:
 let
-  emacsWithPackages = (pkgs.emacsPackagesFor
-    pkgs.emacs29-pgtk).emacsWithPackages;
-  myEmacs = emacsWithPackages
-    (p: with p; [ vterm sqlite magit treesit-grammars.with-all-grammars ]);
+  # emacsWithPackages = (pkgs.emacsPackagesFor
+  #   pkgs.emacs29-pgtk).emacsWithPackages;
+  # myEmacs = emacsWithPackages
+  #   (p: with p; [ vterm sqlite magit treesit-grammars.with-all-grammars ]);
+  emacs-pgtk-unstable = with pkgs.unstable-emacs-overlay;
+    ((emacsPackagesFor emacs-unstable-pgtk).emacsWithPackages
+      (epkgs: with epkgs; [ vterm sqlite ]));
 in {
   # You can import other NixOS modules here
   imports = [
@@ -30,6 +33,7 @@ in {
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.stable-packages
+      outputs.overlays.unstable-packages-emacs-overlay
 
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
@@ -154,7 +158,8 @@ in {
     # Doom Emacs stuff
     #myEmacs
     #emacs29-pgtk
-    ((emacsPackagesFor emacs29-pgtk).emacsWithPackages (epkgs: [epkgs.vterm]))
+    # ((emacsPackagesFor emacs29-pgtk).emacsWithPackages (epkgs: [epkgs.vterm]))
+    emacs-pgtk-unstable
     (ripgrep.override { withPCRE2 = true; })
     nerdfonts
     fd
