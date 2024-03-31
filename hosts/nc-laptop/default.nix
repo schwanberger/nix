@@ -8,7 +8,7 @@ let
   #   (p: with p; [ vterm sqlite magit treesit-grammars.with-all-grammars ]);
   emacs-pgtk-unstable = with pkgs.emacs-overlay;
     ((emacsPackagesFor emacs-unstable-pgtk).emacsWithPackages
-      (epkgs: with epkgs; [ vterm sqlite ]));
+      (epkgs: with epkgs; [ vterm sqlite magit treesit-grammars.with-all-grammars ]));
 in {
   # You can import other NixOS modules here
   imports = [
