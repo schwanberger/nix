@@ -105,7 +105,7 @@
       };
       defaultKeymap = "emacs";
       initExtra = ''
-        #TERM=alacritty-direct
+        export TERM=xterm-256color
         export COLORTERM=truecolor
         setopt interactive_comments
         vterm_printf() {
