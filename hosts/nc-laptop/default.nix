@@ -290,7 +290,25 @@ in {
 
   services.pcscd.enable = true;
 
-  fonts.packages = with pkgs; [ nerdfonts ];
+  fonts = {
+    packages = with pkgs; [ nerdfonts ];
+    fontconfig = {
+      antialias = true;
+      hinting = {
+        enable = true;
+        # autohint = false; # Default
+        style = "full";
+      };
+      subpixel = {
+        #lcdfilter = "default";
+        #lcdfilter = "legacy";
+        #rgba = "none";
+        #rgba = "bgr";
+      };
+      defaultFonts.monospace = [ "JetBrainsMonoNL Nerd Font" ];
+      useEmbeddedBitmaps = true;
+    };
+  };
 
   users.extraGroups.docker.members = [ "thsc" ];
 
