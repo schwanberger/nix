@@ -290,6 +290,11 @@ in {
 
   services.pcscd.enable = true;
 
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [ intel-media-driver intel-ocl ];
+  };
+
   fonts = {
     packages = with pkgs; [ nerdfonts ];
     fontconfig = {
