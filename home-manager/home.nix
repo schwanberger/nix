@@ -94,6 +94,10 @@
         #     $character'';
       };
     };
+    bash = {
+      enable = true;
+      historyControl = [ "ignoredups" "ignorespace" ];
+    };
     zsh = {
       enable = true;
       package = pkgs.zsh;
