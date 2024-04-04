@@ -165,7 +165,7 @@ in {
   }) config.nix.registry;
 
   nix = {
-    package = pkgs.nixVersions.nix_2_21;
+    package = pkgs.nixVersions.nix_2_20;
     settings = {
       # Enable flakes and new 'nix' command
       experimental-features = "nix-command flakes";
