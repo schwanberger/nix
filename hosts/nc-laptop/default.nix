@@ -58,6 +58,10 @@
       { src = "${busybox}/bin/addgroup"; }
       { src = "${su}/bin/groupadd"; }
       { src = "${su}/bin/usermod"; }
+      # Required by VS Code's Remote WSL extension
+      { src = "${pkgs.coreutils}/bin/dirname"; }
+      { src = "${pkgs.coreutils}/bin/readlink"; }
+      { src = "${pkgs.coreutils}/bin/uname"; }
     ];
     wslConf = {
       network.hostname = "PF3LZDKP";
@@ -105,7 +109,7 @@
     };
   };
 
-  environment.shellInit = ''
+  environment.extraInit = ''
     ulimit -n 524288
   '';
 

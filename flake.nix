@@ -18,6 +18,7 @@
     # Nixpkgs
     #nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
     # You can access packages and modules from different nixpkgs revs
     # at the same time. Here's an working example:
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
@@ -33,6 +34,11 @@
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-ld-rs = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/nix-ld-rs";
     };
 
     # TODO: Add any other flake you might need
