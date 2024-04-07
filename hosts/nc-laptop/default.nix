@@ -124,6 +124,7 @@ in {
     enable = true;
     defaultUser = "thsc";
     nativeSystemd = true;
+    useWindowsDriver = true;
     # docker-desktop.enable = true;
     extraBin = with pkgs; [
       # Binaries for Docker Desktop wsl-distro-proxy
@@ -290,28 +291,33 @@ in {
 
   services.pcscd.enable = true;
 
-  hardware.opengl = {
-    enable = true;
-    extraPackages = with pkgs; [ intel-media-driver intel-ocl ];
-  };
+  # hardware.opengl = {
+  #   enable = true;
+  #   extraPackages = with pkgs; [ intel-media-driver intel-ocl ];
+  # };
+
+  # From: https://github.com/Atry/nixos-wsl-vscode/blob/main/flake.nix
+  hardware.opengl.setLdLibraryPath = true;
 
   fonts = {
-    packages = with pkgs; [ nerdfonts ];
+    enableDefaultPackages = true;
+    # Fonts handled in home manager
     fontconfig = {
       antialias = true;
       hinting = {
         enable = true;
-        # autohint = false; # Default
+        autohint = false; # Default
         style = "full";
       };
       subpixel = {
         #lcdfilter = "default";
         #lcdfilter = "legacy";
+        lcdfilter = "light";
         #rgba = "none";
         #rgba = "bgr";
       };
       defaultFonts.monospace = [ "JetBrainsMonoNL Nerd Font" ];
-      useEmbeddedBitmaps = true;
+      #useEmbeddedBitmaps = true;
     };
   };
 
