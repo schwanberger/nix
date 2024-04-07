@@ -37,8 +37,8 @@
     };
 
     nix-ld-rs = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/nix-ld-rs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # TODO: Add any other flake you might need
