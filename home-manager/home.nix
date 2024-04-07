@@ -1,6 +1,51 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{ inputs, outputs, lib, config, pkgs, ... }:
+let
+  emacs-unstable-pgtk-with-packages = with pkgs.emacs-overlay;
+    (emacsWithPackagesFromUsePackage {
+      config = "";
+      defaultInitFile = false;
+      package = emacs-unstable-pgtk;
+      #package = emacs-unstable;
+      extraEmacsPackages = epkgs:
+        with epkgs; [
+          vterm
+          # sqlite
+          # magit
+          treesit-grammars.with-all-grammars
+          # emacsql
+          emacsql-sqlite
+
+          # evil
+          # evil-args
+          # evil-easymotion
+          # evil-embrace
+          # evil-escape
+          # evil-exchange
+          # evil-lion
+          # evil-numbers
+          # evil-snipe
+          # # evil-surround
+          # evil-traces
+          # evil-visualstar
+          # # evil-collection
+          # evil-anzu
+
+          # treemacs
+          # lsp-treemacs
+          # doom-modeline
+          # posframe
+          # lsp-mode
+          # dap-mode
+          # auctex
+          # auctex-latexmk
+          # writeroom-mode
+          # nerd-icons-completion
+        ];
+
+    });
+in {
   # You can import other home-manager modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
@@ -50,14 +95,72 @@
   # programs.neovim.enable = true;
   # home.packages = with pkgs; [ steam ];
   home.packages = with pkgs; [
+    bat
+    yq
+    jq
+    wget
+    xclip
+    gnumake
     yaml-language-server
     nodePackages_latest.bash-language-server
     shellcheck
+
+    # Latex
+    texlab # lsp
+    texlive.combined.scheme-full
+    evince
+    #texlive.combined.scheme-medium
+
+    # Doom Emacs stuff
+    emacs-unstable-pgtk-with-packages
+    (ripgrep.override { withPCRE2 = true; })
+    fd
+    (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
+    nodejs
+    sqlite
+
+    # Nix stuff
+    nil # nil seems like the better choice 2023-11-28
+    #rnix-lsp # Another lsp
+    nixfmt
+
+    # Uncategorized
+    openssh
+    pandoc
+    p7zip
+    zstd
+    vim
+    git
+    p7zip
+    inetutils
+    gcc
+    asciidoctor-with-extensions
+
+    # Langs
+    python3
+
+    # Fonts
+    (nerdfonts.override {
+      fonts = [
+        "FiraCode"
+        "JetBrainsMono"
+        "Iosevka"
+        "IosevkaTerm"
+        "Meslo"
+        "FiraMono"
+        "SourceCodePro"
+        "VictorMono"
+        "RobotoMono"
+        "NerdFontsSymbolsOnly"
+      ];
+    })
   ];
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
   #programs.git.enable = true;
+
+  fonts.fontconfig.enable = true;
 
   programs = {
     direnv = {
@@ -109,26 +212,26 @@
       };
       defaultKeymap = "emacs";
       initExtra = ''
-        export TERM=xterm-256color
-        export COLORTERM=truecolor
-        setopt interactive_comments
-        vterm_printf() {
-            if [ -n "$TMUX" ] && ([ "''${TERM%%-*}" = "tmux" ] || [ "''${TERM%%-*}" = "screen" ]); then
-                # Tell tmux to pass the escape sequences through
-                printf "\ePtmux;\e\e]%s\007\e\\" "$1"
-            elif [ "''${TERM%%-*}" = "screen" ]; then
-                # GNU screen (screen, screen-256color, screen-256color-bce)
-                printf "\eP\e]%s\007\e\\" "$1"
-            else
-                printf "\e]%s\e\\" "$1"
-            fi
+              export TERM=xterm-256color
+              export COLORTERM=truecolor
+              setopt interactive_comments
+              vterm_printf() {
+                  if [ -n "$TMUX" ] && ([ "''${TERM%%-*}" = "tmux" ] || [ "''${TERM%%-*}" = "screen" ]); then
+                      # Tell tmux to pass the escape sequences through
+                      printf "\ePtmux;\e\e]%s\007\e\\" "$1"
+                  elif [ "''${TERM%%-*}" = "screen" ]; then
+                      # GNU screen (screen, screen-256color, screen-256color-bce)
+                      printf "\eP\e]%s\007\e\\" "$1"
+                  else
+                      printf "\e]%s\e\\" "$1"
+                  fi
         }
-        function my-precmd() {
-          vterm_printf "51;A$USER@$HOST:$PWD" >$TTY
-        }
+              function my-precmd() {
+                vterm_printf "51;A$USER@$HOST:$PWD" >$TTY
+              }
 
-        autoload -Uz add-zsh-hook
-        add-zsh-hook precmd my-precmd
+              autoload -Uz add-zsh-hook
+              add-zsh-hook precmd my-precmd
       '';
       history.extended = true;
       plugins = [

@@ -1,83 +1,6 @@
 # This is your system's configuration file.
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
-{ inputs, outputs, lib, config, pkgs, ... }:
-let
-  # emacsWithPackages = (pkgs.emacsPackagesFor
-  #   pkgs.emacs29-pgtk).emacsWithPackages;
-  # myEmacs = emacsWithPackages
-  #   (p: with p; [ vterm sqlite magit treesit-grammars.with-all-grammars ]);
-  #
-  ##
-  # emacs-pgtk-unstable = with pkgs.emacs-overlay;
-  #   ((emacsPackagesFor emacs-unstable-pgtk).emacsWithPackages (epkgs:
-  #     with epkgs; [
-  #       vterm
-  #       sqlite
-  #       magit
-  #       treesit-grammars.with-all-grammars
-  #       emacsql
-  #       emacsql-sqlite
-  #       evil
-  #       evil-args
-  #       evil-easymotion
-  #       evil-embrace
-  #       evil-escape
-  #       evil-exchange
-  #       evil-indent
-  #       evil-lion
-  #       evil-nerd
-  #       evil-numbers
-  #       evil-snipe
-  #       evil-surround
-  #       evil-textobj
-  #       evil-traces
-  #       evil-visualstar
-  #       evil-quick
-  #       evil-collection
-  #     ]));
-  emacs-unstable-pgtk-with-packages = with pkgs.emacs-overlay;
-    (emacsWithPackagesFromUsePackage {
-      config = "";
-      defaultInitFile = false;
-      package = emacs-unstable-pgtk;
-      extraEmacsPackages = epkgs:
-        with epkgs; [
-          vterm
-          sqlite
-          magit
-          treesit-grammars.with-all-grammars
-          # emacsql
-          # emacsql-sqlite
-
-          # evil
-          # evil-args
-          # evil-easymotion
-          # evil-embrace
-          # evil-escape
-          # evil-exchange
-          # evil-lion
-          # evil-numbers
-          # evil-snipe
-          # # evil-surround
-          # evil-traces
-          # evil-visualstar
-          # # evil-collection
-          # evil-anzu
-
-          # treemacs
-          # lsp-treemacs
-          # doom-modeline
-          # posframe
-          # lsp-mode
-          # dap-mode
-          # auctex
-          # auctex-latexmk
-          # writeroom-mode
-          # nerd-icons-completion
-        ];
-
-    });
-in {
+{ inputs, outputs, lib, config, pkgs, ... }: {
   # You can import other NixOS modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/nixos):
@@ -219,56 +142,64 @@ in {
   time.timeZone = "Europe/Copenhagen";
   i18n.defaultLocale = "en_DK.UTF-8";
 
-  environment.systemPackages = with pkgs; [
-    bat
-    yq
-    jq
-    wget
-    xclip
-    gnumake
+  environment.systemPackages = with pkgs; [ wget curl cachix ];
 
-    # Latex
-    texlab # lsp
-    texlive.combined.scheme-full
-    evince
-    #texlive.combined.scheme-medium
+  # environment.systemPackages = with pkgs; [
+  #   bat
+  #   yq
+  #   jq
+  #   wget
+  #   xclip
+  #   gnumake
 
-    # Doom Emacs stuff
-    #myEmacs
-    #emacs29-pgtk
-    # ((emacsPackagesFor emacs29-pgtk).emacsWithPackages (epkgs: [epkgs.vterm]))
-    emacs-unstable-pgtk-with-packages
-    (ripgrep.override { withPCRE2 = true; })
-    nerdfonts
-    fd
-    (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
-    nodejs
-    sqlite
+  #   # Latex
+  #   texlab # lsp
+  #   texlive.combined.scheme-full
+  #   evince
+  #   #texlive.combined.scheme-medium
 
-    # Nix stuff
-    nil # nil seems like the better choice 2023-11-28
-    #rnix-lsp # Another lsp
-    nixfmt
+  #   # Doom Emacs stuff
+  #   #myEmacs
+  #   #emacs29-pgtk
+  #   # ((emacsPackagesFor emacs29-pgtk).emacsWithPackages (epkgs: [epkgs.vterm]))
+  #   emacs-unstable-pgtk-with-packages
+  #   (ripgrep.override { withPCRE2 = true; })
+  #   fd
+  #   (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
+  #   nodejs
+  #   sqlite
 
-    # Uncatogorized
-    openssh
-    pandoc
-    p7zip
-    zstd
-    vim
-    git
-    p7zip
-    inetutils
-    gcc
-    asciidoctor-with-extensions
+  #   # Nix stuff
+  #   nil # nil seems like the better choice 2023-11-28
+  #   #rnix-lsp # Another lsp
+  #   nixfmt
 
-    # Langs
-    python3
-  ]
-  # ++ [ emacs-pgtk-unstable ]
-  ;
+  #   # Uncatogorized
+  #   openssh
+  #   pandoc
+  #   p7zip
+  #   zstd
+  #   vim
+  #   git
+  #   p7zip
+  #   inetutils
+  #   gcc
+  #   asciidoctor-with-extensions
 
-  programs.nix-ld.enable = true;
+  #   # Langs
+  #   python3
+  # ]
+  # # ++ [ emacs-pgtk-unstable ]
+  # ;
+
+  programs.nix-ld = {
+    enable = true;
+    libraries = [
+      # Required by NodeJS installed by VS Code's Remote WSL extension
+      pkgs.stdenv.cc.cc
+    ];
+    package = inputs.nix-ld-rs.packages.${pkgs.system}.nix-ld-rs;
+  };
   programs.zsh.enable = true;
 
   virtualisation.containers.enable = true;
