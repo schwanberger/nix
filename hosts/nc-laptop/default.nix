@@ -57,10 +57,14 @@
       { src = "${coreutils}/bin/ls"; }
       { src = "${busybox}/bin/addgroup"; }
       { src = "${su}/bin/groupadd"; }
-      { src = "${su}/bin/usermod"; }
+      {
+        src = "${su}/bin/usermod";
+      }
       # VS Code's "Remote - Tunnels" extension does not respect `~/.vscode-server/server-env-setup`, so we need to provide these binaries under `/bin`.
       { src = "${coreutils}/bin/uname"; }
-      { src = "${coreutils}/bin/rm"; }
+      {
+        src = "${coreutils}/bin/rm";
+      }
       # { src = "${coreutils}/bin/mkdir"; } # Already defined
       { src = "${coreutils}/bin/mv"; }
 
@@ -157,9 +161,9 @@
   environment.pathsToLink = [ "/share/zsh" ];
 
   time.timeZone = "Europe/Copenhagen";
-  i18n.defaultLocale = "en_DK.UTF-8";
+  # i18n.defaultLocale = "en_DK.UTF-8";
 
-  environment.systemPackages = with pkgs; [ wget curl cachix ];
+  environment.systemPackages = with pkgs; [ wget curl cachix python3 ];
 
   # environment.systemPackages = with pkgs; [
   #   bat

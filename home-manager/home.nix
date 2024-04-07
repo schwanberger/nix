@@ -2,48 +2,52 @@
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 { inputs, outputs, lib, config, pkgs, ... }:
 let
+  # emacs-unstable-pgtk-with-packages = with pkgs.emacs-overlay;
+  #   ((emacsPackagesFor emacs-unstable-pgtk).emacsWithPackages (epkgs:
+  #     with epkgs; [
   emacs-unstable-pgtk-with-packages = with pkgs.emacs-overlay;
     (emacsWithPackagesFromUsePackage {
       config = "";
       defaultInitFile = false;
       package = emacs-unstable-pgtk;
-      #package = emacs-unstable;
       extraEmacsPackages = epkgs:
         with epkgs; [
-          vterm
-          # sqlite
-          # magit
           treesit-grammars.with-all-grammars
-          # emacsql
+          # Try to let nix do stuff instead of doom
+          evil
+          evil-org
+          evil-args
+          evil-easymotion
+          evil-embrace
+          evil-escape
+          evil-exchange
+          evil-lion
+          evil-numbers
+          evil-snipe
+          #evil-surround
+          evil-traces
+          evil-visualstar
+          #evil-collection
+          evil-anzu
+
+          magit
+          sqlite
+          emacsql
           emacsql-sqlite
-
-          # evil
-          # evil-args
-          # evil-easymotion
-          # evil-embrace
-          # evil-escape
-          # evil-exchange
-          # evil-lion
-          # evil-numbers
-          # evil-snipe
-          # # evil-surround
-          # evil-traces
-          # evil-visualstar
-          # # evil-collection
-          # evil-anzu
-
-          # treemacs
-          # lsp-treemacs
-          # doom-modeline
-          # posframe
-          # lsp-mode
-          # dap-mode
-          # auctex
-          # auctex-latexmk
-          # writeroom-mode
-          # nerd-icons-completion
+          treemacs
+          lsp-treemacs
+          doom-modeline
+          posframe
+          lsp-mode
+          lsp-ui
+          dap-mode
+          auctex
+          auctex-latexmk
+          writeroom-mode
+          nerd-icons-completion
+          compat
+          seq
         ];
-
     });
 in {
   # You can import other home-manager modules here
@@ -118,6 +122,8 @@ in {
     (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
     nodejs
     sqlite
+    editorconfig-core-c
+    zstd
 
     # Nix stuff
     nil # nil seems like the better choice 2023-11-28
@@ -128,7 +134,6 @@ in {
     openssh
     pandoc
     p7zip
-    zstd
     vim
     git
     p7zip
