@@ -58,10 +58,21 @@
       { src = "${busybox}/bin/addgroup"; }
       { src = "${su}/bin/groupadd"; }
       { src = "${su}/bin/usermod"; }
-      # Required by VS Code's Remote WSL extension
-      { src = "${pkgs.coreutils}/bin/dirname"; }
-      { src = "${pkgs.coreutils}/bin/readlink"; }
-      { src = "${pkgs.coreutils}/bin/uname"; }
+      # VS Code's "Remote - Tunnels" extension does not respect `~/.vscode-server/server-env-setup`, so we need to provide these binaries under `/bin`.
+      { src = "${coreutils}/bin/uname"; }
+      { src = "${coreutils}/bin/rm"; }
+      # { src = "${coreutils}/bin/mkdir"; } # Already defined
+      { src = "${coreutils}/bin/mv"; }
+
+      { src = "${coreutils}/bin/dirname"; }
+      { src = "${coreutils}/bin/readlink"; }
+      { src = "${coreutils}/bin/wc"; }
+      { src = "${coreutils}/bin/date"; }
+      { src = "${coreutils}/bin/sleep"; }
+      { src = "${coreutils}/bin/cat"; }
+      { src = "${gnused}/bin/sed"; }
+      { src = "${gnutar}/bin/tar"; }
+      { src = "${gzip}/bin/gzip"; }
     ];
     wslConf = {
       network.hostname = "PF3LZDKP";
@@ -106,6 +117,8 @@
         "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
       ];
       trusted-users = [ "root" "@wheel" ];
+      extra-sandbox-paths =
+        lib.mkIf config.wsl.useWindowsDriver [ "/usr/lib/wsl" ];
     };
   };
 
