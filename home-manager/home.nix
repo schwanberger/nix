@@ -119,6 +119,8 @@ in {
     yaml-language-server
     nodePackages_latest.bash-language-server
     shellcheck
+    nix-tree
+    file
 
     # Latex
     texlab # lsp
