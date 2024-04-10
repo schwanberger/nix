@@ -29,11 +29,12 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
+    #nixos-wsl.inputs.nixpkgs.follows = "nixpkgs-stable";
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
 
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
+      #inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-ld-rs = {

@@ -13,40 +13,51 @@ let
       extraEmacsPackages = epkgs:
         with epkgs; [
           treesit-grammars.with-all-grammars
+          magit
+          sqlite
+          emacsql
+          emacsql-sqlite
+          vterm
+          ox-asciidoc
+          ###
           # Try to let nix do stuff instead of doom
+          ### FAILED ATTEMPT 2024-04-0
           evil
           evil-org
           evil-args
           evil-easymotion
-          evil-embrace
+          #evil-embrace
           evil-escape
           evil-exchange
           evil-lion
           evil-numbers
           evil-snipe
-          #evil-surround
+          evil-surround
           evil-traces
           evil-visualstar
           #evil-collection
           evil-anzu
 
-          magit
-          sqlite
-          emacsql
-          emacsql-sqlite
+          org-edna
+          yaml-mode
+          org-gtd
+          org-super-agenda
           treemacs
           lsp-treemacs
           doom-modeline
           posframe
           lsp-mode
           lsp-ui
-          dap-mode
+          #dap-mode
           auctex
           auctex-latexmk
           writeroom-mode
           nerd-icons-completion
           compat
           seq
+          #vvv???
+          #ts-fold
+          ###
         ];
     });
 in {
