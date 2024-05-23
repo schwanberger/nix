@@ -5,6 +5,14 @@ let
   # emacs-unstable-pgtk-with-packages = with pkgs.emacs-overlay;
   #   ((emacsPackagesFor emacs-unstable-pgtk).emacsWithPackages (epkgs:
   #     with epkgs; [
+  my-emacs-unstable = pkgs.emacs-overlay.emacs-unstable.override {
+    withNativeCompilation = true;
+    withSQLite3 = true;
+    withTreeSitter = true;
+  };
+  my-emacs-unstable-with-packages =
+    (pkgs.emacsPackagesFor my-emacs-unstable).emacsWithPackages
+    (epkgs: with epkgs; [ vterm treesit-grammars.with-all-grammars ]);
   emacs-unstable-pgtk-with-packages = with pkgs.emacs-overlay;
     (emacsWithPackagesFromUsePackage {
       config = "";
@@ -71,7 +79,16 @@ in {
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
+
+    inputs.nix-doom-emacs-unstraightened.hmModule
   ];
+
+  # nixpkgs = {
+  #   overlays = [
+  #     inputs.nix-doom-emacs-unstraightened.overlays.default
+  #   ];
+  # };
+
 
   # nixpkgs = {
   #   # You can add overlays here
@@ -109,74 +126,95 @@ in {
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   # home.packages = with pkgs; [ steam ];
-  home.packages = with pkgs; [
-    bat
-    yq
-    jq
-    wget
-    xclip
-    gnumake
-    yaml-language-server
-    nodePackages_latest.bash-language-server
-    shellcheck
-    nix-tree
-    file
+  home.packages = with pkgs;
+    [
+      bat
+      yq
+      jq
+      wget
+      xclip
+      gnumake
+      yaml-language-server
+      nodePackages_latest.bash-language-server
+      shellcheck
+      nix-tree
+      file
 
-    # Latex
-    texlab # lsp
-    texlive.combined.scheme-full
-    evince
-    #texlive.combined.scheme-medium
+      # Latex
+      #texlab # lsp
+      #texlive.combined.scheme-full
+      #evince
+      #texlive.combined.scheme-medium
 
-    # Doom Emacs stuff
-    emacs-unstable-pgtk-with-packages
-    (ripgrep.override { withPCRE2 = true; })
-    fd
-    (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
-    nodejs
-    sqlite
-    editorconfig-core-c
-    zstd
+      # Doom Emacs stuff
+      emacs-unstable-pgtk-with-packages
+      (ripgrep.override { withPCRE2 = true; })
+      fd
+      (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
+      nodejs
+      sqlite
+      editorconfig-core-c
+      zstd
 
-    # Nix stuff
-    nil # nil seems like the better choice 2023-11-28
-    #rnix-lsp # Another lsp
-    nixfmt
+      # Nix stuff
+      nil # nil seems like the better choice 2023-11-28
+      #rnix-lsp # Another lsp
+      nixfmt
 
-    # Uncategorized
-    openssh
-    pandoc
-    p7zip
-    vim
-    git
-    p7zip
-    inetutils
-    gcc
-    asciidoctor-with-extensions
+      # Uncategorized
+      openssh
+      pandoc
+      p7zip
+      vim
+      git
+      p7zip
+      inetutils
+      gcc
+      asciidoctor-with-extensions
 
-    # Langs
-    python3
+      # Langs
+      python3
 
-    # Fonts
-    (nerdfonts.override {
-      fonts = [
-        "FiraCode"
-        "JetBrainsMono"
-        "Iosevka"
-        "IosevkaTerm"
-        "Meslo"
-        "FiraMono"
-        "SourceCodePro"
-        "VictorMono"
-        "RobotoMono"
-        "NerdFontsSymbolsOnly"
-      ];
-    })
-  ];
+      # Fonts
+      (nerdfonts.override {
+        fonts = [
+          "FiraCode"
+          "JetBrainsMono"
+          "Iosevka"
+          "IosevkaTerm"
+          "Meslo"
+          "FiraMono"
+          "SourceCodePro"
+          "VictorMono"
+          "RobotoMono"
+          "NerdFontsSymbolsOnly"
+        ];
+      })
+      (doomEmacs {
+        doomDir = inputs.doom-config;
+        # emacs = pkgs.emcs29;
+        emacs = my-emacs-unstable;
+        doomLocalDir = "~/.local/share/nix-doom";
+        #profileName = "";
+        #noProfileHack = true;
+      })
+    ];
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
   #programs.git.enable = true;
+
+  # programs.doom-emacs = {
+  #   enable = true;
+  #   doomDir = inputs.doom-config;
+  #   #emacs = emacs-unstable-pgtk-with-packages;
+  #   #emacs = pkgs.emacs29-pgtk;
+  #   # emacs = with pkgs;
+  #   #   ((emacsPackagesFor emacs29-pgtk).emacsWithPackages
+  #   #     (epkgs: [ epkgs.vterm epkgs.treesit-grammars.with-all-grammars ]));
+  #   emacs = my-emacs-unstable;
+  #   provideEmacs = false;
+  # };
 
   fonts.fontconfig.enable = true;
 

@@ -42,6 +42,19 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-doom-emacs-unstraightened = {
+      # url = "github:marienz/nix-doom-emacs-unstraightened";
+      url = "git+file:///home/thsc/projects/nix-doom-emacs-unstraightened?ref=feature/extra_emacs_packages_hook";
+      inputs.nixpkgs.follows = "";
+      # inputs.doomemacs.url = "github:doomemacs/doomemacs?ref=beb6e8763696658b4aada08c71bc749889ea90d8";
+    };
+
+    doom-config = {
+      # url = "github:schwanberger/doom-emacs-config";
+      url = "git+file:///home/thsc/projects/doom-emacs-config";
+      flake = false;
+    };
+
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
 

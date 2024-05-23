@@ -29,4 +29,12 @@
       overlays = [ (import inputs.emacs-overlay) ];
     };
   };
+
+  # doom-emacs-overlay = final: _prev: {
+  #   doom-emacs-overlay = import inputs.nixpkgs {
+  #     system = final.system;
+  #     config.allowUnfree = true;
+  #     overlays = (import inputs.nix-doom-emacs-unstraightened);
+  #   };
+  # };
 }

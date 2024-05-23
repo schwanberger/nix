@@ -25,6 +25,10 @@
       outputs.overlays.modifications
       outputs.overlays.stable-packages
       outputs.overlays.emacs-overlay
+      # outputs.overlays.doom-emacs-overlay
+
+     inputs.nix-doom-emacs-unstraightened.overlays.default
+
 
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
@@ -125,6 +129,7 @@
       trusted-users = [ "root" "@wheel" ];
       extra-sandbox-paths =
         lib.mkIf config.wsl.useWindowsDriver [ "/usr/lib/wsl" ];
+      max-substitution-jobs = 64;
     };
   };
 
@@ -214,6 +219,13 @@
   # ]
   # # ++ [ emacs-pgtk-unstable ]
   # ;
+
+   programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "/home/thsc/nix";
+  };
 
   programs.nix-ld = {
     enable = true;
