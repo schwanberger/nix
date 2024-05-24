@@ -157,8 +157,9 @@ in {
       zstd
 
       # Nix stuff
-      nil # nil seems like the better choice 2023-11-28
+      #nil # nil seems like the better choice 2023-11-28
       #rnix-lsp # Another lsp
+      nixd
       nixfmt
 
       # Uncategorized
