@@ -137,13 +137,13 @@
     ulimit -n 524288
   '';
 
-  nix.optimise.automatic = true;
+  # nix.optimise.automatic = true;
 
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 30d";
-  };
+  # nix.gc = {
+  #   automatic = true;
+  #   dates = "weekly";
+  #   options = "--delete-older-than 30d";
+  # };
 
   # Increase open file limit for sudoers
   security.pam.loginLimits = [
