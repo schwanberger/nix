@@ -84,12 +84,6 @@ in {
   ];
 
   # nixpkgs = {
-  #   overlays = [
-  #     inputs.nix-doom-emacs-unstraightened.overlays.default
-  #   ];
-  # };
-
-  # nixpkgs = {
   #   # You can add overlays here
   #   overlays = [
   #     # Add overlays your own flake exports (from overlays and pkgs dir):

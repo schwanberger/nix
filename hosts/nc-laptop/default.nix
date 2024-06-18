@@ -25,10 +25,6 @@
       outputs.overlays.modifications
       outputs.overlays.stable-packages
       outputs.overlays.emacs-overlay
-      # outputs.overlays.doom-emacs-overlay
-
-     inputs.nix-doom-emacs-unstraightened.overlays.default
-
 
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
