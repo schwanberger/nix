@@ -13,61 +13,6 @@ let
   my-emacs-unstable-with-packages =
     (pkgs.emacsPackagesFor my-emacs-unstable).emacsWithPackages
     (epkgs: with epkgs; [ vterm treesit-grammars.with-all-grammars ]);
-  emacs-unstable-pgtk-with-packages = with pkgs.emacs-overlay;
-    (emacsWithPackagesFromUsePackage {
-      config = "";
-      defaultInitFile = false;
-      package = emacs-unstable;
-      extraEmacsPackages = epkgs:
-        with epkgs; [
-          treesit-grammars.with-all-grammars
-          vterm
-          # magit
-          # sqlite
-          # emacsql
-          # emacsql-sqlite
-          # ox-asciidoc
-          ###
-          # Try to let nix do stuff instead of doom
-          ### FAILED ATTEMPT 2024-04-0
-          # evil
-          # evil-org
-          # evil-args
-          # evil-easymotion
-          # #evil-embrace
-          # evil-escape
-          # evil-exchange
-          # evil-lion
-          # evil-numbers
-          # evil-snipe
-          # evil-surround
-          # evil-traces
-          # evil-visualstar
-          # #evil-collection
-          # evil-anzu
-
-          # org-edna
-          # yaml-mode
-          # org-gtd
-          # org-super-agenda
-          # treemacs
-          # lsp-treemacs
-          # doom-modeline
-          # posframe
-          # lsp-mode
-          # lsp-ui
-          # #dap-mode
-          # auctex
-          # auctex-latexmk
-          # writeroom-mode
-          # nerd-icons-completion
-          # compat
-          # seq
-          # #vvv???
-          # #ts-fold
-          # ###
-        ];
-    });
 in {
   # You can import other home-manager modules here
   imports = [
@@ -139,7 +84,7 @@ in {
     #texlive.combined.scheme-medium
 
     # Doom Emacs stuff
-    emacs-unstable-pgtk-with-packages
+    my-emacs-unstable-with-packages
     (ripgrep.override { withPCRE2 = true; })
     fd
     (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
