@@ -100,26 +100,18 @@
     users = { thsc = import ../../home-manager/home.nix; };
   };
 
-  # This will add each flake input as a registry
-  # To make nix3 commands consistent with your flake
-  nix.registry = (lib.mapAttrs (_: flake: { inherit flake; }))
-    ((lib.filterAttrs (_: lib.isType "flake")) inputs);
-
-  # This will additionally add your inputs to the system's legacy channels
-  # Making legacy nix commands consistent as well, awesome!
-  nix.nixPath = [ "/etc/nix/path" ];
-  environment.etc = lib.mapAttrs' (name: value: {
-    name = "nix/path/${name}";
-    value.source = value.flake;
-  }) config.nix.registry;
-
-  nix = {
-    package = pkgs.nixVersions.nix_2_20;
+  nix = let
+    flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
+  in {
+    package = pkgs.nixVersions.latest;
+    # package = pkgs.nixFlakes;
     settings = {
       # Enable flakes and new 'nix' command
       experimental-features = "nix-command flakes";
-      # Deduplicate and optimize nix store
-      auto-optimise-store = true;
+      # Opinionated: disable global registry
+      flake-registry = "";
+      # Workaround for https://github.com/NixOS/nix/issues/9574
+      nix-path = config.nix.nixPath;
       substituters =
         [ "https://nix-community.cachix.org" "https://devenv.cachix.org" ];
       trusted-public-keys = [
@@ -130,7 +122,15 @@
       extra-sandbox-paths =
         lib.mkIf config.wsl.useWindowsDriver [ "/usr/lib/wsl" ];
       max-substitution-jobs = 64;
+      # upgrade-nix-store-path-url = "https://install.determinate.systems/nix-upgrade/stable/universal";
+      upgrade-nix-store-path-url = "https://releases.nixos.org/nix/nix-2.22.1/fallback-paths.nix";
     };
+    # Opinionated: disable channels
+    channel.enable = false;
+
+    # Opinionated: make flake registry and nix path match flake inputs
+    registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
+    nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
   };
 
   environment.extraInit = ''
@@ -313,5 +313,5 @@
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "23.05";
+  system.stateVersion = "24.05";
 }

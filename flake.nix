@@ -16,25 +16,22 @@
 
   inputs = {
     # Nixpkgs
-    #nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # You can access packages and modules from different nixpkgs revs
     # at the same time. Here's an working example:
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
-    # Also see the 'unstable-packages' overlay at 'overlays/default.nix'.
 
     # Home manager
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
-    #nixos-wsl.inputs.nixpkgs.follows = "nixpkgs-stable";
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
 
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
-      #inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-ld-rs = {
@@ -44,8 +41,6 @@
 
     nix-doom-emacs-unstraightened = {
       url = "github:marienz/nix-doom-emacs-unstraightened";
-      # url = "git+file:///home/thsc/projects/nix-doom-emacs-unstraightened?ref=feature/extra_emacs_packages_hook";
-      # url = "git+file:///home/thsc/personal/nix-doom-emacs-unstraightened?ref=feature/extra_packages";
       inputs.nixpkgs.follows = "";
       # inputs.doomemacs.url = "github:doomemacs/doomemacs?ref=beb6e8763696658b4aada08c71bc749889ea90d8";
     };
