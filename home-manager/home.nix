@@ -115,6 +115,7 @@ in {
     python3
 
     # Fonts
+    dejavu_fonts
     (nerdfonts.override {
       fonts = [
         "FiraCode"
