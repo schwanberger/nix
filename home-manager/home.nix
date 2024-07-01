@@ -9,6 +9,7 @@ let
     withNativeCompilation = true;
     withSQLite3 = true;
     withTreeSitter = true;
+    # withGTK3 = true; # Default is false to use the Lucid X toolkit isntead
   };
   my-emacs-unstable-with-packages =
     (pkgs.emacsPackagesFor my-emacs-unstable).emacsWithPackages
