@@ -255,18 +255,7 @@
 
   services.xserver.videoDrivers = lib.mkDefault [ "modesetting" ];
 
-  # hardware.opengl = {
-  #   enable = true;
-  #   extraPackages = with pkgs; [ intel-media-driver intel-ocl ];
-  # };
-
-  # From: https://github.com/Atry/nixos-wsl-vscode/blob/main/flake.nix
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-    setLdLibraryPath = true;
-  };
+  hardware.opengl = { enable = true; };
 
   fonts = {
     enableDefaultPackages = true;
