@@ -119,7 +119,8 @@
         lib.mkIf config.wsl.useWindowsDriver [ "/usr/lib/wsl" ];
       max-substitution-jobs = 64;
       # upgrade-nix-store-path-url = "https://install.determinate.systems/nix-upgrade/stable/universal";
-      upgrade-nix-store-path-url = "https://releases.nixos.org/nix/nix-2.22.1/fallback-paths.nix";
+      upgrade-nix-store-path-url =
+        "https://releases.nixos.org/nix/nix-2.23.1/fallback-paths.nix"; # Latest stable 2024-06-30
     };
     # Opinionated: disable channels
     channel.enable = false;
