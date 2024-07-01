@@ -272,21 +272,13 @@
     enableDefaultPackages = true;
     # Fonts handled in home manager
     fontconfig = {
-      antialias = true;
-      hinting = {
-        enable = true;
-        autohint = false; # Default
-        style = "full";
+      hinting.style = "full";
+      defaultFonts = {
+        monospace = [ "JetBrainsMonoNL Nerd Font" ];
+        serif = [ "DejaVu Serif" ];
+        sansSerif = [ "DejaVu Sans" ];
+        emoji = [ "Symbols Nerd Font" ];
       };
-      subpixel = {
-        #lcdfilter = "default";
-        #lcdfilter = "legacy";
-        lcdfilter = "light";
-        #rgba = "none";
-        #rgba = "bgr";
-      };
-      defaultFonts.monospace = [ "JetBrainsMonoNL Nerd Font" ];
-      #useEmbeddedBitmaps = true;
     };
   };
 
