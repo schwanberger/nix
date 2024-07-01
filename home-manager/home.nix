@@ -150,6 +150,7 @@ in {
         eshell-syntax-highlighting
       ];
     provideEmacs = false;
+    experimentalFetchTree = true;
   };
 
   fonts.fontconfig.enable = true;
