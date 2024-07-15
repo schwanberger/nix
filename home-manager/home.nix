@@ -138,6 +138,7 @@ in {
     enable = true;
     doomDir = inputs.doom-config;
     emacs = my-emacs-unstable;
+    extraBinPackages = with pkgs; [ git python3 ];
     extraPackages = epkgs:
       with epkgs; [
         vterm
