@@ -51,6 +51,11 @@
       flake = false;
     };
 
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
 
@@ -59,7 +64,7 @@
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, lix-module, nixos-wsl, ... }@inputs:
     let
       inherit (self) outputs;
       # Supported systems for your flake packages, shell, etc.
@@ -100,8 +105,9 @@
           modules = [
             # > Our main nixos configuration file <
             ./hosts/nc-laptop
-            inputs.nixos-wsl.nixosModules.wsl
-            inputs.home-manager.nixosModule
+            nixos-wsl.nixosModules.wsl
+            home-manager.nixosModule
+            lix-module.nixosModules.default
           ];
         };
       };
