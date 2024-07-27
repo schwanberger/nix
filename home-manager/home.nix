@@ -110,6 +110,7 @@ in {
     inetutils
     gcc
     asciidoctor-with-extensions
+    rage
 
     # Langs
     python3
