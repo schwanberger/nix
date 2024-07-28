@@ -27,6 +27,7 @@ in {
     # ./nvim.nix
 
     inputs.nix-doom-emacs-unstraightened.hmModule
+    inputs.sops-nix.homeManagerModules.sops
   ];
 
   # nixpkgs = {
@@ -101,16 +102,15 @@ in {
     nixfmt
 
     # Uncategorized
-    openssh
     pandoc
     p7zip
     vim
-    git
     p7zip
     inetutils
     gcc
     asciidoctor-with-extensions
     rage
+    sops
 
     # Langs
     python3
@@ -156,6 +156,16 @@ in {
   };
 
   fonts.fontconfig.enable = true;
+
+  sops = {
+    age.keyFile = "/home/thsc/.ssh/personal_age.key";
+    defaultSopsFile = ../secrets/secrets.yaml;
+    secrets.git_config_work = { };
+    secrets.ssh_config_work = {
+      sopsFile = ../secrets/ssh_config_work.enc;
+      format = "binary";
+    };
+  };
 
   programs = {
     direnv = {
@@ -266,6 +276,36 @@ in {
           };
         }
       ];
+    };
+    git = {
+      enable = true;
+      extraConfig = {
+        core = {
+          autocrlf = "false";
+          eol = "lf";
+        };
+        init = { defaultBranch = "main"; };
+        user = {
+          name = "Thomas Schwanberger";
+          email = "thomas@schwanberger.dk";
+        };
+      };
+      includes = [
+        {
+          condition = "gitdir:~/work/";
+          path = config.sops.secrets.git_config_work.path;
+        }
+        {
+          condition = "gitdir:/mnt/c/work/";
+          path = config.sops.secrets.git_config_work.path;
+        }
+      ];
+
+    };
+    ssh = {
+      enable = true;
+      controlPath = "~/.ssh/%C";
+      includes = [ "${config.sops.secrets.ssh_config_work.path}" ];
     };
   };
 

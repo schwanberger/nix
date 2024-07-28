@@ -279,7 +279,6 @@
   users.users = {
     thsc = {
       isNormalUser = true;
-      openssh.authorizedKeys.keys = [ ];
       extraGroups = [ "wheel" ];
       packages = [ inputs.home-manager.packages.${pkgs.system}.default ];
     };

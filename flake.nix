@@ -42,19 +42,17 @@
     nix-doom-emacs-unstraightened = {
       url = "github:marienz/nix-doom-emacs-unstraightened";
       inputs.nixpkgs.follows = "";
-      inputs.doomemacs.url = "github:doomemacs/doomemacs?ref=dec2a387ad35ca1a13295b4d518c69c56a8a32a9";
+      inputs.doomemacs.url = "github:doomemacs/doomemacs?ref=bc5a8ec3fa67c888a7c61b244a7321fce9be25eb";
     };
 
     doom-config = {
-      # url = "github:schwanberger/doom-emacs-config";
-      url = "git+file:///home/thsc/projects/doom-emacs-config";
+      url = "github:schwanberger/doom-emacs-config";
+      # url = "git+file:///home/thsc/projects/doom-emacs-config";
       flake = false;
     };
 
-    lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
@@ -64,7 +62,7 @@
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, home-manager, lix-module, nixos-wsl, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
       inherit (self) outputs;
       # Supported systems for your flake packages, shell, etc.
