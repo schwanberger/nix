@@ -42,13 +42,18 @@
     nix-doom-emacs-unstraightened = {
       url = "github:marienz/nix-doom-emacs-unstraightened";
       inputs.nixpkgs.follows = "";
-      inputs.doomemacs.url = "github:doomemacs/doomemacs?ref=bc5a8ec3fa67c888a7c61b244a7321fce9be25eb";
+      # inputs.doomemacs.url = "github:doomemacs/doomemacs?ref=8be1ef498b81628214ab5e78739661faaf9d950f";
     };
 
     doom-config = {
       url = "github:schwanberger/doom-emacs-config";
       # url = "git+file:///home/thsc/projects/doom-emacs-config";
       flake = false;
+    };
+
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     sops-nix.url = "github:Mic92/sops-nix";
@@ -62,7 +67,7 @@
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nixos-wsl, lix-module, ... }@inputs:
     let
       inherit (self) outputs;
       # Supported systems for your flake packages, shell, etc.
