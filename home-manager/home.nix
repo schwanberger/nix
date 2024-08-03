@@ -318,6 +318,10 @@ in {
         # ./ssh_config_personal
       ];
     };
+    keychain = {
+      enable = true;
+      keys = [ "~/.ssh/personal_id_ed25519" ];
+    };
   };
 
   # Nicely reload system units when changing configs
