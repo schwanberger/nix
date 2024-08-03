@@ -289,6 +289,11 @@ in {
           name = "Thomas Schwanberger";
           email = "thomas@schwanberger.dk";
         };
+        github = {
+          user = "schwanberger";
+          name = "Thomas Schwanberger";
+          email = "thomas@schwanberger.dk";
+        };
       };
       includes = [
         {
@@ -305,7 +310,11 @@ in {
     ssh = {
       enable = true;
       controlPath = "~/.ssh/%C";
-      includes = [ "${config.sops.secrets.ssh_config_work.path}" ];
+      extraConfig = "IdentityFile ~/.ssh/personal_id_ed25519";
+      includes = [
+        "${config.sops.secrets.ssh_config_work.path}"
+        # ./ssh_config_personal
+      ];
     };
   };
 
