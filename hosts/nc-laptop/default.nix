@@ -137,7 +137,7 @@
 
   environment.variables = {
     VISUAL = "emacsclient --create-frame";
-    EDITOR = "emacsclient --create-frame";
+    EDITOR = "emacsclient --tty";
     LIBGL_ALWAYS_INDIRECT = "1";
     DISPLAY = "localhost:0.0";
   };

@@ -246,6 +246,8 @@ in {
 
         [ -n "$EAT_SHELL_INTEGRATION_DIR" ] && \
         source "$EAT_SHELL_INTEGRATION_DIR/zsh"
+
+        [ -z "$INSIDE_EMACS" ] && EDITOR="emacsclient --tty" || EDITOR="emacsclient --create-frame"
       '';
       history.extended = true;
       plugins = [
