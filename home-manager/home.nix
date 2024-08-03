@@ -314,10 +314,9 @@ in {
     ssh = {
       enable = true;
       controlPath = "~/.ssh/%C";
-      extraConfig = "IdentityFile ~/.ssh/personal_id_ed25519";
       includes = [
         "${config.sops.secrets.ssh_config_work.path}"
-        # ./ssh_config_personal
+        "${./ssh_config_personal}"
       ];
     };
     keychain = {
