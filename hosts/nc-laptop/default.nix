@@ -135,6 +135,13 @@
     ulimit -n 524288
   '';
 
+  environment.variables = {
+    VISUAL = "emacsclient --create-frame";
+    EDITOR = "emacsclient --create-frame";
+    LIBGL_ALWAYS_INDIRECT = "1";
+    DISPLAY = "localhost:0.0";
+  };
+
   # nix.optimise.automatic = true;
 
   # nix.gc = {
