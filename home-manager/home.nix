@@ -109,6 +109,8 @@ in {
     inetutils
     gcc
     asciidoctor-with-extensions
+
+    # Secrets
     rage
     sops
 
