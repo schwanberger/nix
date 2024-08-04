@@ -261,8 +261,8 @@ in {
           src = pkgs.fetchFromGitHub {
             owner = "marlonrichert";
             repo = "zsh-autocomplete";
-            rev = "c7b65508fd3a016dc9cdb410af9ee7806b3f9be1";
-            sha256 = "sha256-u2BnkHZOSGVhcJvhGwHBdeAOVdszye7QZ324xinbELE=";
+            rev = "cfc3fd9a75d0577aa9d65e35849f2d8c2719b873";
+            sha256 = "sha256-QcPNXpTFRI59Oi59WP4XlC+xMyN6aHRPF4UpJ6E1vok=";
           };
         }
         {
@@ -271,8 +271,8 @@ in {
           src = pkgs.fetchFromGitHub {
             owner = "chisui";
             repo = "zsh-nix-shell";
-            rev = "8b86281cf9e9ef9f207433dd8b36d157dd48d50a";
-            sha256 = "sha256-Z6EYQdasvpl1P78poj9efnnLj7QQg13Me8x1Ryyw+dM=";
+            rev = "82ca15e638cc208e6d8368e34a1625ed75e08f90";
+            sha256 = "sha256-Rtg8kWVLhXRuD2/Ctbtgz9MQCtKZOLpAIdommZhXKdE=";
           };
         }
         {
@@ -280,8 +280,8 @@ in {
           src = pkgs.fetchFromGitHub {
             owner = "gradle";
             repo = "gradle-completion";
-            rev = "5bce7f2a6997b9303c8f5803740aa0f11b5cb178";
-            sha256 = "sha256-go4N1z/UI3rIEMaWp2SVuDicuBKrGFLSOhDBEUUyYJU=";
+            rev = "25da917cf5a88f3e58f05be3868a7b2748c8afe6";
+            sha256 = "sha256-8CNzTfnYd+W8qX40F/LgXz443JlshHPR2I3+ziKiI2c=";
           };
         }
       ];
