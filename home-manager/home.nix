@@ -321,8 +321,13 @@ in {
       controlPath = "~/.ssh/%C";
       includes = [
         "${config.sops.secrets.ssh_config_work.path}"
-        "${./ssh_config_personal}"
       ];
+      matchBlocks = {
+        "github.com" = {
+          user = "schwanberger";
+          identityFile = "~/.ssh/personal_id_ed25519";
+        };
+      };
     };
     keychain = {
       enable = true;
