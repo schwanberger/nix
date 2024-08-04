@@ -3,17 +3,17 @@
     "doom-config": {
       "flake": false,
       "locked": {
-        "lastModified": 1721105308,
-        "narHash": "sha256-O/YnbR2BSRGGMow9EcOdOiWymPhg/R9+nR4Zcozk4yE=",
-        "owner": "schwanberger",
-        "repo": "doom-emacs-config",
-        "rev": "bbfa271850db977b246c910e65397ea9796d96ca",
-        "type": "github"
+        "lastModified": 1722730228,
+        "narHash": "sha256-YZq+ZtxzQ/qODdmtd487a30SmSBCzClperS0mtYg5SY=",
+        "ref": "refs/heads/main",
+        "rev": "5392c23868ea8855a986ee662cdbd54246a39cb6",
+        "revCount": 20,
+        "type": "git",
+        "url": "file:///home/thsc/personal/doom-emacs-config"
       },
       "original": {
-        "owner": "schwanberger",
-        "repo": "doom-emacs-config",
-        "type": "github"
+        "type": "git",
+        "url": "file:///home/thsc/personal/doom-emacs-config"
       }
     },
     "doomemacs": {

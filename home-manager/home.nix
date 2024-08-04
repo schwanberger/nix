@@ -217,6 +217,12 @@ in {
       package = pkgs.zsh;
       autosuggestion.enable = true;
       enableCompletion = false;
+      history = {
+        ignoreAllDups = true;
+        extended = true;
+        size = 999999999;
+        save = 999999999;
+      };
       syntaxHighlighting = {
         enable = true;
         package = pkgs.zsh-syntax-highlighting;
@@ -249,7 +255,6 @@ in {
 
         [ -z "$INSIDE_EMACS" ] && EDITOR="emacsclient --tty" || EDITOR="emacsclient --create-frame"
       '';
-      history.extended = true;
       plugins = [
         {
           name = "zsh-autocomplete";
