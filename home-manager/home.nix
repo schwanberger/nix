@@ -321,6 +321,7 @@ in {
       controlPath = "~/.ssh/%C";
       includes = [
         "${config.sops.secrets.ssh_config_work.path}"
+        "~/.ssh/adhoc_config" # For ad-hoc stuff and staging for new low effort iterations (not in VC)
       ];
       matchBlocks = {
         "github.com" = {
