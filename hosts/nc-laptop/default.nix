@@ -98,8 +98,9 @@
 
   nix = let flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
   in {
-    package = pkgs.nixVersions.latest;
+    # package = pkgs.nixVersions.latest;
     # package = pkgs.nixFlakes;
+    # package = pkgs.lix;
     settings = {
       # Enable flakes and new 'nix' command
       experimental-features = "nix-command flakes";
@@ -133,6 +134,13 @@
   environment.extraInit = ''
     ulimit -n 524288
   '';
+
+  environment.variables = {
+    VISUAL = "emacsclient --create-frame";
+    EDITOR = "emacsclient --tty";
+    LIBGL_ALWAYS_INDIRECT = "1";
+    DISPLAY = "localhost:0.0";
+  };
 
   # nix.optimise.automatic = true;
 
@@ -247,11 +255,6 @@
 
   environment.shells = with pkgs; [ zsh ];
 
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
-
   services.pcscd.enable = true;
 
   services.xserver.videoDrivers = lib.mkDefault [ "modesetting" ];
@@ -278,7 +281,6 @@
   users.users = {
     thsc = {
       isNormalUser = true;
-      openssh.authorizedKeys.keys = [ ];
       extraGroups = [ "wheel" ];
       packages = [ inputs.home-manager.packages.${pkgs.system}.default ];
     };
