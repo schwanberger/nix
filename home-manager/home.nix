@@ -162,7 +162,7 @@ in {
   fonts.fontconfig.enable = true;
 
   sops = {
-    age.keyFile = "/home/thsc/.ssh/personal_age.key";
+    gnupg.home = "~/.gnupg";
     defaultSopsFile = ../secrets/secrets.yaml;
     secrets.git_config_work = { };
     secrets.ssh_config_work = {
