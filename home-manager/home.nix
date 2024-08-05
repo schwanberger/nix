@@ -163,8 +163,10 @@ in {
 
   sops = {
     gnupg.home = "~/.gnupg";
-    defaultSopsFile = ../secrets/secrets.yaml;
-    secrets.git_config_work = { };
+    secrets.git_config_work = {
+      sopsFile = ../secrets/git_config_work.enc;
+      format = "binary";
+    };
     secrets.ssh_config_work = {
       sopsFile = ../secrets/ssh_config_work.enc;
       format = "binary";
@@ -301,7 +303,7 @@ in {
         user = {
           name = "Thomas Schwanberger";
           email = "thomas@schwanberger.dk";
-          signingkey = "6C981500690C3297";
+          signingkey = "217A106699BDAC7C30A1BCA26C981500690C3297";
         };
         github = {
           user = "schwanberger";
