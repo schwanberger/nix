@@ -255,11 +255,6 @@
 
   environment.shells = with pkgs; [ zsh ];
 
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
-
   services.pcscd.enable = true;
 
   services.xserver.videoDrivers = lib.mkDefault [ "modesetting" ];

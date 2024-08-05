@@ -113,6 +113,7 @@ in {
     # Secrets
     rage
     sops
+    pinentry-tty
 
     # Langs
     python3
@@ -141,7 +142,7 @@ in {
     enable = true;
     doomDir = inputs.doom-config;
     emacs = my-emacs-unstable;
-    extraBinPackages = with pkgs; [ git python3 ];
+    extraBinPackages = with pkgs; [ git python3 pinentry-tty ];
     extraPackages = epkgs:
       with epkgs; [
         vterm
@@ -152,6 +153,7 @@ in {
         fish-completion
         esh-help
         eshell-syntax-highlighting
+        pinentry
       ];
     provideEmacs = false;
     experimentalFetchTree = true;
@@ -286,6 +288,7 @@ in {
         }
       ];
     };
+
     git = {
       enable = true;
       extraConfig = {
@@ -293,10 +296,12 @@ in {
           autocrlf = "false";
           eol = "lf";
         };
+        commit = { gpgsign = "true"; };
         init = { defaultBranch = "main"; };
         user = {
           name = "Thomas Schwanberger";
           email = "thomas@schwanberger.dk";
+          signingkey = "6C981500690C3297";
         };
         github = {
           user = "schwanberger";
@@ -334,6 +339,22 @@ in {
       enable = true;
       keys = [ "~/.ssh/personal_id_ed25519" ];
     };
+
+    gpg = {
+      enable = true;
+      settings = { pinentry-mode = "loopback"; };
+    };
+  };
+
+  services.gpg-agent = {
+    enable = true;
+    defaultCacheTtl = 86400;
+    maxCacheTtl = 86400;
+    # pinentryPackage = pkgs.pinentry-curses;
+    pinentryPackage = pkgs.pinentry-tty;
+    extraConfig = ''
+      allow-loopback-pinentry
+    '';
   };
 
   # Nicely reload system units when changing configs
