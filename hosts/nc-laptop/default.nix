@@ -229,7 +229,7 @@
     enable = true;
     clean.enable = true;
     clean.extraArgs = "--keep-since 4d --keep 3";
-    flake = "/home/thsc/nix";
+    flake = "/home/thsc/personal/nix";
   };
 
   programs.nix-ld = {
