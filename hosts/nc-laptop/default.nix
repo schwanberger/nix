@@ -225,6 +225,8 @@
   # # ++ [ emacs-pgtk-unstable ]
   # ;
 
+  boot.initrd.kernelModules = [ "amdgpu" ];
+
   programs.nh = {
     enable = true;
     clean.enable = true;
@@ -257,9 +259,17 @@
 
   services.pcscd.enable = true;
 
-  services.xserver.videoDrivers = lib.mkDefault [ "modesetting" ];
+  services.xserver.videoDrivers = [ "modesetting" ];
 
-  hardware.opengl = { enable = true; };
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
+  hardware.amdgpu.initrd.enable = true;
+
+  hardware.cpu.amd.updateMicrocode =
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   fonts = {
     enableDefaultPackages = true;
