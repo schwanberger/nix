@@ -339,7 +339,7 @@ in {
     };
     keychain = {
       enable = true;
-      keys = [ "~/.ssh/personal_id_ed25519" ];
+      keys = [ ];
     };
 
     gpg = {
