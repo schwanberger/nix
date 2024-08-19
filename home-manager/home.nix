@@ -300,6 +300,7 @@ in {
         };
         commit = { gpgsign = "true"; };
         init = { defaultBranch = "main"; };
+        submodule = { recurse = "true"; };
         user = {
           name = "Thomas Schwanberger";
           email = "thomas@schwanberger.dk";
