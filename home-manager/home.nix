@@ -117,6 +117,7 @@ in {
 
     # Langs
     python3
+    zulu11
 
     # Fonts
     dejavu_fonts
