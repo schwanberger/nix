@@ -274,15 +274,6 @@
   fonts = {
     enableDefaultPackages = true;
     # Fonts handled in home manager
-    fontconfig = {
-      hinting.style = "full";
-      defaultFonts = {
-        monospace = [ "JetBrainsMonoNL Nerd Font" ];
-        serif = [ "DejaVu Serif" ];
-        sansSerif = [ "DejaVu Sans" ];
-        emoji = [ "Symbols Nerd Font" ];
-      };
-    };
   };
 
   users.extraGroups.docker.members = [ "thsc" ];

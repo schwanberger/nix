@@ -160,7 +160,16 @@ in {
     experimentalFetchTree = true;
   };
 
-  fonts.fontconfig.enable = true;
+  fonts.fontconfig =
+    {
+      enable = true;
+      defaultFonts = {
+        monospace = [ "JetBrainsMonoNL Nerd Font" ];
+        serif = [ "DejaVu Serif" ];
+        sansSerif = [ "DejaVu Sans" ];
+        emoji = [ "Symbols Nerd Font" ];
+      };
+    };
 
   sops = {
     gnupg.home = "~/.gnupg";
