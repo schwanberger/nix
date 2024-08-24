@@ -250,6 +250,7 @@ in {
         enable = true;
         package = pkgs.zsh-syntax-highlighting;
       };
+      shellAliases = { "history" = "history 1"; };
       defaultKeymap = "emacs";
       initExtra = ''
         export TERM=xterm-256color
