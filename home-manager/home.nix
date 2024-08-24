@@ -127,6 +127,7 @@ in {
         "JetBrainsMono"
         "Iosevka"
         "IosevkaTerm"
+        "IosevkaTermSlab"
         "Meslo"
         "FiraMono"
         "SourceCodePro"
@@ -164,16 +165,20 @@ in {
     experimentalFetchTree = true;
   };
 
-  fonts.fontconfig =
-    {
-      enable = true;
-      defaultFonts = {
-        monospace = [ "JetBrainsMonoNL Nerd Font" ];
-        serif = [ "DejaVu Serif" ];
-        sansSerif = [ "DejaVu Sans" ];
-        emoji = [ "Symbols Nerd Font" ];
-      };
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts = {
+      # monospace = [ "JetBrainsMonoNL Nerd Font" ];
+      # monospace = [ "InconsolataGo Nerd Font Mono" ];
+      # monospace = [ "IosevkaTermSlab Nerd Font Mono" ];
+      # monospace = [ "IosevkaTerm Nerd Font" ];
+      # monospace = [ "Inconsolata Nerd Font" ];
+      monospace = [ "IosevkaTerm Nerd Font" ];
+      serif = [ "DejaVu Serif" ];
+      sansSerif = [ "DejaVu Sans" ];
+      emoji = [ "Symbols Nerd Font" ];
     };
+  };
 
   sops = {
     gnupg.home = "~/.gnupg";
