@@ -275,7 +275,7 @@
     enableDefaultPackages = true;
     # Fonts handled in home manager
     fontconfig = {
-      # hinting.style = "full";
+      hinting.style = "full";
       defaultFonts = {
         monospace = [ "JetBrainsMonoNL Nerd Font" ];
         serif = [ "DejaVu Serif" ];
