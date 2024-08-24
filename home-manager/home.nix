@@ -133,6 +133,9 @@ in {
         "VictorMono"
         "RobotoMono"
         "NerdFontsSymbolsOnly"
+        "Inconsolata"
+        "InconsolataGo"
+        "InconsolataLGC"
       ];
     })
   ];
