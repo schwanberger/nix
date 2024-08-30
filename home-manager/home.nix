@@ -140,6 +140,8 @@ in {
       ];
       enableWindowsFonts = true;
     })
+    iosevka-comfy.comfy-fixed
+    iosevka-comfy.comfy-motion-fixed
   ];
 
   programs.home-manager.enable = true;
