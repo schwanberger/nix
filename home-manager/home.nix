@@ -177,7 +177,7 @@ in {
       # monospace = [ "IosevkaTermSlab Nerd Font Mono" ];
       # monospace = [ "IosevkaTerm Nerd Font" ];
       # monospace = [ "Inconsolata Nerd Font" ];
-      monospace = [ "IosevkaTerm Nerd Font" ];
+      monospace = [ "Iosevka Comfy Motion Fixed" ];
       serif = [ "DejaVu Serif" ];
       sansSerif = [ "DejaVu Sans" ];
       emoji = [ "Symbols Nerd Font" ];
