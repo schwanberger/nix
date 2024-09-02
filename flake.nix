@@ -42,7 +42,7 @@
     nix-doom-emacs-unstraightened = {
       url = "github:marienz/nix-doom-emacs-unstraightened";
       inputs.nixpkgs.follows = "";
-      inputs.doomemacs.url = "github:doomemacs/doomemacs?ref=c9acdb72a4bd95d7ac38d62e92aa79f395c1dccd";
+      inputs.doomemacs.url = "github:doomemacs/doomemacs?ref=70fd17ebfdde0a429e280429652fb23acafba8bb";
     };
 
     doom-config = {
