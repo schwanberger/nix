@@ -239,7 +239,7 @@
     libraries = [
       # Required by NodeJS installed by VS Code's Remote WSL extension
       pkgs.stdenv.cc.cc
-    ];
+    ] ++ config.hardware.opengl.extraPackages;
     package = inputs.nix-ld-rs.packages.${pkgs.system}.nix-ld-rs;
   };
   programs.zsh.enable = true;
@@ -274,6 +274,10 @@
   fonts = {
     enableDefaultPackages = true;
     # Fonts handled in home manager
+    fontconfig = {
+      # hinting.style = "full";
+      subpixel.lcdfilter = "none";
+    };
   };
 
   users.extraGroups.docker.members = [ "thsc" ];
