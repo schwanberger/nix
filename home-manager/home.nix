@@ -164,6 +164,8 @@ in {
         esh-help
         eshell-syntax-highlighting
         pinentry
+        denote
+        consult-notes
       ];
     provideEmacs = false;
     experimentalFetchTree = true;
