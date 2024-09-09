@@ -166,6 +166,7 @@ in {
         pinentry
         denote
         consult-notes
+        hyperbole
       ];
     provideEmacs = false;
     experimentalFetchTree = true;
