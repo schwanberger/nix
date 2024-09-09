@@ -3,11 +3,11 @@
     "doom-config": {
       "flake": false,
       "locked": {
-        "lastModified": 1725743506,
-        "narHash": "sha256-60xx6dTS9ar8dAKPA2qgNKG2DcxanbZmZobIXTPgKGE=",
+        "lastModified": 1725745481,
+        "narHash": "sha256-MbXfz0Wb24U0vS3K1Y6NzhxI8ZCDoNyLpOaCaZZQgMg=",
         "ref": "refs/heads/main",
-        "rev": "305c51aebbc57e1ef6d1556ff2c94210869d71fb",
-        "revCount": 33,
+        "rev": "6caf05af385bce1a6a4e3db7ae86c96fa29e9f04",
+        "revCount": 34,
         "type": "git",
         "url": "file:///home/thsc/personal/doom-emacs-config"
       },
@@ -19,11 +19,11 @@
     "doomemacs": {
       "flake": false,
       "locked": {
-        "lastModified": 1725736303,
-        "narHash": "sha256-X/unagq7lJ7wSoaO5ULkOAX0lNkmv/sJmNS3sW24APM=",
+        "lastModified": 1725763313,
+        "narHash": "sha256-//6/DnZW5riFtMI8Pgyg9uPEO7AxESFT6BuS2sZCOo8=",
         "owner": "doomemacs",
         "repo": "doomemacs",
-        "rev": "ac1122ae67d762e09fc6684945b52adff96cf1dc",
+        "rev": "0461c5de5fa34d6b374f27eff1965f171049f987",
         "type": "github"
       },
       "original": {
