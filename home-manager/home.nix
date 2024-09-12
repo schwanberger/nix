@@ -76,6 +76,7 @@ in {
     xclip
     gnumake
     yaml-language-server
+    unzip
     #nodePackages_latest.bash-language-server
     shellcheck
     nix-tree
