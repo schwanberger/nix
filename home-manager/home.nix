@@ -139,7 +139,7 @@ in {
         "RobotoMono"
         "NerdFontsSymbolsOnly"
         "Inconsolata"
-        "InconsolataGo"
+        # "InconsolataGo"
         "InconsolataLGC"
       ];
       enableWindowsFonts = true;
