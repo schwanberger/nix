@@ -169,6 +169,9 @@ in {
         denote
         consult-notes
         hyperbole
+        # v: A fix for treemacs, but I don't really use it.
+        # treemacs
+        # lsp-treemacs
       ];
     provideEmacs = false;
     experimentalFetchTree = true;
