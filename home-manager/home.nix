@@ -5,14 +5,15 @@ let
   # emacs-unstable-pgtk-with-packages = with pkgs.emacs-overlay;
   #   ((emacsPackagesFor emacs-unstable-pgtk).emacsWithPackages (epkgs:
   #     with epkgs; [
-  my-emacs-unstable = pkgs.emacs-overlay.emacs-unstable.override {
-    withNativeCompilation = true;
-    withSQLite3 = true;
-    withTreeSitter = true;
-    withToolkitScrollBars = false;
-    toolkit = "no";
-    # withGTK3 = true; # Default is false to use the Lucid X toolkit isntead
-  };
+  # my-emacs-unstable = pkgs.emacs-overlay.emacs-unstable.override {
+  #   withNativeCompilation = true;
+  #   withSQLite3 = true;
+  #   withTreeSitter = true;
+  #   withToolkitScrollBars = false;
+  #   toolkit = "no";
+  #   # withGTK3 = true; # Default is false to use the Lucid X toolkit isntead
+  # };
+  my-emacs-unstable = pkgs.emacs-overlay.emacs-unstable;
   my-emacs-unstable-with-packages =
     (pkgs.emacsPackagesFor my-emacs-unstable).emacsWithPackages
     (epkgs: with epkgs; [ vterm treesit-grammars.with-all-grammars ]);
