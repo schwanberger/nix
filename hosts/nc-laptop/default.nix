@@ -276,7 +276,7 @@
     # Fonts handled in home manager
     fontconfig = {
       # hinting.style = "full";
-      subpixel.lcdfilter = "none";
+      # subpixel.lcdfilter = "none";
     };
   };
 
