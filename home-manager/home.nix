@@ -169,6 +169,7 @@ in {
         denote
         consult-notes
         hyperbole
+        standard-themes
         # v: A fix for treemacs, but I don't really use it.
         # treemacs
         # lsp-treemacs
