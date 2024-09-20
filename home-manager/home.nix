@@ -82,6 +82,7 @@ in {
     shellcheck
     nix-tree
     file
+    socat
 
     # Latex
     #texlab # lsp
