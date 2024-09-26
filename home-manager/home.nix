@@ -155,7 +155,7 @@ in {
     enable = true;
     doomDir = inputs.doom-config;
     emacs = my-emacs-unstable;
-    extraBinPackages = with pkgs; [ git python3 pinentry-tty ];
+    extraBinPackages = with pkgs; [ git python3 pinentry-tty pyright ruff ruff-lsp ];
     extraPackages = epkgs:
       with epkgs; [
         vterm
