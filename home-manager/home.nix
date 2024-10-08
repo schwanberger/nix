@@ -114,6 +114,7 @@ in {
     inetutils
     gcc
     asciidoctor-with-extensions
+    (keepass.override { plugins = [ pkgs.keepass-keepasshttp ]; })
 
     # Secrets
     rage
