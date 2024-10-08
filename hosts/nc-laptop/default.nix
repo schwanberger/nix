@@ -50,13 +50,14 @@
     defaultUser = "thsc";
     nativeSystemd = true;
     useWindowsDriver = true;
-    # docker-desktop.enable = true;
+    docker-desktop.enable = true;
     extraBin = with pkgs; [
       # Binaries for Docker Desktop wsl-distro-proxy
       { src = "${coreutils}/bin/mkdir"; }
       { src = "${coreutils}/bin/cat"; }
       { src = "${coreutils}/bin/whoami"; }
       { src = "${coreutils}/bin/ls"; }
+      { src = "${coreutils}/bin/id"; }
       { src = "${busybox}/bin/addgroup"; }
       { src = "${su}/bin/groupadd"; }
       {
