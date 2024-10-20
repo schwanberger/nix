@@ -34,10 +34,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # nix-ld-rs = {
-    #   url = "github:nix-community/nix-ld-rs";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    nix-ld = {
+      url = "github:Mic92/nix-ld";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nix-doom-emacs-unstraightened = {
       url = "github:marienz/nix-doom-emacs-unstraightened";
@@ -68,7 +68,7 @@
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, home-manager, nixos-wsl, lix-module, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nixos-wsl, lix-module, nix-ld, ... }@inputs:
     let
       inherit (self) outputs;
       # Supported systems for your flake packages, shell, etc.
@@ -111,6 +111,7 @@
             ./hosts/nc-laptop
             nixos-wsl.nixosModules.wsl
             home-manager.nixosModule
+            nix-ld.nixosModules.nix-ld
             # lix-module.nixosModules.default
           ];
         };

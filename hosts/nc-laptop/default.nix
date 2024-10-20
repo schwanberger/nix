@@ -235,14 +235,13 @@
     flake = "/home/thsc/personal/nix";
   };
 
-  # programs.nix-ld = {
-  #   enable = true;
-  #   libraries = [
-  #     # Required by NodeJS installed by VS Code's Remote WSL extension
-  #     pkgs.stdenv.cc.cc
-  #   ] ++ config.hardware.opengl.extraPackages;
-  #   package = inputs.nix-ld-rs.packages.${pkgs.system}.nix-ld-rs;
-  # };
+  programs.nix-ld.dev = {
+    enable = true;
+    libraries = [
+      # Required by NodeJS installed by VS Code's Remote WSL extension
+      pkgs.stdenv.cc.cc
+    ] ++ config.hardware.graphics.extraPackages;
+  };
   programs.zsh.enable = true;
 
   virtualisation.containers.enable = true;
