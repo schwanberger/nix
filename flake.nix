@@ -34,15 +34,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-ld-rs = {
-      url = "github:nix-community/nix-ld-rs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # nix-ld-rs = {
+    #   url = "github:nix-community/nix-ld-rs";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     nix-doom-emacs-unstraightened = {
       url = "github:marienz/nix-doom-emacs-unstraightened";
       inputs.nixpkgs.follows = "nixpkgs";
-      # inputs.doomemacs.url = "github:doomemacs/doomemacs?ref=c8a5e6ec1ca85a35f94d6c820c2fd8888373c2ae";
+      #inputs.doomemacs.url = "github:doomemacs/doomemacs?ref=fafdb25dd8a6ecd21ba82ffc0e92be3816d063ba";
     };
 
     doom-config = {

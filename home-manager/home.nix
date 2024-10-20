@@ -175,6 +175,7 @@ in {
         # v: A fix for treemacs, but I don't really use it.
         # treemacs
         # lsp-treemacs
+        evil
       ];
     provideEmacs = false;
     experimentalFetchTree = true;
