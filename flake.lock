@@ -255,20 +255,18 @@
         "flake-utils": "flake-utils_2",
         "flakey-profile": "flakey-profile",
         "lix": "lix",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": "nixpkgs"
       },
       "locked": {
         "lastModified": 1723510904,
         "narHash": "sha256-zNW/rqNJwhq2lYmQf19wJerRuNimjhxHKmzrWWFJYts=",
+        "path": "/nix/store/8bc7k417lnml22z09klvdcn3dg1ljkvb-source",
         "rev": "622a2253a071a1fb97a4d3c8103a91114acc1140",
-        "type": "tarball",
-        "url": "https://git.lix.systems/api/v1/repos/lix-project/nixos-module/archive/622a2253a071a1fb97a4d3c8103a91114acc1140.tar.gz?rev=622a2253a071a1fb97a4d3c8103a91114acc1140"
+        "type": "path"
       },
       "original": {
-        "type": "tarball",
-        "url": "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz"
+        "id": "lix-module",
+        "type": "indirect"
       }
     },
     "nix-doom-emacs-unstraightened": {
@@ -341,11 +339,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1726755586,
-        "narHash": "sha256-PmUr/2GQGvFTIJ6/Tvsins7Q43KTMvMFhvG6oaYK+Wk=",
+        "lastModified": 1729256560,
+        "narHash": "sha256-/uilDXvCIEs3C9l73JTACm4quuHUsIHcns1c+cHUJwA=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "c04d5652cfa9742b1d519688f65d1bbccea9eb7e",
+        "rev": "4c2fcb090b1f3e5b47eaa7bd33913b574a11e0a0",
         "type": "github"
       },
       "original": {
@@ -403,6 +401,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1726755586,
+        "narHash": "sha256-PmUr/2GQGvFTIJ6/Tvsins7Q43KTMvMFhvG6oaYK+Wk=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "c04d5652cfa9742b1d519688f65d1bbccea9eb7e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "doom-config": "doom-config",
@@ -412,7 +426,7 @@
         "nix-doom-emacs-unstraightened": "nix-doom-emacs-unstraightened",
         "nix-ld-rs": "nix-ld-rs",
         "nixos-wsl": "nixos-wsl",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": "nixpkgs_2",
         "nixpkgs-stable": "nixpkgs-stable_2",
         "sops-nix": "sops-nix"
       }

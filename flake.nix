@@ -52,10 +52,10 @@
       flake = false;
     };
 
-    lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # lix-module = {
+    #   url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
@@ -111,7 +111,7 @@
             ./hosts/nc-laptop
             nixos-wsl.nixosModules.wsl
             home-manager.nixosModule
-            lix-module.nixosModules.default
+            # lix-module.nixosModules.default
           ];
         };
       };
