@@ -120,6 +120,7 @@ in {
     rage
     sops
     pinentry-tty
+    nushellPlugins.net
 
     # Langs
     python3
@@ -209,10 +210,23 @@ in {
   };
 
   programs = {
+    atuin = {
+      enable = true;
+      enableNushellIntegration = true;
+      enableBashIntegration = false;
+      enableZshIntegration = false;
+    };
+    carapace = {
+      enable = true;
+      enableNushellIntegration = true;
+      enableBashIntegration = false;
+      enableZshIntegration = false;
+    };
     direnv = {
       enable = true;
       enableZshIntegration = true;
       enableBashIntegration = true;
+      enableNushellIntegration = true;
       package = pkgs.direnv;
       nix-direnv.enable = true;
       nix-direnv.package = pkgs.nix-direnv;
@@ -223,11 +237,16 @@ in {
       enableZshIntegration = true;
       enableBashIntegration = true;
     };
+    nushell = {
+      enable = true;
+      package = pkgs.nushell;
+    };
     starship = {
       package = pkgs.starship;
       enable = true;
       enableZshIntegration = true;
       enableBashIntegration = false;
+      enableNushellIntegration = true;
       settings = {
         # add_newline = false;
         # line_break = { disabled = true; };
@@ -376,6 +395,7 @@ in {
     };
     keychain = {
       enable = true;
+      enableNushellIntegration = true;
       keys = [ ];
     };
 
