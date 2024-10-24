@@ -120,7 +120,6 @@ in {
     rage
     sops
     pinentry-tty
-    nushellPlugins.net
 
     # Langs
     python3
