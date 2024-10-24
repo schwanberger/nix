@@ -57,7 +57,7 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
 
-    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.url = "github:Mic92/sops-nix?ref=a4c33bfecb93458d90f9eb26f1cf695b47285243";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     # TODO: Add any other flake you might need
