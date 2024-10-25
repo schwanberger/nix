@@ -162,13 +162,9 @@ in {
         vterm
         treesit-grammars.with-all-grammars
         eat
-        eshell-prompt-extras
-        esh-autosuggest
-        fish-completion
-        esh-help
-        eshell-syntax-highlighting
         pinentry
         denote
+        esh-autosuggest
         consult-notes
         hyperbole
         standard-themes
