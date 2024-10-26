@@ -261,6 +261,8 @@
 
   services.xserver.videoDrivers = [ "modesetting" ];
 
+  security.sudo.wheelNeedsPassword = false;
+
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -282,10 +284,10 @@
 
   users.extraGroups.docker.members = [ "thsc" ];
 
-  users.defaultUserShell = pkgs.zsh;
   users.users = {
     thsc = {
       isNormalUser = true;
+      shell = pkgs.zsh;
       extraGroups = [ "wheel" ];
       packages = [ inputs.home-manager.packages.${pkgs.system}.default ];
     };
