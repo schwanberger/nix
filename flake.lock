@@ -3,11 +3,11 @@
     "doom-config": {
       "flake": false,
       "locked": {
-        "lastModified": 1729896398,
-        "narHash": "sha256-8yxIgb/zYUOBXm5xW5Y2goP6FTwwgDjJ3gOsyyd+Ww4=",
+        "lastModified": 1730151395,
+        "narHash": "sha256-mMtFmZgDjnxgYQaua+0uuxZ40SzzJ5sUUDUMj5S2IJE=",
         "ref": "refs/heads/main",
-        "rev": "3083ce25d974028481009c5155ba23db1efef73f",
-        "revCount": 58,
+        "rev": "728c1c44c4c8ff2a27a325ed2d7b259f2eed8875",
+        "revCount": 59,
         "type": "git",
         "url": "file:///home/thsc/personal/doom-emacs-config"
       },
