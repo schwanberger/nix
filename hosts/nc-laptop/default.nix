@@ -176,7 +176,10 @@
   time.timeZone = "Europe/Copenhagen";
   # i18n.defaultLocale = "en_DK.UTF-8";
 
-  environment.systemPackages = with pkgs; [ wget curl cachix python3 ];
+  environment.systemPackages = with pkgs; [
+    wget curl cachix python3
+    jfrog-cli
+  ];
 
   # environment.systemPackages = with pkgs; [
   #   bat
