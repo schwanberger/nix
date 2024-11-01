@@ -158,6 +158,9 @@ in {
       enableBashIntegration = false;
       enableZshIntegration = false;
     };
+    fish = {
+      enable = true;
+    }
     carapace = {
       enable = true;
       enableNushellIntegration = true;
@@ -178,6 +181,7 @@ in {
       package = pkgs.fzf;
       enableZshIntegration = true;
       enableBashIntegration = true;
+      enableFishIntegration = false;
     };
     nushell = {
       enable = true;
