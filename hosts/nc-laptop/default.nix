@@ -93,9 +93,9 @@
     enable = true;
   };
 
-  environment.pathsToLink = [ "/share/zsh" ];
   programs.zsh.enable = true;
-  environment.shells = with pkgs; [ zsh ];
+
+  users.defaultUserShell = pkgs.bash;
 
   virtualisation.containers.enable = true;
   virtualisation.podman = {

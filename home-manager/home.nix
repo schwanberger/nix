@@ -43,6 +43,7 @@ in {
     sqlite
     editorconfig-core-c
     zstd
+    ansible
 
     # Nix stuff
     #nil # nil seems like the better choice 2023-11-28
@@ -159,13 +160,14 @@ in {
       enableZshIntegration = false;
     };
     fish = {
-      enable = true;
-    }
+      enable = false;
+    };
     carapace = {
       enable = true;
       enableNushellIntegration = true;
-      enableBashIntegration = false;
+      enableBashIntegration = true;
       enableZshIntegration = false;
+      enableFishIntegration = true;
     };
     direnv = {
       enable = true;
