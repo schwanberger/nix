@@ -29,6 +29,8 @@ in {
     file
     socat
 
+    devenv
+
     # Latex
     #texlab # lsp
     #texlive.combined.scheme-full
