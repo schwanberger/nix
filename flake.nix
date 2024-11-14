@@ -36,7 +36,7 @@
 
     doom-config = {
       # url = "github:schwanberger/doom-emacs-config";
-      url = "git+file:///home/thsc/personal/doom-emacs-config";
+      url = "git+file:///home/thsc/personal/doom-emacs-config?ref=b8ee9758e302573a6d6f27b8cef1b7206a6f5e2a";
       flake = false;
     };
 
