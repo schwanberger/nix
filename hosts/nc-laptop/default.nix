@@ -15,6 +15,10 @@
     };
   };
 
+  systemd.tmpfiles.settings = {
+    "10-wslg-x11" = lib.mkForce {};
+  };
+
   wsl = {
     enable = true;
     defaultUser = "thsc";
