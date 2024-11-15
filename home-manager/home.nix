@@ -1,76 +1,21 @@
-# This is your home-manager configuration file
-# Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 { inputs, outputs, lib, config, pkgs, ... }:
 let
-  # emacs-unstable-pgtk-with-packages = with pkgs.emacs-overlay;
-  #   ((emacsPackagesFor emacs-unstable-pgtk).emacsWithPackages (epkgs:
-  #     with epkgs; [
-  # my-emacs-unstable = pkgs.emacs-overlay.emacs-unstable.override {
-  #   withNativeCompilation = true;
-  #   withSQLite3 = true;
-  #   withTreeSitter = true;
-  #   withToolkitScrollBars = false;
-  #   toolkit = "no";
-  #   # withGTK3 = true; # Default is false to use the Lucid X toolkit isntead
-  # };
   my-emacs-unstable = pkgs.emacs-overlay.emacs-unstable;
-  my-emacs-unstable-with-packages =
-    (pkgs.emacsPackagesFor my-emacs-unstable).emacsWithPackages
-    (epkgs: with epkgs; [ vterm treesit-grammars.with-all-grammars ]);
 in {
-  # You can import other home-manager modules here
   imports = [
-    # If you want to use modules your own flake exports (from modules/home-manager):
-    # outputs.homeManagerModules.example
-
-    # Or modules exported from other flakes (such as nix-colors):
-    # inputs.nix-colors.homeManagerModules.default
-
-    # You can also split up your configuration and import pieces of it here:
-    # ./nvim.nix
-
     inputs.nix-doom-emacs-unstraightened.hmModule
     inputs.sops-nix.homeManagerModules.sops
   ];
 
-  # nixpkgs = {
-  #   # You can add overlays here
-  #   overlays = [
-  #     # Add overlays your own flake exports (from overlays and pkgs dir):
-  #     outputs.overlays.additions
-  #     outputs.overlays.modifications
-  #     outputs.overlays.stable-packages
-
-  #     # You can also add overlays exported from other flakes:
-  #     # neovim-nightly-overlay.overlays.default
-
-  #     # Or define it inline, for example:
-  #     # (final: prev: {
-  #     #   hi = final.hello.overrideAttrs (oldAttrs: {
-  #     #     patches = [ ./change-hello-to-hi.patch ];
-  #     #   });
-  #     # })
-  #   ];
-  #   # Configure your nixpkgs instance
-  #   config = {
-  #     # Disable if you don't want unfree packages
-  #     allowUnfree = true;
-  #     # Workaround for https://github.com/nix-community/home-manager/issues/2942
-  #     allowUnfreePredicate = _: true;
-  #   };
-  # };
-
-  # TODO: Set your username
   home = {
     username = "thsc";
     homeDirectory = "/home/thsc";
   };
 
-  # Add stuff for your user as you see fit:
-  # programs.neovim.enable = true;
-  # home.packages = with pkgs; [ steam ];
   home.packages = with pkgs; [
+    my-emacs-unstable
     bat
+    jfrog-cli
     yq
     jq
     wget
@@ -84,6 +29,8 @@ in {
     file
     socat
 
+    devenv
+
     # Latex
     #texlab # lsp
     #texlive.combined.scheme-full
@@ -91,7 +38,6 @@ in {
     #texlive.combined.scheme-medium
 
     # Doom Emacs stuff
-    my-emacs-unstable-with-packages
     (ripgrep.override { withPCRE2 = true; })
     fd
     (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
@@ -99,6 +45,7 @@ in {
     sqlite
     editorconfig-core-c
     zstd
+    ansible
 
     # Nix stuff
     #nil # nil seems like the better choice 2023-11-28
@@ -162,13 +109,9 @@ in {
         vterm
         treesit-grammars.with-all-grammars
         eat
-        eshell-prompt-extras
-        esh-autosuggest
-        fish-completion
-        esh-help
-        eshell-syntax-highlighting
         pinentry
         denote
+        esh-autosuggest
         consult-notes
         hyperbole
         standard-themes
@@ -206,6 +149,9 @@ in {
       sopsFile = ../secrets/ssh_config_work.enc;
       format = "binary";
     };
+    secrets.access_tokens = {
+      sopsFile = ../secrets/secrets.yaml;
+    };
   };
 
   programs = {
@@ -215,11 +161,15 @@ in {
       enableBashIntegration = false;
       enableZshIntegration = false;
     };
+    fish = {
+      enable = false;
+    };
     carapace = {
       enable = true;
       enableNushellIntegration = true;
-      enableBashIntegration = false;
+      enableBashIntegration = true;
       enableZshIntegration = false;
+      enableFishIntegration = true;
     };
     direnv = {
       enable = true;
@@ -235,6 +185,7 @@ in {
       package = pkgs.fzf;
       enableZshIntegration = true;
       enableBashIntegration = true;
+      enableFishIntegration = false;
     };
     nushell = {
       enable = true;
@@ -247,18 +198,9 @@ in {
       enableBashIntegration = false;
       enableNushellIntegration = true;
       settings = {
-        # add_newline = false;
-        # line_break = { disabled = true; };
-        # character = {
-        #   success_symbol = "[>](bold green)";
-        #   error_symbol = "[x](bold red)";
-        #   vimcmd_symbol = "[<](bold green)";
-        # };
         nix_shell = { symbol = "󱄅 "; };
-        #   format = ''
-        #     $username
-        #     $hostname
-        #     $character'';
+        hostname.ssh_only = false;
+        hostname.style = "bold green";
       };
     };
     bash = {
@@ -420,4 +362,8 @@ in {
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "24.05";
+
+  nix.extraOptions = ''
+    !include ${config.sops.secrets.access_tokens.path}
+'';
 }
