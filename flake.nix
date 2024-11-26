@@ -14,7 +14,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
 
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -36,7 +36,7 @@
 
     doom-config = {
       # url = "github:schwanberger/doom-emacs-config";
-      url = "git+file:///home/thsc/personal/doom-emacs-config?ref=f2764b5ed7b4ab3c1b02ede17bb6ea9ea1edb0d2";
+      url = "git+file:///home/thsc/personal/doom-emacs-config?ref=093b904f3138b51e71859e583f88bb30611c8ceb";
       flake = false;
     };
 
