@@ -22,6 +22,7 @@ in {
     xclip
     gnumake
     yaml-language-server
+    nodePackages.prettier
     unzip
     #nodePackages_latest.bash-language-server
     shellcheck
