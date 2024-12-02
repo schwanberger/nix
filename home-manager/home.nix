@@ -75,25 +75,28 @@ in {
 
     # Fonts
     dejavu_fonts
-    (nerdfonts.override {
-      fonts = [
-        "FiraCode"
-        "JetBrainsMono"
-        "Iosevka"
-        "IosevkaTerm"
-        "IosevkaTermSlab"
-        "Meslo"
-        "FiraMono"
-        "SourceCodePro"
-        "VictorMono"
-        "RobotoMono"
-        "NerdFontsSymbolsOnly"
-        "Inconsolata"
-        # "InconsolataGo"
-        "InconsolataLGC"
-      ];
-      enableWindowsFonts = true;
-    })
+    nerd-fonts.symbols-only
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.iosevka
+    # (nerdfonts.override {
+    #   fonts = [
+    #     "FiraCode"
+    #     "JetBrainsMono"
+    #     "Iosevka"
+    #     "IosevkaTerm"
+    #     "IosevkaTermSlab"
+    #     "Meslo"
+    #     "FiraMono"
+    #     "SourceCodePro"
+    #     "VictorMono"
+    #     "RobotoMono"
+    #     "NerdFontsSymbolsOnly"
+    #     "Inconsolata"
+    #     # "InconsolataGo"
+    #     "InconsolataLGC"
+    #   ];
+    #   enableWindowsFonts = true;
+    # })
     iosevka-comfy.comfy-fixed
     iosevka-comfy.comfy-motion-fixed
   ];
