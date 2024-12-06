@@ -327,9 +327,10 @@ in {
     };
     ssh = {
       enable = true;
-      controlPath = "~/.ssh/%C";
+      controlPath = "~/.ssh/ssh-socket-%C";
       includes = [
-        "${config.sops.secrets.ssh_config_work.path}"
+        # Too tiresome to handle fluctuating ssh config like this
+        # "${config.sops.secrets.ssh_config_work.path}"
         "~/.ssh/adhoc_config" # For ad-hoc stuff and staging for new low effort iterations (not in VC)
       ];
       matchBlocks = {
