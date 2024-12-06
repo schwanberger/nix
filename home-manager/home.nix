@@ -78,6 +78,7 @@ in {
     nerd-fonts.symbols-only
     nerd-fonts.jetbrains-mono
     nerd-fonts.iosevka
+    nerd-fonts.ubuntu-sans
     # (nerdfonts.override {
     #   fonts = [
     #     "FiraCode"
