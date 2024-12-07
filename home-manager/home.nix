@@ -1,6 +1,9 @@
 { inputs, outputs, lib, config, pkgs, ... }:
 let
-  my-emacs-unstable = pkgs.emacs-overlay.emacs-unstable;
+  emacs-unstable-for-doom-emacs = pkgs.emacs-overlay.emacs-unstable;
+  another-emacs-unstable-with-packages =
+    (pkgs.emacsPackagesFor (pkgs.emacs-overlay.emacs-unstable)).emacsWithPackages
+    (epkgs: with epkgs; [ vterm treesit-grammars.with-all-grammars ]);
 in {
   imports = [
     inputs.nix-doom-emacs-unstraightened.hmModule
@@ -13,7 +16,7 @@ in {
   };
 
   home.packages = with pkgs; [
-    my-emacs-unstable
+    another-emacs-unstable-with-packages
     bat
     jfrog-cli
     yq
@@ -107,7 +110,7 @@ in {
   programs.doom-emacs = {
     enable = true;
     doomDir = inputs.doom-config;
-    emacs = my-emacs-unstable;
+    emacs = emacs-unstable-for-doom-emacs;
     extraBinPackages = with pkgs; [ git python3 pinentry-tty pyright ruff ruff-lsp ];
     extraPackages = epkgs:
       with epkgs; [
