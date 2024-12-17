@@ -3,16 +3,15 @@
     "doom-config": {
       "flake": false,
       "locked": {
-        "lastModified": 1732612625,
-        "narHash": "sha256-ec4TMgfl/WpiNIqaZIJg2NBNv3ACMKy+iT99UeYjEP8=",
-        "ref": "093b904f3138b51e71859e583f88bb30611c8ceb",
-        "rev": "093b904f3138b51e71859e583f88bb30611c8ceb",
-        "revCount": 65,
+        "lastModified": 1733733683,
+        "narHash": "sha256-2ryEgXMlZF3pPgB+j7r/TzBnBXuTiEELbtBIRHXTGgs=",
+        "ref": "refs/heads/main",
+        "rev": "913b085c567b865af8be598483c8272379edb89e",
+        "revCount": 67,
         "type": "git",
         "url": "file:///home/thsc/personal/doom-emacs-config"
       },
       "original": {
-        "ref": "093b904f3138b51e71859e583f88bb30611c8ceb",
         "type": "git",
         "url": "file:///home/thsc/personal/doom-emacs-config"
       }
@@ -162,11 +161,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1733143273,
-        "narHash": "sha256-pVogdQb09YrbVyFrzadfF1fseT6W2We4lNKRvWPPHsY=",
+        "lastModified": 1733733360,
+        "narHash": "sha256-q6pp7uqkAxbsENjJr2U7vPVEoLX0m7ouCTBg/0J5v3g=",
         "owner": "Mic92",
         "repo": "nix-ld",
-        "rev": "1e17dfe486a0c4dc245f5177a7328930b8392b34",
+        "rev": "0c74021f8e3779a68684e893a5fb9a72078d5e18",
         "type": "github"
       },
       "original": {
