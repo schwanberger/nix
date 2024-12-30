@@ -6,6 +6,7 @@ let
       (epkgs: with epkgs; [
         vterm
         treesit-grammars.with-all-grammars
+        standard-themes
       ]);
 in {
   imports = [
