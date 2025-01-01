@@ -5,8 +5,38 @@ let
     (pkgs.emacsPackagesFor (pkgs.emacs-overlay.emacs-unstable)).emacsWithPackages # Lucid is the X toolkit defaul value in emacs-overlay
       (epkgs: with epkgs; [
         vterm
+        eat
+        org-super-agenda
+        org-edna
+        org-gtd
+        tabspaces
+        meow
+        avy
+        consult
+        embark
+        embark-consult
+        vertico
+        marginalia
+        nerd-icons
+        nerd-icons-completion
+        corfu
+        nerd-icons-corfu
+        nerd-icons-dired
+        corfu-terminal
+        cape
+        kind-icon
+        orderless
+        wgrep
+        nix-mode
+        all-the-icons-dired
+        transient
+        magit
+        modus-themes
+        ef-themes
+        dired-subtree
+        gcmh
+        envrc
         treesit-grammars.with-all-grammars
-        standard-themes
       ]);
 in {
   imports = [
