@@ -16,6 +16,7 @@ let
         embark
         embark-consult
         vertico
+        standard-themes
         marginalia
         nerd-icons
         nerd-icons-completion
@@ -36,6 +37,7 @@ let
         dired-subtree
         gcmh
         envrc
+        markdown-mode
         treesit-grammars.with-all-grammars
       ]);
 in {
