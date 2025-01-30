@@ -39,6 +39,8 @@ let
         envrc
         markdown-mode
         treesit-grammars.with-all-grammars
+        winum
+        ace-window
       ]);
 in {
   imports = [
