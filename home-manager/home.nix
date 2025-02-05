@@ -41,6 +41,7 @@ let
         treesit-grammars.with-all-grammars
         winum
         ace-window
+        git-timemachine
       ]);
 in {
   imports = [
