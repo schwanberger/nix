@@ -42,6 +42,7 @@ let
         winum
         ace-window
         git-timemachine
+        olivetti
       ]);
 in {
   imports = [
