@@ -43,6 +43,7 @@ let
         ace-window
         git-timemachine
         olivetti
+        meow-tree-sitter
       ]);
 in {
   imports = [
