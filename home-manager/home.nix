@@ -44,6 +44,7 @@ let
         git-timemachine
         olivetti
         meow-tree-sitter
+        spacious-padding
       ]);
 in {
   imports = [
