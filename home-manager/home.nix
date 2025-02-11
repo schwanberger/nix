@@ -45,6 +45,7 @@ let
         olivetti
         meow-tree-sitter
         spacious-padding
+        diff-hl
       ]);
 in {
   imports = [
