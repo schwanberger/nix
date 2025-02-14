@@ -22,7 +22,6 @@
   wsl = {
     enable = true;
     defaultUser = "thsc";
-    nativeSystemd = true;
     useWindowsDriver = true;
     docker-desktop.enable = true;
     wslConf = {
