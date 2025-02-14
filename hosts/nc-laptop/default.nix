@@ -23,7 +23,7 @@
     enable = true;
     defaultUser = "thsc";
     useWindowsDriver = true;
-    docker-desktop.enable = true;
+    # docker-desktop.enable = true; # Use windows docker-desktop (or rancher)
     wslConf = {
       network.hostname = "PF3LZDKP";
       interop.enabled = true;
@@ -82,7 +82,11 @@
   time.timeZone = "Europe/Copenhagen";
 
   environment.systemPackages = with pkgs; [
-    wget curl cachix python3
+    wget
+    curl
+    cachix
+    python3
+    docker-compose
   ];
 
   programs.nh = {
@@ -94,19 +98,47 @@
 
   programs.nix-ld.dev = {
     enable = true;
+    libraries = with pkgs; [
+      libsecret # Required for vscode devcontainer /shrug
+      glib # Required for vscode devcontainer /shrug
+      # Below are the standard included by nix-ld.dev
+      zlib
+      zstd
+      stdenv.cc.cc
+      curl
+      openssl
+      attr
+      libssh
+      bzip2
+      libxml2
+      acl
+      libsodium
+      util-linux
+      xz
+      systemd
+    ];
   };
 
   programs.zsh.enable = true;
 
   users.defaultUserShell = pkgs.bash;
 
-  virtualisation.containers.enable = true;
-  virtualisation.podman = {
+  # virtualisation.containers.enable = true;
+  virtualisation.docker =  {
     enable = true;
-    # Required for containers under podman-compose to be able to talk to each other.
-    defaultNetwork.settings.dns_enabled = true;
+    storageDriver = "overlay2";
   };
+  
+  # virtualisation.podman = {
+  #   enable = true;
+  #   # Required for containers under podman-compose to be able to talk to each other.
+  #   defaultNetwork.settings.dns_enabled = true;
+  #   
+  #   # Create a `docker` alias for podman, to use it as a drop-in replacement
+  #   dockerCompat = true;
+  # };
 
+  services.gnome.gnome-keyring.enable = true; # required for vscode devcontainer /shrug
   services.pcscd.enable = true;
   security.sudo.wheelNeedsPassword = false;
 
@@ -119,13 +151,11 @@
     };
   };
 
-  users.extraGroups.docker.members = [ "thsc" ];
-
   users.users = {
     thsc = {
       isNormalUser = true;
-      shell = pkgs.zsh;
-      extraGroups = [ "wheel" ];
+      shell = pkgs.bash;
+      extraGroups = [ "wheel" "docker" ];
       packages = [ inputs.home-manager.packages.${pkgs.system}.default ];
     };
   };
