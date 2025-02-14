@@ -128,15 +128,6 @@
     enable = true;
     storageDriver = "overlay2";
   };
-  
-  # virtualisation.podman = {
-  #   enable = true;
-  #   # Required for containers under podman-compose to be able to talk to each other.
-  #   defaultNetwork.settings.dns_enabled = true;
-  #   
-  #   # Create a `docker` alias for podman, to use it as a drop-in replacement
-  #   dockerCompat = true;
-  # };
 
   services.gnome.gnome-keyring.enable = true; # required for vscode devcontainer /shrug
   services.pcscd.enable = true;
