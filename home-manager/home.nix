@@ -46,6 +46,7 @@ let
         meow-tree-sitter
         spacious-padding
         diff-hl
+        clipetty
       ]);
 in {
   imports = [
