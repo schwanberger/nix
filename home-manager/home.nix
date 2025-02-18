@@ -47,6 +47,7 @@ let
         spacious-padding
         diff-hl
         clipetty
+        groovy-mode
       ]);
 in {
   imports = [
