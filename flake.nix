@@ -83,7 +83,7 @@
           modules = [
             ./hosts/nc-laptop
             nixos-wsl.nixosModules.wsl
-            home-manager.nixosModule
+            home-manager.nixosModules.home-manager
             nix-ld.nixosModules.nix-ld
           ];
         };
