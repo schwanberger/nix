@@ -48,6 +48,7 @@ let
         diff-hl
         clipetty
         groovy-mode
+        ssh-config-mode
       ]);
 in {
   imports = [
