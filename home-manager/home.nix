@@ -351,6 +351,10 @@ in {
         commit = { gpgsign = "true"; };
         init = { defaultBranch = "main"; };
         submodule = { recurse = "true"; };
+        merge = {
+          conflictstyle = "diff3";
+          stat = true;
+        };
         user = {
           name = "Thomas Schwanberger";
           email = "thomas@schwanberger.dk";
