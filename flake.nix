@@ -28,18 +28,18 @@
     nix-ld.url = "github:Mic92/nix-ld";
     nix-ld.inputs.nixpkgs.follows = "nixpkgs";
 
-    nix-doom-emacs-unstraightened = {
-      url = "github:marienz/nix-doom-emacs-unstraightened";
-      inputs.nixpkgs.follows = "nixpkgs";
-      #inputs.doomemacs.url = "github:doomemacs/doomemacs?ref=fafdb25dd8a6ecd21ba82ffc0e92be3816d063ba";
-    };
+   # nix-doom-emacs-unstraightened = {
+   #   url = "github:marienz/nix-doom-emacs-unstraightened";
+   #   inputs.nixpkgs.follows = "nixpkgs";
+   #    inputs.doomemacs.url = "github:doomemacs/doomemacs?ref=fafdb25dd8a6ecd21ba82ffc0e92be3816d063ba";
+   # };
 
-    doom-config = {
-      # url = "github:schwanberger/doom-emacs-config";
-      # url = "git+file:///home/thsc/personal/doom-emacs-config?ref=4912e4a6d0a6717cc886afc5dbe373f7ff1b22c4";
-      url = "git+file:///home/thsc/personal/doom-emacs-config";
-      flake = false;
-    };
+   # doom-config = {
+   #    url = "github:schwanberger/doom-emacs-config";
+   #    url = "git+file:///home/thsc/personal/doom-emacs-config?ref=4912e4a6d0a6717cc886afc5dbe373f7ff1b22c4";
+   #   url = "git+file:///home/thsc/personal/doom-emacs-config";
+   #   flake = false;
+   # };
 
     sops-nix.url = "github:Mic92/sops-nix";
     #sops-nix.url = "github:Mic92/sops-nix?ref=a4c33bfecb93458d90f9eb26f1cf695b47285243";

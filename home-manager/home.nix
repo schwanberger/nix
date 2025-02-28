@@ -52,7 +52,7 @@ let
       ]);
 in {
   imports = [
-    inputs.nix-doom-emacs-unstraightened.hmModule
+#    inputs.nix-doom-emacs-unstraightened.hmModule
     inputs.sops-nix.homeManagerModules.sops
   ];
 
@@ -153,30 +153,30 @@ in {
 
   programs.home-manager.enable = true;
 
-  programs.doom-emacs = {
-    enable = true;
-    doomDir = inputs.doom-config;
-    emacs = emacs-unstable-for-doom-emacs;
-    extraBinPackages = with pkgs; [ git python3 pinentry-tty pyright ruff ruff-lsp ];
-    extraPackages = epkgs:
-      with epkgs; [
-        vterm
-        treesit-grammars.with-all-grammars
-        eat
-        pinentry
-        denote
-        esh-autosuggest
-        consult-notes
-        hyperbole
-        standard-themes
-        # v: A fix for treemacs, but I don't really use it.
-        # treemacs
-        # lsp-treemacs
-        evil
-      ];
-    provideEmacs = false;
-    experimentalFetchTree = true;
-  };
+ # programs.doom-emacs = {
+ #   enable = true;
+ #   doomDir = inputs.doom-config;
+ #   emacs = emacs-unstable-for-doom-emacs;
+ #   extraBinPackages = with pkgs; [ git python3 pinentry-tty pyright ruff ruff-lsp ];
+ #   extraPackages = epkgs:
+ #     with epkgs; [
+ #       vterm
+ #       treesit-grammars.with-all-grammars
+ #       eat
+ #       pinentry
+ #       denote
+ #       esh-autosuggest
+ #       consult-notes
+ #       hyperbole
+ #       standard-themes
+ #        v: A fix for treemacs, but I don't really use it.
+ #        treemacs
+ #        lsp-treemacs
+ #       evil
+ #     ];
+ #   provideEmacs = false;
+ #   experimentalFetchTree = true;
+ # };
 
   fonts.fontconfig = {
     enable = true;
