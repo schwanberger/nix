@@ -380,9 +380,7 @@ in {
     };
     ssh = {
       enable = true;
-      controlMaster = "auto";
       controlPath = "~/.ssh/ssh-socket-%C";
-      controlPersist = "60m";
       includes = [
         # Too tiresome to handle fluctuating ssh config like this
         # "${config.sops.secrets.ssh_config_work.path}"
