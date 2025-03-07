@@ -49,6 +49,7 @@ let
         clipetty
         groovy-mode
         ssh-config-mode
+        ws-butler
       ]);
 in {
   imports = [
