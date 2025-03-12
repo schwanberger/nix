@@ -12,7 +12,7 @@
         "narHash": "sha256-R7obYNYF+PeRwfNLWf8oQybA39lvaoK4Nwr9KOlGooY=",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "2886bb1fa37af55db9eed88505917930fc82bcd4",
+        "rev": "dd4b810268262c2790475a7bb4f2583c292f1ee4",
         "type": "github"
       },
       "original": {
