@@ -50,6 +50,40 @@ let
         groovy-mode
         ssh-config-mode
         ws-butler
+        org-appear
+        org-super-agenda
+        org-edna
+        org-gtd
+        org-tabspaces
+        wgrep
+        spacious-padding
+        meow
+        eat
+        avy
+        consult
+        embark
+        embark-consult
+        vertico
+        marginalia
+        nerd-icons
+        nerd-icons-completion
+        corfu
+        nerd-icons-corfu
+        corfu-popupinfo
+        nerd-icons-dired
+        corfu-terminal
+        cape
+        kind-icon
+        orderless
+        nix-mode
+        all-the-icons-dired
+        magit
+        modus-themes
+        ef-themes
+        dired-subtree
+        gcmh
+        envrc
+        markdown-mode
       ]);
 in {
   imports = [
