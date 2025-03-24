@@ -122,7 +122,7 @@ in {
     inetutils
     gcc
     asciidoctor-with-extensions
-    (keepass.override { plugins = [ pkgs.keepass-keepasshttp ]; })
+    # (keepass.override { plugins = [ pkgs.keepass-keepasshttp ]; }) # Let's use KeePass from Windows instead
 
     # Secrets
     rage
