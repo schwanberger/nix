@@ -51,6 +51,7 @@ let
         ssh-config-mode
         ws-butler
         org-appear
+        puppet-mode
         # corfu-popupinfo
         llama # Transitive dependency on magit, suddenly? 2025-03-12
         with-editor # Transitive dependency on magit, suddenly? 2025-03-12
