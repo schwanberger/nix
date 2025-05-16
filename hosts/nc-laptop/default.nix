@@ -15,9 +15,9 @@
     };
   };
 
-  systemd.tmpfiles.settings = {
-    "10-wslg-x11" = lib.mkForce {};
-  };
+  # systemd.tmpfiles.settings = {
+  #   "10-wslg-x11" = lib.mkForce {};
+  # };
 
   wsl = {
     enable = true;
