@@ -2,8 +2,8 @@
 let
   # emacs-unstable-for-doom-emacs = pkgs.emacs-overlay.emacs-unstable;
   another-emacs-unstable-with-packages =
-    # (pkgs.emacsPackagesFor (pkgs.emacs-overlay.emacs-unstable)).emacsWithPackages # Lucid is the X toolkit defaul value in emacs-overlay
-    (pkgs.emacsPackagesFor (pkgs.emacs-overlay.emacs-unstable-pgtk)).emacsWithPackages # Lucid is the X toolkit defaul value in emacs-overlay
+    (pkgs.emacsPackagesFor (pkgs.emacs-overlay.emacs-unstable)).emacsWithPackages # Lucid is the X toolkit defaul value in emacs-overlay
+    # (pkgs.emacsPackagesFor (pkgs.emacs-overlay.emacs-unstable-pgtk)).emacsWithPackages # Lucid is the X toolkit defaul value in emacs-overlay
       (epkgs: with epkgs; [
         vterm
         eat
