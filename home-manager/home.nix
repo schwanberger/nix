@@ -164,6 +164,7 @@ in {
     iosevka-comfy.comfy-fixed
     iosevka-comfy.comfy-motion-fixed
     maple-mono.NL-NF
+    maple-mono.NormalNL-NF
   ];
 
   programs.home-manager.enable = true;
