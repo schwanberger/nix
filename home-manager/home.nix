@@ -93,7 +93,7 @@ in {
     file
     socat
 
-    devenv
+    # devenv
 
     # Latex
     #texlab # lsp
