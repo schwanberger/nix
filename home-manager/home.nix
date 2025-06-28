@@ -126,6 +126,7 @@ in {
     gcc
     asciidoctor-with-extensions
     # (keepass.override { plugins = [ pkgs.keepass-keepasshttp ]; }) # Let's use KeePass from Windows instead
+    keepassxc
 
     # Secrets
     rage
