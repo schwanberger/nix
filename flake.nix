@@ -87,6 +87,15 @@
             nix-ld.nixosModules.nix-ld
           ];
         };
+        B32pxBSXTpzsI2m = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; };
+          modules = [
+            ./hosts/nk-laptop
+            nixos-wsl.nixosModules.wsl
+            home-manager.nixosModules.home-manager
+            nix-ld.nixosModules.nix-ld
+          ];
+        };
       };
 
       # Standalone home-manager configuration entrypoint

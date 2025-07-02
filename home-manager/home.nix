@@ -70,11 +70,6 @@ in {
     inputs.sops-nix.homeManagerModules.sops
   ];
 
-  home = {
-    username = "thsc";
-    homeDirectory = "/home/thsc";
-  };
-
   home.packages = with pkgs; [
     another-emacs-unstable-with-packages
     bat
@@ -132,10 +127,15 @@ in {
     rage
     sops
     pinentry-tty
+    git-crypt
 
     # Langs
-    python3
     zulu11
+    uv
+    # (pkgs.python3.withPackages (python-pkgs: [
+    #   python-pkgs.pip
+    #   python-pkgs.tox
+    # ]))
 
     # Fonts
     dejavu_fonts

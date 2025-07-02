@@ -1,0 +1,1 @@
+hosts/nk-laptop/nk*.nix filter=git-crypt diff=git-crypt
