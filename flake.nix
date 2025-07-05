@@ -78,15 +78,6 @@
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
-        PF3LZDKP = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs; };
-          modules = [
-            ./hosts/nc-laptop
-            nixos-wsl.nixosModules.wsl
-            home-manager.nixosModules.home-manager
-            nix-ld.nixosModules.nix-ld
-          ];
-        };
         B32pxBSXTpzsI2m = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
           modules = [
