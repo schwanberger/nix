@@ -63,6 +63,8 @@ let
         dired-hacks-utils
         ts
         # denote # 2025-04-20: Latest version of denote missing from nixpkgs
+        gptel
+        gptel-magit
       ]);
 in {
   imports = [
