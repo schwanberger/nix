@@ -59,6 +59,7 @@
     VISUAL = "emacsclient --create-frame";
     EDITOR = "emacsclient --tty";
     SSL_CERT_DIR = "/etc/ssl/certs";
+    CURL_CA_BUNDLE = "/etc/ssl/certs/ca-bundle.crt";
     REQUESTS_CA_BUNDLE = "/etc/ssl/certs/ca-certificates.crt";
   };
 
