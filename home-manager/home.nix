@@ -114,6 +114,9 @@ in {
     nixd
     nixfmt
 
+    # disk
+    ncdu
+
     # Uncategorized
     pandoc
     p7zip
