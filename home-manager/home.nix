@@ -62,6 +62,7 @@ let
         org-agenda-property
         dired-hacks-utils
         ts
+        disk-usage
         # denote # 2025-04-20: Latest version of denote missing from nixpkgs
         # gptel
         # gptel-magit
