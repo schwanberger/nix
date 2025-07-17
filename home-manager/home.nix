@@ -66,6 +66,8 @@ let
         # denote # 2025-04-20: Latest version of denote missing from nixpkgs
         # gptel
         # gptel-magit
+        # Themes
+        doric-themes
       ]);
 in {
   imports = [
