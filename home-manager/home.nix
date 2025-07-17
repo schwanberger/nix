@@ -17,7 +17,6 @@ let
         embark
         embark-consult
         vertico
-        standard-themes
         marginalia
         nerd-icons
         nerd-icons-completion
@@ -33,8 +32,6 @@ let
         all-the-icons-dired
         transient
         magit
-        modus-themes
-        ef-themes
         dired-subtree
         gcmh
         envrc
@@ -67,6 +64,9 @@ let
         # gptel
         # gptel-magit
         # Themes
+        standard-themes
+        modus-themes
+        ef-themes
         doric-themes
       ]);
 in {
