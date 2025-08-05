@@ -51,10 +51,10 @@ let
         org-appear
         puppet-mode
         # corfu-popupinfo
-        llama # Transitive dependency on magit, suddenly? 2025-03-12
-        with-editor # Transitive dependency on magit, suddenly? 2025-03-12
-        s # Transitive dep required by org-gtd? Suddenly. 2025-03-12
-        popon # Transitive dep to corfu-terminal. Suddenly. 2025-03-12.
+        #llama # Transitive dependency on magit, suddenly? 2025-03-12
+        #with-editor # Transitive dependency on magit, suddenly? 2025-03-12
+        #s # Transitive dep required by org-gtd? Suddenly. 2025-03-12
+        #popon # Transitive dep to corfu-terminal. Suddenly. 2025-03-12.
         ht
         org-agenda-property
         dired-hacks-utils
