@@ -120,12 +120,16 @@ in {
     # disk utils
     ncdu
 
+    # network/dns utils
+    inetutils
+    dnsutils
+    bind
+
     # Uncategorized
     pandoc
     p7zip
     vim
     p7zip
-    inetutils
     gcc
     asciidoctor-with-extensions
     # (keepass.override { plugins = [ pkgs.keepass-keepasshttp ]; }) # Let's use KeePass from Windows instead
