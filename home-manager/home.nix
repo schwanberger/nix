@@ -117,7 +117,7 @@ in {
     nixd
     nixfmt
 
-    # disk
+    # disk utils
     ncdu
 
     # Uncategorized
