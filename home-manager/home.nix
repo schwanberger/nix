@@ -5,7 +5,8 @@ let
     # (pkgs.emacsPackagesFor (pkgs.emacs-overlay.emacs-unstable)).emacsWithPackages # Lucid is the X toolkit defaul value in emacs-overlay
     # (pkgs.emacsPackagesFor (pkgs.emacs-overlay.emacs-unstable-pgtk)).emacsWithPackages
     # (pkgs.emacsPackagesFor (pkgs.emacs-overlay.emacs-git-nox)).emacsWithPackages
-    (pkgs.emacsPackagesFor (pkgs.emacs-overlay.emacs-git)).emacsWithPackages
+    # (pkgs.emacsPackagesFor (pkgs.emacs-overlay.emacs-git)).emacsWithPackages
+    (pkgs.emacsPackagesFor (pkgs.emacs-overlay.emacs-git-pgtk)).emacsWithPackages
       (epkgs: with epkgs; [
         vterm
         eat
