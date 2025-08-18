@@ -149,6 +149,9 @@ in {
     #   python-pkgs.tox
     # ]))
 
+    # Browser
+    nyxt
+
     # Fonts
     dejavu_fonts
     nerd-fonts.symbols-only
