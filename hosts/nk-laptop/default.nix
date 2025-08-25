@@ -113,6 +113,8 @@
     storageDriver = "overlay2";
   };
 
+  virtualisation.podman.enable = true;
+
   services.gnome.gnome-keyring.enable = true; # required for vscode devcontainer /shrug
   services.pcscd.enable = true;
   security.sudo.wheelNeedsPassword = false;
