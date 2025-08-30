@@ -148,9 +148,6 @@ in {
     python313Packages.tox
     uv
 
-    # Browser
-    nyxt
-
     # Fonts
     dejavu_fonts
     nerd-fonts.symbols-only
