@@ -144,12 +144,9 @@ in {
     pinentry-tty
     git-crypt
 
-    # Langs
+    # Python development
+    python313Packages.tox
     uv
-    # (pkgs.python3.withPackages (python-pkgs: [
-    #   python-pkgs.pip
-    #   python-pkgs.tox
-    # ]))
 
     # Browser
     nyxt
