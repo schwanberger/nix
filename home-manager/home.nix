@@ -145,7 +145,6 @@ in {
     git-crypt
 
     # Langs
-    zulu11
     uv
     # (pkgs.python3.withPackages (python-pkgs: [
     #   python-pkgs.pip
