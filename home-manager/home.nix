@@ -130,6 +130,7 @@ in {
 
     # Uncategorized
     pandoc
+    texliveSmall
     p7zip
     vim
     p7zip
