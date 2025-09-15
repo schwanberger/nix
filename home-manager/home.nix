@@ -127,6 +127,7 @@ in {
     inetutils
     dnsutils
     bind
+    unixtools.netstat
 
     # Uncategorized
     pandoc
