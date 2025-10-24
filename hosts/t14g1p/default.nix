@@ -154,6 +154,7 @@
     cachix
     # python3
     docker-compose
+    ghostty
   ];
 
   documentation = {
