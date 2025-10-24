@@ -28,6 +28,8 @@
     nix-ld.url = "github:Mic92/nix-ld";
     nix-ld.inputs.nixpkgs.follows = "nixpkgs";
 
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
    # nix-doom-emacs-unstraightened = {
    #   url = "github:marienz/nix-doom-emacs-unstraightened";
    #   inputs.nixpkgs.follows = "nixpkgs";
@@ -47,7 +49,7 @@
     sops-nix.inputs.nixpkgs-stable.follows = "nixpkgs-stable";
   };
 
-  outputs = { self, nixpkgs, home-manager, nixos-wsl, nix-ld, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nixos-wsl, nix-ld, nixos-hardware, ... }@inputs:
     let
       inherit (self) outputs;
       # Supported systems for your flake packages, shell, etc.
@@ -78,6 +80,15 @@
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
+        t14g1p = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; hostname = "t14g1p"; };
+          modules = [
+            ./hosts/t14g1p
+            home-manager.nixosModules.home-manager
+            nix-ld.nixosModules.nix-ld
+            nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen1
+          ];
+        };
         B32pxBSXTpzsI2m = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; hostname = "B32pxBSXTpzsI2m"; };
           modules = [
