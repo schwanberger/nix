@@ -54,6 +54,8 @@
     variant = "";
   };
 
+  # Lenovo updates
+  services.fwupd.enable = true;
 
   programs.nh = {
     enable = true;
