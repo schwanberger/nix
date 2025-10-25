@@ -427,21 +427,21 @@ in {
       keys = [ ];
     };
 
-    gpg = {
-      enable = true;
-      settings = { pinentry-mode = "loopback"; };
-    };
-  };
-
-  services.gpg-agent = {
-    enable = true;
-    defaultCacheTtl = 86400;
-    maxCacheTtl = 86400;
-    # pinentryPackage = pkgs.pinentry-curses;
-    pinentryPackage = pkgs.pinentry-tty;
-    extraConfig = ''
-      allow-loopback-pinentry
-    '';
+  #   gpg = {
+  #     enable = true;
+  #     settings = { pinentry-mode = "loopback"; };
+  #   };
+  # };
+  #
+  # services.gpg-agent = {
+  #   enable = true;
+  #   defaultCacheTtl = 86400;
+  #   maxCacheTtl = 86400;
+  #   # pinentryPackage = pkgs.pinentry-curses;
+  #   pinentryPackage = pkgs.pinentry-tty;
+  #   extraConfig = ''
+  #     allow-loopback-pinentry
+  #   '';
   };
 
   # Nicely reload system units when changing configs
