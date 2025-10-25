@@ -2,7 +2,8 @@
   imports = [ ../../home-manager/home.nix ];
   home.username = "thsc";
   home.homeDirectory = "/home/thsc";
-  home.packages = [
+  home.packages = with pkgs; [
+    ghostty
     proton-pass
   ];
   # home.packages = [

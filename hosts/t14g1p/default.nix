@@ -156,8 +156,6 @@
     cachix
     # python3
     docker-compose
-    ghostty
-    proton-pass
   ];
 
   documentation = {
