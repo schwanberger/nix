@@ -41,18 +41,21 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_DK.UTF-8";
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
 
-  # Enable the LXQT Desktop Environment.
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.lxqt.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "dk";
-    variant = "";
+  services.xserver = {
+    enable = true;
+    xkb = {
+      layout = "dk";
+      variant = "";
+    };
+    displayManager.lightdm.enable = true;
+    desktopManager = {
+      xterm.enable = false;
+      xfce.enable = true;
+    };
   };
+
+  services.displayManager.defaultSession = "xfce";
 
   # Lenovo updates
   services.fwupd.enable = true;
