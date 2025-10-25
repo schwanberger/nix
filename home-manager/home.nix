@@ -33,8 +33,9 @@ let
         wgrep
         nix-mode
         all-the-icons-dired
-        transient
-        magit
+        # transient
+        # magit
+        # magit-auto-revert
         dired-subtree
         gcmh
         envrc
