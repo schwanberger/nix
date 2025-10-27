@@ -20,10 +20,10 @@
   #   "10-wslg-x11" = lib.mkForce {};
   # };
 
-  programs.gnupg.agent = {
-    enable = true;
-    pinentryPackage = pkgs.pinentry-tty;
-  };
+ # programs.gnupg.agent = {
+ #   enable = true;
+ #   pinentryPackage = pkgs.pinentry-tty;
+ # };
 
    nix = {
     settings = {
