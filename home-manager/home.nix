@@ -68,10 +68,10 @@ let
         # gptel
         # gptel-magit
         # Themes
-        standard-themes
-        modus-themes
-        ef-themes
-        doric-themes
+        # standard-themes
+        # modus-themes
+        # ef-themes
+        # doric-themes
       ]);
 in {
   imports = [
