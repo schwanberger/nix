@@ -107,10 +107,10 @@
   # Install firefox.
   programs.firefox.enable = true;
 
-  programs.gnupg.agent = {
-    enable = true;
-    pinentryPackage = pkgs.pinentry-tty;
-  };
+  # programs.gnupg.agent = {
+  #   enable = true;
+  #   pinentryPackage = pkgs.pinentry-tty;
+  # };
 
   nix = {
     settings = {
