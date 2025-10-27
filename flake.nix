@@ -89,15 +89,6 @@
             nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen1
           ];
         };
-        B32pxBSXTpzsI2m = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs; hostname = "B32pxBSXTpzsI2m"; };
-          modules = [
-            ./hosts/nk-laptop
-            nixos-wsl.nixosModules.wsl
-            home-manager.nixosModules.home-manager
-            nix-ld.nixosModules.nix-ld
-          ];
-        };
         B32Z1I924SJ1V4A = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; hostname = "B32Z1I924SJ1V4A"; };
           modules = [
