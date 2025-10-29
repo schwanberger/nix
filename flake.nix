@@ -29,7 +29,6 @@
     nix-ld.inputs.nixpkgs.follows = "nixpkgs";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    nixos-hardware.inputs.nixpkgs.follows = "nixpkgs";
 
    # nix-doom-emacs-unstraightened = {
    #   url = "github:marienz/nix-doom-emacs-unstraightened";
@@ -47,7 +46,6 @@
     sops-nix.url = "github:Mic92/sops-nix";
     #sops-nix.url = "github:Mic92/sops-nix?ref=a4c33bfecb93458d90f9eb26f1cf695b47285243";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
-    sops-nix.inputs.nixpkgs-stable.follows = "nixpkgs-stable";
   };
 
   outputs = { self, nixpkgs, home-manager, nixos-wsl, nix-ld, nixos-hardware, ... }@inputs:
