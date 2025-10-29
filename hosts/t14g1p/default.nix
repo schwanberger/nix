@@ -35,12 +35,18 @@
     users = { thsc = import ./home.nix; };
   };
 
-  # Enable network manager applet
-  programs.nm-applet.enable = true;
+  # ISO8601 please
+  i18n = {
+    supportedLocales = [
+      "en_US.UTF-8/UTF-8"
+      "en_DK.UTF-8/UTF-8"
+    ];
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_DK.UTF-8";
-
+    extraLocaleSettings = {
+      LC_MESSAGES = "en_US.UTF-8";
+      LC_TIME = "en_DK.UTF-8";
+    };
+  };
 
   services.xserver = {
     enable = true;
@@ -49,16 +55,8 @@
       variant = "";
     };
     displayManager.lightdm.enable = true;
-    desktopManager = {
-      xterm.enable = false;
-      xfce.enable = true;
-    };
+    desktopManager.pantheon.enable = true;
   };
-
-  hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
-
-  services.displayManager.defaultSession = "xfce";
 
   # Lenovo updates
   services.fwupd.enable = true;
@@ -69,7 +67,6 @@
     clean.extraArgs = "--keep-since 4d --keep 3";
     flake = "/home/thsc/personal/nix";
   };
-
 
   nix.settings.trusted-users = [ "thsc" ];
 
@@ -219,5 +216,5 @@
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "24.05";
+  system.stateVersion = "25.05";
 }
