@@ -209,7 +209,7 @@
     enableDefaultPackages = true;
     # Fonts handled in home manager
     fontconfig = {
-      hinting.style = "full";
+      # hinting.style = "full";
       # subpixel.lcdfilter = "light";
       # subpixel.rgba = "rgb";
     };
