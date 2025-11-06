@@ -5,6 +5,8 @@
   home.packages = with pkgs; [
     ghostty
     proton-pass
+    wine
+    winetricks
   ];
   # home.packages = [
   #   (pkgs.azure-cli.withExtensions [
