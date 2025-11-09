@@ -72,12 +72,17 @@
     cachix
     # python3
     docker-compose
+    linux-manual
+    man-pages
+    man-pages-posix
   ];
 
   documentation = {
-    dev.enable = true;
+    enable = true;
+    # dev.enable = true;
+    man.enable = true;
     man.generateCaches = true;
-    nixos.includeAllModules = true;
+    # nixos.includeAllModules = true;
   };
 
   programs.nix-ld.dev = {
