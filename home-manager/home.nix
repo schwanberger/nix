@@ -242,16 +242,17 @@ in {
       enableNushellIntegration = true;
       enableBashIntegration = false;
       enableZshIntegration = false;
+      enableFishIntegration = false;
     };
     fish = {
-      enable = false;
+      enable = true;
     };
     carapace = {
       enable = true;
       enableNushellIntegration = true;
       enableBashIntegration = true;
       enableZshIntegration = false;
-      enableFishIntegration = true;
+      enableFishIntegration = false;
     };
     direnv = {
       enable = true;
@@ -277,6 +278,7 @@ in {
       package = pkgs.starship;
       enable = true;
       enableZshIntegration = true;
+      enableFishIntegration = true;
       enableBashIntegration = false;
       enableNushellIntegration = true;
       settings = {
