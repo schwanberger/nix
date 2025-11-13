@@ -81,7 +81,7 @@
     enable = true;
     # dev.enable = true;
     man.enable = true;
-    man.generateCaches = true;
+    # man.generateCaches = true;
     # nixos.includeAllModules = true;
   };
 
