@@ -9,69 +9,7 @@ let
     # (pkgs.emacsPackagesFor (pkgs.emacs-overlay.emacs-git-pgtk)).emacsWithPackages
       (epkgs: with epkgs; [
         vterm
-        eat
-        org-super-agenda
-        org-edna
-        org-gtd
-        tabspaces
-        meow
-        avy
-        consult
-        embark
-        embark-consult
-        vertico
-        marginalia
-        nerd-icons
-        nerd-icons-completion
-        corfu
-        nerd-icons-corfu
-        nerd-icons-dired
-        corfu-terminal
-        cape
-        kind-icon
-        orderless
-        wgrep
-        nix-mode
-        all-the-icons-dired
-        # transient
-        # magit
-        # magit-auto-revert
-        dired-subtree
-        gcmh
-        envrc
-        markdown-mode
         treesit-grammars.with-all-grammars
-        winum
-        ace-window
-        git-timemachine
-        olivetti
-        meow-tree-sitter
-        spacious-padding
-        diff-hl
-        clipetty
-        groovy-mode
-        ssh-config-mode
-        ws-butler
-        org-appear
-        puppet-mode
-        # corfu-popupinfo
-        #llama # Transitive dependency on magit, suddenly? 2025-03-12
-        #with-editor # Transitive dependency on magit, suddenly? 2025-03-12
-        #s # Transitive dep required by org-gtd? Suddenly. 2025-03-12
-        #popon # Transitive dep to corfu-terminal. Suddenly. 2025-03-12.
-        ht
-        org-agenda-property
-        dired-hacks-utils
-        ts
-        disk-usage
-        # denote # 2025-04-20: Latest version of denote missing from nixpkgs
-        # gptel
-        # gptel-magit
-        # Themes
-        # standard-themes
-        # modus-themes
-        # ef-themes
-        # doric-themes
       ]);
 in {
   imports = [
