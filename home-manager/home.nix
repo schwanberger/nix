@@ -363,9 +363,9 @@ in {
     };
     keychain = {
       enable = true;
-      enableNushellIntegration = true;
-      enableBashIntegration = true;
-      enableFishIntegration = true;
+      # enableNushellIntegration = true;
+      # enableBashIntegration = true;
+      # enableFishIntegration = true;
       keys = [ ];
     };
 
