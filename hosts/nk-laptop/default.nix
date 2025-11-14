@@ -10,6 +10,7 @@
       outputs.overlays.modifications
       outputs.overlays.stable-packages
       outputs.overlays.emacs-overlay
+      outputs.overlays.master-packages
     ];
     config = {
       allowUnfree = true;

@@ -83,8 +83,8 @@ in {
     git-crypt
 
     # Python development
-    python313Packages.tox
-    uv
+    # python313Packages.tox
+    master.uv
 
     # Fonts
     dejavu_fonts

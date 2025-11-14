@@ -22,6 +22,14 @@
     };
   };
 
+  master-packages = final: _prev: {
+    master = import inputs.nixpkgs-master {
+      system = final.system;
+      config.allowUnfree = true;
+      # overlays = [ (import inputs.nixpkgs-master) ];
+    };
+  };
+
   emacs-overlay = final: _prev: {
     emacs-overlay = import inputs.nixpkgs {
       system = final.system;
