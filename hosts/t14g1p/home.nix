@@ -4,7 +4,7 @@
   home.homeDirectory = "/home/thsc";
   home.packages = with pkgs; [
     ghostty
-    proton-pass
+    master.proton-pass
     wine
     winetricks
   ];
