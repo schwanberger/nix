@@ -210,10 +210,10 @@ in {
     };
     nushell = {
       enable = true;
-      package = pkgs.nushell;
+      package = pkgs.master.nushell;
     };
     starship = {
-      package = pkgs.starship;
+      package = pkgs.master.starship;
       enable = true;
       enableZshIntegration = true;
       enableFishIntegration = true;
