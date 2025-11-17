@@ -213,7 +213,7 @@ in {
       package = pkgs.master.nushell;
     };
     starship = {
-      package = pkgs.master.starship;
+      package = pkgs.starship;
       enable = true;
       enableZshIntegration = true;
       enableFishIntegration = true;
