@@ -250,7 +250,7 @@ in {
       };
       shellAliases = { "history" = "history 1"; };
       defaultKeymap = "emacs";
-      initExtra = ''
+      initContent = ''
         export TERM=xterm-256color
         export COLORTERM=truecolor
         setopt interactive_comments
@@ -311,7 +311,7 @@ in {
 
     git = {
       enable = true;
-      extraConfig = {
+      settings = {
         core = {
           autocrlf = "false";
           eol = "lf";
@@ -380,7 +380,7 @@ in {
      defaultCacheTtl = 86400;
      maxCacheTtl = 86400;
      # pinentryPackage = pkgs.pinentry-curses;
-     pinentryPackage = pkgs.pinentry-tty;
+     pinentry.package = pkgs.pinentry-tty;
      extraConfig = ''
        allow-loopback-pinentry
      '';

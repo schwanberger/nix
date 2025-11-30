@@ -56,8 +56,10 @@
       variant = "";
     };
     displayManager.lightdm.enable = true;
-    desktopManager.pantheon.enable = true;
   };
+
+  services.desktopManager.pantheon.enable = true;
+
 
   # Lenovo updates
   services.fwupd.enable = true;
