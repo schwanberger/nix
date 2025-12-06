@@ -184,19 +184,21 @@ in {
     };
     fish = {
       enable = true;
+      generateCompletions = false;
     };
     carapace = {
       enable = true;
       enableNushellIntegration = true;
       enableBashIntegration = true;
       enableZshIntegration = false;
-      enableFishIntegration = false;
+      enableFishIntegration = true;
     };
     direnv = {
       enable = true;
       enableZshIntegration = true;
       enableBashIntegration = true;
       enableNushellIntegration = true;
+      # enableFishIntegration = true;
       package = pkgs.direnv;
       nix-direnv.enable = true;
       nix-direnv.package = pkgs.nix-direnv;
