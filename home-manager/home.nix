@@ -84,7 +84,7 @@ in {
 
     # Python development
     # python313Packages.tox
-    master.uv
+    uv
 
     # Fonts
     dejavu_fonts
