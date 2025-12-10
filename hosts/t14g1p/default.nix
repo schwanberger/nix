@@ -55,10 +55,30 @@
       layout = "dk";
       variant = "";
     };
-    displayManager.lightdm.enable = true;
+    desktopManager = {
+      xterm.enable = false;
+      xfce = {
+        enable = true;
+        noDesktop = true;
+        enableXfwm = false;
+      };
+    };
+    windowManager.i3 = {
+      enable = true;
+      extraPackages = with pkgs; [
+        dmenu #application launcher most people use
+        i3status # gives you the default i3 status bar
+        # i3blocks # if you are planning on using i3blocks over i3status
+     ];
+    };
   };
+  services.displayManager.defaultSession = "xfce+i3";
 
-  services.desktopManager.pantheon.enable = true;
+  # programs.i3lock.enable = true; #default i3 screen locker
+  programs.dconf.enable = true;
+
+
+  # services.desktopManager.xfce.enable = true;
 
 
   # Lenovo updates
@@ -91,6 +111,9 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
+
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -165,9 +188,11 @@
   ];
 
   documentation = {
-    dev.enable = true;
-    man.generateCaches = true;
-    nixos.includeAllModules = true;
+    enable = true;
+    man.enable = true;
+    # dev.enable = true;
+    # man.generateCaches = true;
+    # nixos.includeAllModules = true;
   };
 
   programs.nix-ld.dev = {
