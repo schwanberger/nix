@@ -7,6 +7,7 @@
     master.proton-pass
     wine
     winetricks
+    master.signal-desktop
   ];
   # home.packages = [
   #   (pkgs.azure-cli.withExtensions [
