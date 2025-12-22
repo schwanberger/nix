@@ -421,7 +421,7 @@ in {
   systemd.user.startServices = "sd-switch";
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "25.05";
+  home.stateVersion = "25.11";
 
   nix.extraOptions = ''
     !include ${config.sops.secrets.access_tokens.path}

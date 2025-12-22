@@ -5,17 +5,21 @@
     extra-substituters = [
       "https://nix-community.cachix.org"
       "https://devenv.cachix.org"
+      # "https://install.determinate.systems"
     ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
+      # "cache.flakehub.com-3:hJuILl5sVK4iKm86JzgdXW12Y2Hwd5G07qKtHTOcDCM="
     ];
   };
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
+
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
 
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -50,7 +54,7 @@
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, nixos-wsl, nix-ld, nixos-hardware, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nixos-wsl, nix-ld, nixos-hardware, determinate, ... }@inputs:
     let
       inherit (self) outputs;
       # Supported systems for your flake packages, shell, etc.
@@ -88,6 +92,7 @@
             home-manager.nixosModules.home-manager
             nix-ld.nixosModules.nix-ld
             nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen1
+            determinate.nixosModules.default
           ];
         };
         B32Z1I924SJ1V4A = nixpkgs.lib.nixosSystem {
