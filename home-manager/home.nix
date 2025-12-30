@@ -9,36 +9,36 @@ let
     # (pkgs.emacsPackagesFor (pkgs.emacs-overlay.emacs-git-pgtk)).emacsWithPackages
       (epkgs: with epkgs; [
         vterm
-        # treesit-grammars.with-all-grammars
+        treesit-grammars.with-all-grammars
 
-        (treesit-grammars.with-grammars (grammars: with grammars; [
-          tree-sitter-nix
-          tree-sitter-python
-          tree-sitter-bash
-          tree-sitter-fish
-          tree-sitter-elisp
-          tree-sitter-dockerfile
-          tree-sitter-go
-          tree-sitter-go-template
-          tree-sitter-godot-resource
-          tree-sitter-gomod
-          tree-sitter-gowork
-          tree-sitter-graphql
-          tree-sitter-html
-          tree-sitter-latex
-          tree-sitter-make
-          tree-sitter-markdown
-          # tree-sitter-markdown_inline
-          tree-sitter-nu
-          # tree-sitter-org
-          tree-sitter-regex
-          tree-sitter-ruby
-          tree-sitter-rust
-          tree-sitter-sql
-          tree-sitter-toml
-          tree-sitter-yaml
-          tree-sitter-zig
-        ]))
+        # (treesit-grammars.with-grammars (grammars: with grammars; [
+        #   tree-sitter-nix
+        #   tree-sitter-python
+        #   tree-sitter-bash
+        #   tree-sitter-fish
+        #   tree-sitter-elisp
+        #   tree-sitter-dockerfile
+        #   tree-sitter-go
+        #   tree-sitter-go-template
+        #   tree-sitter-godot-resource
+        #   tree-sitter-gomod
+        #   tree-sitter-gowork
+        #   tree-sitter-graphql
+        #   tree-sitter-html
+        #   tree-sitter-latex
+        #   tree-sitter-make
+        #   tree-sitter-markdown
+        #   # tree-sitter-markdown_inline
+        #   tree-sitter-nu
+        #   # tree-sitter-org
+        #   tree-sitter-regex
+        #   tree-sitter-ruby
+        #   tree-sitter-rust
+        #   tree-sitter-sql
+        #   tree-sitter-toml
+        #   tree-sitter-yaml
+        #   tree-sitter-zig
+        # ]))
       ]);
 in {
   imports = [
