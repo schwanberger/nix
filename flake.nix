@@ -102,6 +102,7 @@
             nixos-wsl.nixosModules.wsl
             home-manager.nixosModules.home-manager
             nix-ld.nixosModules.nix-ld
+            determinate.nixosModules.default
           ];
         };
       };
