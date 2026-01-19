@@ -68,6 +68,7 @@
   time.timeZone = "Europe/Copenhagen";
 
   environment.systemPackages = with pkgs; [
+    just
     wget
     curl
     cachix
