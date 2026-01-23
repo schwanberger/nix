@@ -4,10 +4,10 @@
   home.homeDirectory = "/home/thsc";
   home.packages = with pkgs; [
     ghostty
-    master.proton-pass
+    proton-pass
     wine
     winetricks
-    master.signal-desktop
+    signal-desktop
   ];
   # home.packages = [
   #   (pkgs.azure-cli.withExtensions [

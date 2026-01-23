@@ -123,7 +123,7 @@
     isNormalUser = true;
     description = "Thomas Schwanberger";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
-    packages = [ inputs.home-manager.packages.${pkgs.system}.default pkgs.master.discord ];
+    packages = [ inputs.home-manager.packages.${pkgs.system}.default pkgs.discord ];
   };
 
   # Enable automatic login for the user.
