@@ -121,6 +121,7 @@ in {
     nerd-fonts.jetbrains-mono
     nerd-fonts.iosevka
     nerd-fonts.ubuntu-sans
+    nerd-fonts.iosevka-term-slab
     # (nerdfonts.override {
     #   fonts = [
     #     "FiraCode"
