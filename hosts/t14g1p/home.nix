@@ -8,6 +8,7 @@
     wine
     winetricks
     signal-desktop
+    master.qbittorrent
   ];
   # home.packages = [
   #   (pkgs.azure-cli.withExtensions [
