@@ -9,6 +9,7 @@
     winetricks
     signal-desktop
     master.qbittorrent
+    master.vlc
   ];
   # home.packages = [
   #   (pkgs.azure-cli.withExtensions [
