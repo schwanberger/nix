@@ -10,6 +10,7 @@
     signal-desktop
     master.qbittorrent
     master.vlc
+    master.protonvpn-gui
   ];
   # home.packages = [
   #   (pkgs.azure-cli.withExtensions [
