@@ -11,6 +11,7 @@
     master.qbittorrent
     master.vlc
     master.protonvpn-gui
+    master.libnatpmp
   ];
   # home.packages = [
   #   (pkgs.azure-cli.withExtensions [
