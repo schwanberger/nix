@@ -74,7 +74,7 @@
     cachix
     # python3
     docker-compose
-    linux-manual
+    # linux-manual
     man-pages
     man-pages-posix
   ];
