@@ -77,6 +77,7 @@
     # linux-manual
     man-pages
     man-pages-posix
+    btop
   ];
 
   documentation = {
@@ -111,6 +112,11 @@
   };
 
   programs.zsh.enable = true;
+
+  programs.netatop = {
+    enable = true;
+    netatop.enable = true;
+    };
 
   users.defaultUserShell = pkgs.bash;
 
