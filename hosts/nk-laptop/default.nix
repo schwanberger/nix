@@ -113,9 +113,9 @@
 
   programs.zsh.enable = true;
 
-  programs.netatop = {
+  programs.atop = {
     enable = true;
-    netatop.enable = true;
+    # netatop.enable = true;
     };
 
   users.defaultUserShell = pkgs.bash;
