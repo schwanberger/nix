@@ -78,6 +78,7 @@
     man-pages
     man-pages-posix
     btop
+    nethogs
   ];
 
   documentation = {
