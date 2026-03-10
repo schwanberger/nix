@@ -64,6 +64,7 @@
     REQUESTS_CA_BUNDLE = "/etc/ssl/certs/ca-certificates.crt";
   };
 
+  environment.localBinInPath = true;
 
   time.timeZone = "Europe/Copenhagen";
 
@@ -79,6 +80,8 @@
     man-pages-posix
     btop
     nethogs
+    libsecret # providing secret-tool
+    pass
   ];
 
   documentation = {
@@ -129,7 +132,8 @@
 
   virtualisation.podman.enable = true;
 
-  services.gnome.gnome-keyring.enable = true; # required for vscode devcontainer /shrug
+  # services.gnome.gnome-keyring.enable = true; # required for vscode devcontainer /shrug
+  # services.passSecretService.enable = true;
   services.pcscd.enable = true;
   security.sudo.wheelNeedsPassword = false;
 
