@@ -9,6 +9,9 @@ let
     # (pkgs.emacsPackagesFor (pkgs.emacs-overlay.emacs-git-pgtk)).emacsWithPackages
       (epkgs: with epkgs; [
         vterm
+        magit
+        embark-consult
+        consult
         treesit-grammars.with-all-grammars
 
         # (treesit-grammars.with-grammars (grammars: with grammars; [
