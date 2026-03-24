@@ -10,8 +10,8 @@ let
       (epkgs: with epkgs; [
         vterm
         magit
-        embark-consult
-        consult
+        #embark-consult
+        #consult
         treesit-grammars.with-all-grammars
 
         # (treesit-grammars.with-grammars (grammars: with grammars; [
