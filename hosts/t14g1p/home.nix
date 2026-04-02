@@ -8,7 +8,7 @@
     wine
     winetricks
     signal-desktop
-    master.qbittorrent
+    qbittorrent
     master.vlc
     master.protonvpn-gui
     master.libnatpmp
