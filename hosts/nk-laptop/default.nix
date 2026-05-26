@@ -11,6 +11,7 @@
       outputs.overlays.stable-packages
       outputs.overlays.emacs-overlay
       outputs.overlays.master-packages
+      inputs.llm-agents.overlays.default
     ];
     config = {
       allowUnfree = true;
@@ -82,6 +83,7 @@
     nethogs
     libsecret # providing secret-tool
     pass
+    llm-agents.pi
   ];
 
   documentation = {
