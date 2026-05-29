@@ -60,7 +60,7 @@
   environment.variables = {
     # VISUAL = "emacsclient --create-frame";
     EDITOR = "emacsclient";
-    SSL_CERT_DIR = "/etc/ssl/certs";
+    SSL_CERT_FILE = "/etc/ssl/certs/ca-certificates.crt";
     CURL_CA_BUNDLE = "/etc/ssl/certs/ca-bundle.crt";
     REQUESTS_CA_BUNDLE = "/etc/ssl/certs/ca-certificates.crt";
   };
