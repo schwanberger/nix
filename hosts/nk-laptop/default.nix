@@ -85,6 +85,7 @@
     pass
     llm-agents.pi
     llm-agents.omp
+    basedpyright
   ];
 
   documentation = {
