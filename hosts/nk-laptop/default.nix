@@ -84,6 +84,7 @@
     libsecret # providing secret-tool
     pass
     llm-agents.pi
+    llm-agents.omp
   ];
 
   documentation = {
