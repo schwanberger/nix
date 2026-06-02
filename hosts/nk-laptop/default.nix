@@ -11,6 +11,7 @@
       outputs.overlays.stable-packages
       outputs.overlays.emacs-overlay
       outputs.overlays.master-packages
+      outputs.overlays.pixi-pinned
       inputs.llm-agents.overlays.default
     ];
     config = {

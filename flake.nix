@@ -20,6 +20,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
+    nixpkgs-pixi-0681.url = "github:NixOS/nixpkgs/3ff13984beedf321ca14cde2feaaa259cd0972e2";
 
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
 

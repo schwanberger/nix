@@ -30,6 +30,13 @@
     };
   };
 
+  pixi-pinned = final: _prev: {
+    pixi_0_68_1 = (import inputs.nixpkgs-pixi-0681 {
+      system = final.stdenv.hostPlatform.system;
+      config.allowUnfree = true;
+    }).pixi;
+  };
+
   emacs-overlay = final: _prev: {
     emacs-overlay = import inputs.nixpkgs {
       system = final.system;
