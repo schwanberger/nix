@@ -241,10 +241,10 @@ in {
       enableBashIntegration = true;
       enableFishIntegration = false;
     };
-    nushell = {
-      enable = true;
-      package = pkgs.master.nushell;
-    };
+    # nushell = {
+    #   enable = true;
+    #   package = pkgs.master.nushell;
+    # };
     starship = {
       package = pkgs.starship;
       enable = true;
