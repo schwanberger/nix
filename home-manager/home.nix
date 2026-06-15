@@ -78,8 +78,8 @@ in {
     (ripgrep.override { withPCRE2 = true; })
     fd
     (aspellWithDicts (ds: with ds; [ en en-computers en-science ]))
-    nodejs
     sqlite
+    tmux
     editorconfig-core-c
     zstd
     ansible
